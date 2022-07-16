@@ -70,11 +70,11 @@ export const dbSync = async () => {
 
   //Create Db Models
 
-  await connection.sync({ force: false });
+  await connection.sync({ force: true });
 
 
   //Insert Default Db values
-  // await devDbController.defaultUsers.configuration(rootuser.configuration);
+  await devDbController.defaultUsers.configuration(rootuser.configuration);
 
 
   var msg=chalk.yellow('Tables Created');
