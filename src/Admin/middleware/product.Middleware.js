@@ -143,6 +143,38 @@ productMiddleware.Product = {
         } 
 
     },
+
+    //Recommended Products
+
+    addRecommend: async ({ body }) => {
+        const addRecommended = await adminDbController.Product.addRecommended(body);
+        if (addRecommended != null && addRecommended != undefined && Object.keys(addRecommended).length != 0) {
+            return "Product Added to Recommended";
+        } else {
+            throw Error.SomethingWentWrong("Failed to Add Recommended Product");
+        }
+    },
+    getRecommended: async () => {
+        const getRecommended = await adminDbController.Product.getAllRecommended()
+        var productIds = [];
+        for (let index = 0; index < getRecommended.length; index++) {
+            productIds.push(getRecommended[index].productId);
+        }
+        const fetchProductArray = await adminDbController.Product.fetchProductArray(productIds)
+        if (fetchProductArray != null && fetchProductArray != undefined && Object.keys(fetchProductArray).length != 0) {
+            return fetchProductArray;
+        } else {
+            throw Error.SomethingWentWrong("No Recommended Products Found");
+        }
+    },
+    removeRecommend: async ({ body }) => {
+        const destroyed = await adminDbController.Product.deleteRecommended(body)
+        if (destroyed != null && destroyed != undefined && destroyed[0] != 0) {
+            return "Product Removed from Recommended";
+        } else {
+            throw Error.SomethingWentWrong("Unable to Delete Recommended Product");
+        }
+    },
 };
 
 

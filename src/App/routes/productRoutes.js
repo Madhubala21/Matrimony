@@ -16,5 +16,7 @@ productRouter.post("/variant", UserAuthenticate, ProductController.Variant.getVa
 //product Specifications
 productRouter.post("/specification", UserAuthenticate, ProductController.Product.getSpecs);
 
+//recommended
+productRouter.get("/recommended", ProductController.Product.getRecommended);
 
 export { productRouter };

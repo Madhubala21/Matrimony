@@ -125,6 +125,23 @@ product.init(
   { sequelize: connection, freezeTableName: true }
 );
 
+class recommendedProducts extends Model { }
+
+recommendedProducts.init(
+  {
+    id: {
+      type: DataTypes.BIGINT.UNSIGNED,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    productId: {
+      type: DataTypes.BIGINT.UNSIGNED,
+      allowNull: false,
+    },
+  },
+  { sequelize: connection, freezeTableName: true }
+);
 class productVariants extends Model { }
 
 productVariants.init(
@@ -196,27 +213,6 @@ productVariants.init(
   { sequelize: connection, freezeTableName: true }
 );
 
-class productBlog extends Model { }
-
-productBlog.init(
-  {
-    id: {
-      type: DataTypes.BIGINT.UNSIGNED,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
-    },
-    productId: {
-      type: DataTypes.BIGINT.UNSIGNED,
-      allowNull: false,
-    },
-    sectionImage: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-  },
-  { sequelize: connection, freezeTableName: true }
-);
 class productSpecifications extends Model { }
 
 productSpecifications.init(
@@ -260,4 +256,4 @@ productTitle.init(
   { sequelize: connection, freezeTableName: true }
 );
 
-export { taxRates, category, product, productVariants, productSpecifications, productTitle, productBlog };
+export { taxRates, category, product, productVariants, productSpecifications, productTitle, recommendedProducts };

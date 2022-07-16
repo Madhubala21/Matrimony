@@ -689,6 +689,51 @@ adminDbController.Product = {
       throw Error.SomethingWentWrong();
     }
   },
+  addRecommended: async (data) => {
+    try {
+      return await adminDbController.Models.recommendedProducts.create({
+        productId: data.productId
+      })
+    } catch (error) {
+      throw Error.InternalError();
+    }
+  },
+  getAllRecommended: async (data) => {
+    try {
+      return await adminDbController.Models.recommendedProducts.findAll()
+    } catch (error) {
+      throw Error.InternalError();
+    }
+  },
+  deleteRecommended: async (data) => {
+    try {
+      return await adminDbController.Models.recommendedProducts.destroy({
+        where: {
+          productId: data.productId
+        },
+      })
+    } catch (error) {
+      throw Error.InternalError();
+    }
+  },
+  fetchProductArray: async (productIds) => {
+    try {
+      return await adminDbController.Models.product.findAll({
+        where: {
+          id: {
+            [Op.in]: productIds,
+          },
+
+          status: "active"
+        },
+        raw: true,
+        attributes: ["id", "productName", "productImage", "categoryName"],
+      })
+    } catch (error) {
+      console.log(error);
+      throw Error.InternalError();
+    }
+  },
 }
 
 //Product variant

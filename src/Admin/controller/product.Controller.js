@@ -184,6 +184,75 @@ ProductController.Product = {
             });
     },
 
+    /**
+    * @name Recommend Product
+    * @param {*} body 
+    */
+
+    addRecommendProduct: async (req, res) => {
+        productMiddleware.Product.addRecommend(req)
+            .then((data) => {
+                const response = ApplicationResult.forCreated();
+                var statuscode = 0;
+                ApplicationResponse.success(
+                    response,
+                    null,
+                    (response) => (statuscode = response.status)
+                );
+                res.json({ status: statuscode, data: data });
+            })
+            .catch((error) => {
+                ApplicationResponse.error(error, null, (response) => {
+                    res.status(response.status).json(response);
+                });
+            });
+    },
+    /**
+    * @name Recommend Product
+    * @param {*} body 
+    */
+
+    getRecommendProduct: async (req, res) => {
+        productMiddleware.Product.getRecommended(req)
+            .then((data) => {
+                const response = ApplicationResult.forCreated();
+                var statuscode = 0;
+                ApplicationResponse.success(
+                    response,
+                    null,
+                    (response) => (statuscode = response.status)
+                );
+                res.json({ status: statuscode, data: data });
+            })
+            .catch((error) => {
+                ApplicationResponse.error(error, null, (response) => {
+                    res.status(response.status).json(response);
+                });
+            });
+    },
+    /**
+    * @name Recommend Product
+    * @param {*} body 
+    */
+
+    deleteRecommendProduct: async (req, res) => {
+        productMiddleware.Product.removeRecommend(req)
+            .then((data) => {
+                const response = ApplicationResult.forCreated();
+                var statuscode = 0;
+                ApplicationResponse.success(
+                    response,
+                    null,
+                    (response) => (statuscode = response.status)
+                );
+                res.json({ status: statuscode, data: data });
+            })
+            .catch((error) => {
+                ApplicationResponse.error(error, null, (response) => {
+                    res.status(response.status).json(response);
+                });
+            });
+    },
 };
 
 ProductController.Variant = {

@@ -836,7 +836,31 @@ userDbController.Shop = {
       throw Error.SomethingWentWrong();
     }
   },
+  getAllRecommended: async (data) => {
+    try {
+      return await userDbController.Models.recommendedProducts.findAll()
+    } catch (error) {
+      throw Error.InternalError();
+    }
+  },
+  fetchProductArray: async (productIds) => {
+    try {
+      return await userDbController.Models.product.findAll({
+        where: {
+          id: {
+            [Op.in]: productIds,
+          },
 
+          status: "active"
+        },
+        raw: true,
+        attributes: ["id", "productName", "productImage", "categoryName"],
+      })
+    } catch (error) {
+      console.log(error);
+      throw Error.InternalError();
+    }
+  },
 };
 
 

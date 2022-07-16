@@ -19,6 +19,11 @@ productRouter.post("/addProduct", adminAuthenticate, Resizer, ProductController.
 productRouter.post("/updateProduct", adminAuthenticate, Resizer, ProductController.Product.updateProduct);
 productRouter.post("/deleteProduct", adminAuthenticate, ProductController.Product.deleteProduct);
 
+//Recommend product
+productRouter.get("/recommendProduct", adminAuthenticate, ProductController.Product.getRecommendProduct);
+productRouter.post("/addRecommendProduct", adminAuthenticate, ProductController.Product.addRecommendProduct);
+productRouter.post("/deleteRecommendProduct", adminAuthenticate, ProductController.Product.deleteRecommendProduct);
+
 
 //product variant
 productRouter.post("/getVariant", adminAuthenticate, ProductController.Variant.getVariant);

@@ -171,6 +171,19 @@ productMiddleware.Product = {
             return "No Specifiations Found"
         }
     },
+    fetchRecommended: async ({ body }) => {
+        const getRecommended = await userDbController.Shop.getAllRecommended()
+        var productIds = [];
+        for (let index = 0; index < getRecommended.length; index++) {
+            productIds.push(getRecommended[index].productId);
+        }
+        const fetchProductArray = await userDbController.Shop.fetchProductArray(productIds)
+        if (fetchProductArray != null && fetchProductArray != undefined && Object.keys(fetchProductArray).length != 0) {
+            return fetchProductArray;
+        } else {
+            throw Error.SomethingWentWrong("No Recommended Products Found");
+        }
+    },
 };
 
 
