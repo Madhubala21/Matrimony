@@ -39,7 +39,7 @@ NodeMailerfunction.Email = {
                         throw Error.SomethingWentWrong();
                     } else {
                         const mainOptions = {
-                            from: "noreply@bioforhealth.com",
+                            from: "noreply@bioforhealth.in",
                             to: recieverEmail,
                             subject: `Welcome to ${process.env.APP_NAME} 🛍️ `,
                             html: welcome,
@@ -64,7 +64,7 @@ NodeMailerfunction.Email = {
                     throw Error.SomethingWentWrong();
                 } else {
                     const mainOptions = {
-                        from: "noreply@bioforhealth.com",
+                        from: "noreply@bioforhealth.in",
                         to: recieverEmail,
                         subject: `Reset Password for ${process.env.APP_NAME} 🔑 🛍️ `,
                         html: resetPassword,

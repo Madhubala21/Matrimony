@@ -33,8 +33,8 @@ export const production = {
 
 export const defaultdata = {
   configuration: {
-    baseUrl: "https://api.bioforhealth.cf",
-    hostEmail: "mail.bioforhealth.cf",
+    baseUrl: "https://api.bioforhealth.in",
+    hostEmail: "mail.bioforhealth.in",
     placeholder: "https://ik.imagekit.io/lokki/Avatar/placeholder_XFzrDmSml.png?updatedAt=1638958916450",
     shippingFee: 40,
     messagingId: "null",
