@@ -20,7 +20,7 @@ authMiddleware.User = {
       throw Error.SomethingWentWrong("Account Terminated");
     } else if (userFound.status === "inactive") {
       //send mail to activate account
-      throw Error.SomethingWentWrong("Account InActivate");
+      throw Error.SomethingWentWrong("Account InActive");
     } else if (userFound.status === "active") {
       try {
         const plain = CryptoJS.AES.decrypt(userFound.password, passwordSecret);

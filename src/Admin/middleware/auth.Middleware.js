@@ -22,10 +22,10 @@ authMiddleware.Admin = {
         } else if (userFound.status === "terminated") {
             throw Error.AuthenticationFailed("Terminated");
         } else if (userFound.status === "inactive") {
-            throw Error.AuthenticationFailed("Account InActivate");
+            throw Error.AuthenticationFailed("Account InActive");
         }
         else if (userFound.type === "USER") {
-            throw Error.AuthenticationFailed("Account InActivate");
+            throw Error.AuthenticationFailed("Account InActive");
         }
         else if (userFound.status === "active" && userFound.type === "ROOT") {
             try {
