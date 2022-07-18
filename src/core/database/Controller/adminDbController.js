@@ -263,10 +263,11 @@ adminDbController.Shop = {
     try {
       return await adminDbController.Models.banner.create({
         bannerImage: data.bannerImage,
-        bannerText: data.bannerText,
+        // bannerText: data.bannerText,
         bannerType: data.bannerType,
-        bannerFor: data.bannerFor,
-        productOrCategoryId: data.productOrCategoryId,
+        // bannerFor: data.bannerFor,
+        // productOrCategoryId: data.productOrCategoryId,
+        status: "active"
       }, { raw: true })
     } catch (error) {
       throw Error.SomethingWentWrong();

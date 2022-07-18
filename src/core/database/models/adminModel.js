@@ -101,25 +101,25 @@ banner.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    bannerText: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
+    // bannerText: {
+    //   type: DataTypes.STRING(255),
+    //   allowNull: false,
+    // },
     bannerType: {
       type: DataTypes.ENUM("offer", "normal", "festival"),
       allowNull: false,
       defaultValue: "normal",
     },
-    bannerFor: {
-      type: DataTypes.ENUM("category", "product"),
-      allowNull: false,
-      defaultValue: "category",
-    },
-    productOrCategoryId: {
-      type: DataTypes.BIGINT.UNSIGNED,
-      allowNull: true,
-      defaultValue: 0
-    },
+    // bannerFor: {
+    //   type: DataTypes.ENUM("category", "product"),
+    //   allowNull: false,
+    //   defaultValue: "category",
+    // },
+    // productOrCategoryId: {
+    //   type: DataTypes.BIGINT.UNSIGNED,
+    //   allowNull: true,
+    //   defaultValue: 0
+    // },
     status: {
       type: DataTypes.ENUM("active", "inactive"),
       allowNull: false,
