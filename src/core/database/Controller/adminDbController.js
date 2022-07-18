@@ -250,10 +250,7 @@ adminDbController.Shop = {
       return await adminDbController.Models.banner.findAll({
         order: [["bannerType", "ASC"]], raw: true, attributes: ["id",
           "bannerImage",
-          "bannerText",
-          "bannerType",
-          "bannerFor",
-          "productOrCategoryId", "status"]
+          "bannerType", "status"]
       })
     } catch (error) {
       throw Error.SomethingWentWrong();
