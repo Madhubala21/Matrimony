@@ -170,7 +170,6 @@ userDbController.Customer = {
         }, raw: true,
       });
     } catch (error) {
-      console.log(error);
       throw Error.SomethingWentWrong();
     }
   },
@@ -1049,6 +1048,7 @@ userDbController.Cart = {
     }
   },
   checkCartExists: async (data) => {
+    console.log(data);
     try {
       return await userDbController.Models.cart.findOne({
         where: {
@@ -1059,6 +1059,7 @@ userDbController.Cart = {
         }, raw: true,
       });
     } catch (error) {
+      console.log(error);
       throw Error.SomethingWentWrong();
     }
   },

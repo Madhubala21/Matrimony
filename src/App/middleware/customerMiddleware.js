@@ -76,6 +76,7 @@ customerMiddleware.Customer = {
 customerMiddleware.Address = {
 
   getAddress: async ({ body, token }) => {
+    console.log(body, token);
     if (token == false || token == null || token == undefined) {
       throw Error.AuthenticationFailed();
     }
