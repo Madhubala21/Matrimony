@@ -94,7 +94,7 @@ orderMiddleware.Checkout = {
           // Generate Order
           var timestamp = JSON.stringify(Date.now());
           var order = "ORD" + timestamp;
-          var environment = Paytm.LibraryConstants.STAGING_ENVIRONMENT;
+          var environment = Paytm.LibraryConstants.PRODUCTION_ENVIRONMENT;
           var mid = configs.paymentGatewayId;
           var key = configs.paymentGatewaySecret;
           var website = "WEBSTAGING";
@@ -110,7 +110,7 @@ orderMiddleware.Checkout = {
             //initiate payment 
             var channelId = Paytm.EChannelId.WEB;
             var orderId = order;
-            var shippingFee = Number(configs.shippingFee);
+            var shippingFee = 0;
             var amount = sum + shippingFee;
             var amount = JSON.stringify(amount)
             var txnAmount = Paytm.Money.constructWithCurrencyAndValue(Paytm.EnumCurrency.INR, amount);
@@ -127,6 +127,11 @@ orderMiddleware.Checkout = {
               price: amount,
               shippingFee: shippingFee,
               txnToken: response.responseObject.body.txnToken,
+            }
+            if (checkout.txnToken == undefined || checkout.txnToken == null) {
+              response.jsonResponse = JSON.parse(response.jsonResponse);
+              var errMessage = response.jsonResponse.body.resultInfo.resultMsg;
+              throw Error.SomethingWentWrong(errMessage)
             }
             // subtotal:body.singleProductPrice,
             // gst:body.inclusiveGST,
@@ -145,7 +150,8 @@ orderMiddleware.Checkout = {
             }
 
           } catch (error) {
-            throw Error.SomethingWentWrong("Payment Server Error")
+            // console.log(error);
+            throw Error.SomethingWentWrong(errMessage)
           }
         }
       } else {

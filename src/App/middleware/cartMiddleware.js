@@ -79,13 +79,13 @@ cartMiddleware.Cart = {
                     // var colorLength = productFound.variantColor.length;
                     // for (let index = 0; index < colorLength; index++) {
                     // if (productFound.variantColor[index] === body.variantColor) {
-                    var pricePosition = 0;
+                    // var pricePosition = 0;
                         // }
                     // }
 
                     //Message for Limited stocks
-                    if (productFound.availableStock[pricePosition] < body.units) {
-                        const stock = productFound.availableStock[pricePosition];
+                    if (productFound.availableStock < body.units) {
+                        const stock = productFound.availableStock;
                         if (stock == 1) {
                             throw Error.SomethingWentWrong("Only " + stock + " Product " + "Available")
                         } else {
@@ -98,9 +98,9 @@ cartMiddleware.Cart = {
                     productFound.variantImage = JSON.parse(productFound.variantImage);
                     productFound.actualPrice = JSON.parse(productFound.actualPrice);
 
-                    const singleProductPrice = Number(productFound.discountPrice[pricePosition]);//price
-                    const actualPrice = Number(productFound.actualPrice[pricePosition]);//price
-                    const variantImage = productFound.variantImage[pricePosition];//image
+                    const singleProductPrice = Number(productFound.discountPrice);//price
+                    const actualPrice = Number(productFound.actualPrice);//price
+                    const variantImage = productFound.variantImage[0];//image
                     const noOfProducts = Number(body.units);//quantity
                     const variant = productFound.id;//variant
                     const totalPrice = singleProductPrice * noOfProducts;
@@ -115,10 +115,10 @@ cartMiddleware.Cart = {
                     // body.singleProductPrice = singleProductPrice;
                     body.actualPrice = actualPrice * noOfProducts;
                     body.totalPrice = totalPrice;
-                    body.variantColor = body.variantColor;
+                    // body.variantColor = body.variantColor;
                     body.units = noOfProducts;
                     body.tax = Number(productFound.tax);
-                    body.index = pricePosition;
+                    body.index = 0;
                     body.status = "active";
 
                     // var insp =  body.totalPrice* 100/(100 + (Number(productFound.tax)));
@@ -127,6 +127,7 @@ cartMiddleware.Cart = {
                     body.inclusiveGST = Math.round((totalPrice) - (totalPrice * 100 / (100 + (Number(productFound.tax)))));
                     body.singleProductPrice = Math.round((totalPrice * 100 / (100 + (Number(productFound.tax)))));
                     // body.withGST = totalPrice + (totalPrice * (Number(productFound.tax) / 100));
+                    console.log(body);
                     const created = await userDbController.Cart.createCart(body);
                     if (created != null && created != undefined && Object.keys(created).length != 0) {
                         return "Added to Cart"
@@ -155,19 +156,19 @@ cartMiddleware.Cart = {
                 } else {
                     var colorLength = JSON.parse(productFound.variantColor);
                     var discountPrice = JSON.parse(productFound.discountPrice);
-                    var availableStock = JSON.parse(productFound.availableStock);
+                    // var availableStock = JSON.parse(productFound.availableStock);
 
 
                     var actualPrice = JSON.parse(productFound.actualPrice);
-                    for (let index = 0; index < colorLength.length; index++) {
-                        if (colorLength[index] == cartExists.variantColor) {
-                            var position = index;
-                        }
-                    }
+                    // for (let index = 0; index < colorLength.length; index++) {
+                    //     if (colorLength[index] == cartExists.variantColor) {
+                    //         var position = index;
+                    //     }
+                    // }
 
-                    const singleProductPrice = Number(discountPrice[position]);//price
-                    var actualPrice = Number(actualPrice[position]);//price
-                    var availableStock = Number(availableStock[position]);//stock
+                    const singleProductPrice = Number(discountPrice);//price
+                    var actualPrice = Number(actualPrice);//price
+                    var availableStock = Number(productFound.availableStock);//stock
 
                     if (body.units === "add") {
                         var noOfProducts = Number(cartExists.units) + Number(1);//quantity
@@ -188,6 +189,7 @@ cartMiddleware.Cart = {
                     }
 
                     if (availableStock >= noOfProducts) {
+                        // console.log("Available Stock", availableStock);
                         var updated = await userDbController.Cart.putCart(body);
                         if (updated[0] != 0) {
                             return true;
@@ -196,11 +198,11 @@ cartMiddleware.Cart = {
                             throw Error.SomethingWentWrong("Cart Update Failed");
                         }
                     } else {
-                        if (availableStock == 1) {
-                            throw Error.SomethingWentWrong("Only " + availableStock + " Product " + "Available")
-                        } else {
-                            throw Error.SomethingWentWrong("Only " + availableStock + " Products " + "Available")
-                        }
+                        // if (availableStock == 1) {
+                        throw Error.SomethingWentWrong("Only " + Number(availableStock) + " Product " + "Available")
+                        // } else {
+                        //     throw Error.SomethingWentWrong("Only " + availableStock + " Products " + "Available")
+                        // }
                     }
                 }
 

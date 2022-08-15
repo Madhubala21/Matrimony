@@ -1114,7 +1114,7 @@ userDbController.Cart = {
         productId: data.productId,
         productName: data.productName,
         variantId: data.variantId,
-        variantColor: data.variantColor,
+        // variantColor: data.variantColor,
         variantImage: data.variantImage,
         singleProductPrice: data.singleProductPrice,
         actualPrice: data.actualPrice,

@@ -112,13 +112,13 @@ productMiddleware.Product = {
                         fetched[index].discountPrice = 0;
                     } else {
                         fetched[index].productVariants.discountPrice = JSON.parse(fetched[index].productVariants.discountPrice);
-                        fetched[index].discountPrice = Number(fetched[index].productVariants.discountPrice[0]);
+                        fetched[index].discountPrice = Number(fetched[index].productVariants.discountPrice);
                     }
                     if (fetched[index].productVariants.actualPrice == null) {
                         fetched[index].actualPrice = 0;
                     } else {
                         fetched[index].productVariants.actualPrice = JSON.parse(fetched[index].productVariants.actualPrice);
-                        fetched[index].actualPrice = Number(fetched[index].productVariants.actualPrice[0]);
+                        fetched[index].actualPrice = Number(fetched[index].productVariants.actualPrice);
                     }
                     if (fetched[index].ratings == null) {
                         fetched[index].ratings = 0;
@@ -179,7 +179,6 @@ productMiddleware.Product = {
         }
         const fetchProductArray = await userDbController.Shop.fetchProductArray(productIds)
         if (fetchProductArray != null && fetchProductArray != undefined && Object.keys(fetchProductArray).length != 0) {
-            console.log("🔥  |   file: productMiddleware.js  |   line 186  |   fetchRecommended:  |   fetchProductArray", fetchProductArray)
             return fetchProductArray;
         } else {
             throw Error.SomethingWentWrong("No Recommended Products Found");
