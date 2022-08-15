@@ -76,7 +76,6 @@ customerMiddleware.Customer = {
 customerMiddleware.Address = {
 
   getAddress: async ({ body, token }) => {
-    console.log(body, token);
     if (token == false || token == null || token == undefined) {
       throw Error.AuthenticationFailed();
     }
@@ -94,43 +93,57 @@ customerMiddleware.Address = {
       throw Error.AuthenticationFailed();
     }
     body.customerId = token;
-
-    const existingUser = await userDbController.Address.checkAddressExists(body);
-    if (existingUser == null || existingUser == undefined || Object.keys(existingUser).length == 0) {
-      if (body.primary === "yes") {
-        const updateAdress = await userDbController.Address.changeAllPrimary(body);
-        if (updateAdress[0] != 0 || updateAdress == null || updateAdress == undefined) {
-          const created = await userDbController.Address.addAddress(body);
-          if (created != null && created != undefined) {
-            return "Created Successfully";
+    const checkUserAddress = await userDbController.Address.fetchAddress(body);
+    if (checkUserAddress != null && checkUserAddress != undefined && Object.keys(checkUserAddress).length != 0) {
+      //if address available check if it is same address 
+      const existingUser = await userDbController.Address.checkAddressExists(body);
+      if (existingUser == null || existingUser == undefined || Object.keys(existingUser).length == 0) {
+        if (body.primary === "yes") {
+          const updateAdress = await userDbController.Address.changeAllPrimary(body);
+          if (updateAdress[0] != 0 || updateAdress == null || updateAdress == undefined) {
+            const created = await userDbController.Address.addAddress(body);
+            if (created != null && created != undefined) {
+              return "Created Successfully";
+            }
+            else {
+              throw Error.SomethingWentWrong("Failed to add another Address");
+            }
+          } else {
+            const created = await userDbController.Address.addAddress(body);
+            if (created != null && created != undefined) {
+              return "Created Successfully";
+            }
+            else {
+              throw Error.SomethingWentWrong("Failed to add another Address");
+            }
           }
-          else {
-            throw Error.SomethingWentWrong("Failed to add another Address");
-          }
-        } else {
-          const created = await userDbController.Address.addAddress(body);
-          if (created != null && created != undefined) {
-            return "Created Successfully";
-          }
-          else {
-            throw Error.SomethingWentWrong("Failed to add another Address");
+        }
+        else {
+          if (body.primary === "no") {
+            const created = await userDbController.Address.addAddress(body);
+            if (created != null && created != undefined) {
+              return "Created Successfully";
+            }
+            else {
+              throw Error.SomethingWentWrong("Failed to add another Address");
+            }
           }
         }
       }
       else {
-        if (body.primary === "no") {
-          const created = await userDbController.Address.addAddress(body);
-          if (created != null && created != undefined) {
-            return "Created Successfully";
-          }
-          else {
-            throw Error.SomethingWentWrong("Failed to add another Address");
-          }
-        }
+        return "Address Already Exists";
       }
-    }
-    else {
-      return "Address Already Exists";
+
+    } else {
+      //if address not exists add new address
+      const created = await userDbController.Address.addAddress(body);
+      if (created != null && created != undefined) {
+        return "Created Successfully";
+      }
+      else {
+        throw Error.SomethingWentWrong("Failed to add another Address");
+      }
+
     }
   },
 
@@ -146,37 +159,33 @@ customerMiddleware.Address = {
       }
       else {
         body.shippingAddress = body.addressId;
-
         const fetchAddress = await userDbController.Address.fetchAddressbyId(body);
-        if (body.primary === "yes" && fetchAddress.primary == "yes") {
-          const updateAdress = await userDbController.Address.changeAllPrimary(body);
-          const updatePrimary = await userDbController.Address.changePrimary(fetchAddress, body)
-          if (updatePrimary[0] != 0 && updateAdress[0] != 0) {
+        if (body.primary === "yes" && fetchAddress.primary == "yes") { 
+          await userDbController.Address.changeAllPrimary(body);
+          await userDbController.Address.changePrimary(fetchAddress, body)
             //function call
             return UpdateAddress(body, token);
-          }
+          // }
         } else if (body.primary === "no" && fetchAddress.primary == "yes") {
-          const updateAdress = await userDbController.Address.changeAllPrimary(body);
-          const updatePrimary = await userDbController.Address.changePrimary(fetchAddress, body)
-          if (updatePrimary[0] != 0 && updateAdress[0] != 0) {
+
+          await userDbController.Address.changeAllPrimary(body);
+          await userDbController.Address.changePrimary(fetchAddress, body)
             //function call
             return UpdateAddress(body, token);
-          }
+          // }
         } else if (body.primary === "yes" && fetchAddress.primary == "no") {
-          const updatePrimary = await userDbController.Address.changePrimary(fetchAddress, body)
-          if (updatePrimary[0] != 0) {
+          await userDbController.Address.changePrimary(fetchAddress, body)
             //function call
             return UpdateAddress(body, token);
-          }
-        } else if (body.primary === "no" && fetchAddress.primary == "no") {
-          const updatePrimary = await userDbController.Address.changePrimary(fetchAddress, body);
-          if (updatePrimary[0] != 0) {
+          // }
+        } else if (body.primary === "no" && fetchAddress.primary == "no") { 
+          await userDbController.Address.changePrimary(fetchAddress, body);
             //function call
             return UpdateAddress(body, token);
-          }
+          // }
         }
 
-        //fun def
+        //!!TODO: Function Definition
         function UpdateAddress(body, token) {
           const addressUpdated = userDbController.Address.updateAddressbyId(body, token);
           if (addressUpdated[0] != 0) {
@@ -185,7 +194,6 @@ customerMiddleware.Address = {
             return "Failed to Update";
           }
         }
-
       }
     }
     else if (body.action == "delete") {
@@ -206,6 +214,137 @@ customerMiddleware.Address = {
       return "No Action Selected";
     }
   },
+  // getAddress: async ({ body, token }) => {
+  //   console.log(body, token);
+  //   if (token == false || token == null || token == undefined) {
+  //     throw Error.AuthenticationFailed();
+  //   }
+  //   body.customerId = token;
+  //   const fetched = await userDbController.Address.fetchAddress(body);
+  //   if (fetched != null && fetched != undefined && Object.keys(fetched).length != 0) {
+  //     return fetched;
+  //   } else {
+  //     return "No Address Available";
+  //   }
+  // },
+
+  // createAddress: async ({ body, token }) => {
+  //   if (token == false || token == null || token == undefined) {
+  //     throw Error.AuthenticationFailed();
+  //   }
+  //   body.customerId = token;
+
+  //   const existingUser = await userDbController.Address.checkAddressExists(body);
+  //   if (existingUser == null || existingUser == undefined || Object.keys(existingUser).length == 0) {
+  //     if (body.primary === "yes") {
+  //       const updateAdress = await userDbController.Address.changeAllPrimary(body);
+  //       if (updateAdress[0] != 0 || updateAdress == null || updateAdress == undefined) {
+  //         const created = await userDbController.Address.addAddress(body);
+  //         if (created != null && created != undefined) {
+  //           return "Created Successfully";
+  //         }
+  //         else {
+  //           throw Error.SomethingWentWrong("Failed to add another Address");
+  //         }
+  //       } else {
+  //         const created = await userDbController.Address.addAddress(body);
+  //         if (created != null && created != undefined) {
+  //           return "Created Successfully";
+  //         }
+  //         else {
+  //           throw Error.SomethingWentWrong("Failed to add another Address");
+  //         }
+  //       }
+  //     }
+  //     else {
+  //       if (body.primary === "no") {
+  //         const created = await userDbController.Address.addAddress(body);
+  //         if (created != null && created != undefined) {
+  //           return "Created Successfully";
+  //         }
+  //         else {
+  //           throw Error.SomethingWentWrong("Failed to add another Address");
+  //         }
+  //       }
+  //     }
+  //   }
+  //   else {
+  //     return "Address Already Exists";
+  //   }
+  // },
+
+  // putAddress: async ({ body, token }) => {
+  //   if (token == false || token == null || token == undefined) {
+  //     throw Error.AuthenticationFailed();
+  //   }
+  //   body.customerId = token;
+  //   if (body.action == "edit") {
+  //     const existingUser = await userDbController.Address.checkAddressExistsExcept(body);
+  //     if (existingUser != null && existingUser != undefined && Object.keys(existingUser).length != 0) {
+  //       return "Address Already Exists";
+  //     }
+  //     else {
+  //       body.shippingAddress = body.addressId;
+
+  //       const fetchAddress = await userDbController.Address.fetchAddressbyId(body);
+  //       if (body.primary === "yes" && fetchAddress.primary == "yes") {
+  //         const updateAdress = await userDbController.Address.changeAllPrimary(body);
+  //         const updatePrimary = await userDbController.Address.changePrimary(fetchAddress, body)
+  //         if (updatePrimary[0] != 0 && updateAdress[0] != 0) {
+  //           //function call
+  //           return UpdateAddress(body, token);
+  //         }
+  //       } else if (body.primary === "no" && fetchAddress.primary == "yes") {
+  //         const updateAdress = await userDbController.Address.changeAllPrimary(body);
+  //         const updatePrimary = await userDbController.Address.changePrimary(fetchAddress, body)
+  //         if (updatePrimary[0] != 0 && updateAdress[0] != 0) {
+  //           //function call
+  //           return UpdateAddress(body, token);
+  //         }
+  //       } else if (body.primary === "yes" && fetchAddress.primary == "no") {
+  //         const updatePrimary = await userDbController.Address.changePrimary(fetchAddress, body)
+  //         if (updatePrimary[0] != 0) {
+  //           //function call
+  //           return UpdateAddress(body, token);
+  //         }
+  //       } else if (body.primary === "no" && fetchAddress.primary == "no") {
+  //         const updatePrimary = await userDbController.Address.changePrimary(fetchAddress, body);
+  //         if (updatePrimary[0] != 0) {
+  //           //function call
+  //           return UpdateAddress(body, token);
+  //         }
+  //       }
+
+  //       //fun def
+  //       function UpdateAddress(body, token) {
+  //         const addressUpdated = userDbController.Address.updateAddressbyId(body, token);
+  //         if (addressUpdated[0] != 0) {
+  //           return "Update Success";
+  //         } else {
+  //           return "Failed to Update";
+  //         }
+  //       }
+
+  //     }
+  //   }
+  //   else if (body.action == "delete") {
+  //     body.shippingAddress = body.addressId;
+  //     const fetchAddress = await userDbController.Address.fetchAddressbyId(body);
+  //     if (fetchAddress.primary == "no") {
+  //       const userUpdated = await userDbController.Address.updateAddress(body, token);
+  //       if (userUpdated[0] != 0 && userUpdated[0] != undefined) {
+  //         return "Address Deleted";
+  //       } else {
+  //         return "Failed to Update Address";
+  //       }
+  //     }
+  //     if (fetchAddress.primary == "yes") {
+  //       throw Error.SomethingWentWrong("Unable to Delete Primary Address");
+  //     }
+  //   } else {
+  //     return "No Action Selected";
+  //   }
+  // },
 };
 
 //wishlist

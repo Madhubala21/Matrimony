@@ -75,6 +75,7 @@ export const dbSync = async () => {
 
   //Insert Default Db values
   // await devDbController.defaultUsers.configuration(rootuser.configuration);
+  // await devDbController.defaultUsers.admin(rootuser.admin);
 
 
   var msg=chalk.yellow('Tables Created');

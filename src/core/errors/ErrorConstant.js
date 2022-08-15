@@ -56,6 +56,13 @@ export const SomethingWentWrong = (msg="Something Went Wrong",description) => {
     }))
 }
 
+export const InternalError = (msg = "Internal Server Error", description) => {
+    return errorProperties(ApplicationError.prepare('ServerException', {
+        code: 'Internal-Server-Error',
+        message: msg,
+        description
+    }))
+}
 export const CustomError = description => {
     return errorProperties(ApplicationError.prepare('ClientException', {
         code: 'client/custom-error',

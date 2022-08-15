@@ -179,6 +179,7 @@ productMiddleware.Product = {
         }
         const fetchProductArray = await userDbController.Shop.fetchProductArray(productIds)
         if (fetchProductArray != null && fetchProductArray != undefined && Object.keys(fetchProductArray).length != 0) {
+            console.log("🔥  |   file: productMiddleware.js  |   line 186  |   fetchRecommended:  |   fetchProductArray", fetchProductArray)
             return fetchProductArray;
         } else {
             throw Error.SomethingWentWrong("No Recommended Products Found");

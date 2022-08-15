@@ -21,7 +21,7 @@ userDbController.Auth = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   checkUserExists: async (data) => {
@@ -36,7 +36,7 @@ userDbController.Auth = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   createUid: async (data) => {
@@ -57,7 +57,7 @@ userDbController.Auth = {
         return null;
       }
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   verifyOtp: async (data) => {
@@ -66,7 +66,7 @@ userDbController.Auth = {
         where: { email: data.email, code: data.code },
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   verifyUser: async (data) => {
@@ -75,7 +75,7 @@ userDbController.Auth = {
         where: { id: data.id },
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   updatePassword: async (data) => {
@@ -91,7 +91,7 @@ userDbController.Auth = {
         }
       );
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   session: {
@@ -103,7 +103,7 @@ userDbController.Auth = {
           userAgent: device.userAgent,
         });
       } catch (error) {
-        throw Error.SomethingWentWrong();
+        throw Error.InternalError();
       }
     },
     findSession: async (token) => {
@@ -125,7 +125,7 @@ userDbController.Auth = {
           }
         })
       } catch (error) {
-        throw Error.SomethingWentWrong();
+        throw Error.InternalError();
       }
     },
   },
@@ -145,7 +145,7 @@ userDbController.Customer = {
         status: "inactive",
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   //get user by id
@@ -157,7 +157,7 @@ userDbController.Customer = {
         }, raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   fetchCustomer: async (data) => {
@@ -170,7 +170,7 @@ userDbController.Customer = {
         }, raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   fetchCustomerDetails: async (data) => {
@@ -192,7 +192,7 @@ userDbController.Customer = {
         }
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   updateCustomers: async (data, tokenId, image) => {
@@ -210,7 +210,7 @@ userDbController.Customer = {
         },
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   }
 };
@@ -229,7 +229,7 @@ userDbController.Address = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   fetchAddressbyId: async (data) => {
@@ -241,7 +241,7 @@ userDbController.Address = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   checkAddressExists: async (data) => {
@@ -260,7 +260,7 @@ userDbController.Address = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   checkAddressExistsExcept: async (data) => {
@@ -282,7 +282,7 @@ userDbController.Address = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   checkPrimaryAddressExistsExcept: async (data) => {
@@ -297,7 +297,7 @@ userDbController.Address = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   addAddress: async (data) => {
@@ -315,7 +315,7 @@ userDbController.Address = {
         status: "active"
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   updateAddress: async (data) => {
@@ -330,7 +330,7 @@ userDbController.Address = {
       }
       );
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   updateAddressbyId: async (data) => {
@@ -352,7 +352,7 @@ userDbController.Address = {
       }
       );
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   changePrimary: async (data, body) => {
@@ -367,7 +367,7 @@ userDbController.Address = {
       }
       );
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   changeAllPrimary: async (data) => {
@@ -381,7 +381,7 @@ userDbController.Address = {
       }
       );
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
 };
@@ -397,7 +397,7 @@ userDbController.Wishlist = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   checkWishlistExists: async (data, tokenId) => {
@@ -410,7 +410,7 @@ userDbController.Wishlist = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
 
@@ -422,7 +422,7 @@ userDbController.Wishlist = {
         productId: data.productId,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
 
@@ -436,7 +436,7 @@ userDbController.Wishlist = {
         }
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
 
@@ -454,7 +454,7 @@ userDbController.Shop = {
         attributes: ["title", "answer"]
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
 
@@ -477,7 +477,7 @@ userDbController.Shop = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   fetchForyouProducts: async (token) => {
@@ -504,7 +504,7 @@ userDbController.Shop = {
         limit: 4,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   getHotDeals: async (token) => {
@@ -531,7 +531,7 @@ userDbController.Shop = {
         limit: 6,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   getWishlistId: async (token) => {
@@ -542,7 +542,7 @@ userDbController.Shop = {
         }, raw: true,
       })
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   getWishlists: async (productIds) => {
@@ -567,7 +567,7 @@ userDbController.Shop = {
       },
       );
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
 
@@ -600,7 +600,7 @@ userDbController.Shop = {
         limit: 16,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   getFilters: async (data) => {
@@ -635,7 +635,7 @@ userDbController.Shop = {
         }
       );
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   fetchProductSpecs: async (data) => {
@@ -649,7 +649,7 @@ userDbController.Shop = {
           raw: true,
         });
       } catch (error) {
-        throw Error.SomethingWentWrong();
+        throw Error.InternalError();
       }
     } else if (data.productId != null && data.productId != undefined) {
       try {
@@ -659,7 +659,7 @@ userDbController.Shop = {
           }, attributes: { exclude: ["createdAt", "updatedAt"], }, raw: true
         });
       } catch (error) {
-        throw Error.SomethingWentWrong();
+        throw Error.InternalError();
       }
     }
   },
@@ -672,7 +672,7 @@ userDbController.Shop = {
           }, attributes: ["moreInfo", "productDescription"], raw: true
         });
       } catch (error) {
-        throw Error.SomethingWentWrong();
+        throw Error.InternalError();
       }
     }
   },
@@ -690,7 +690,7 @@ userDbController.Shop = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
 
@@ -705,7 +705,7 @@ userDbController.Shop = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
 
     }
   },
@@ -733,7 +733,7 @@ userDbController.Shop = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   checkProductAvailability: async (data) => {
@@ -746,7 +746,7 @@ userDbController.Shop = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   fetchVariants: async (data, token) => {
@@ -776,7 +776,7 @@ userDbController.Shop = {
         ],
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   getCartStock: async (data) => {
@@ -792,7 +792,7 @@ userDbController.Shop = {
         attributes: ["availableStock"]
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   getCategoryProduct: async (data) => {
@@ -832,7 +832,7 @@ userDbController.Shop = {
       );
     } catch (error) {
       console.log("🚀 ~ file: userDbController.js ~ line 834 ~ getCategoryProduct: ~ error", error)
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   getAllRecommended: async (data) => {
@@ -875,7 +875,7 @@ userDbController.Review = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   fetchMyReviews: async (token) => {
@@ -893,7 +893,7 @@ userDbController.Review = {
         nest: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   getProductRatings: async (data) => {
@@ -915,7 +915,7 @@ userDbController.Review = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   addProductReview: async (data) => {
@@ -932,7 +932,7 @@ userDbController.Review = {
         status: "active"
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   putProductReview: async (data, tokenId) => {
@@ -947,7 +947,7 @@ userDbController.Review = {
         },
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   updateOrderReview: async (data) => {
@@ -961,7 +961,7 @@ userDbController.Review = {
       });
     } catch (error) {
       console.log(error);
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   destroyReview: async (data, tokenId) => {
@@ -973,7 +973,7 @@ userDbController.Review = {
         },
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
 };
@@ -1005,7 +1005,7 @@ userDbController.Cart = {
         nest: true
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   getCartforCheckout: async (data) => {
@@ -1020,7 +1020,7 @@ userDbController.Cart = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   getCount: async (tokenId) => {
@@ -1032,7 +1032,7 @@ userDbController.Cart = {
         }, raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   getSum: async (tokenId) => {
@@ -1044,23 +1044,22 @@ userDbController.Cart = {
         }, raw: true, attributes: [[Sequelize.fn('sum', Sequelize.col('totalPrice')), 'totalPrice'], [Sequelize.fn('sum', Sequelize.col('actualPrice')), 'actualPrice']],
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   checkCartExists: async (data) => {
-    console.log(data);
     try {
       return await userDbController.Models.cart.findOne({
         where: {
           customerId: data.customerId,
           variantId: data.variantId,
-          variantColor: data.variantColor,
+          // variantColor: data.variantColor,
           status: "active"
         }, raw: true,
       });
     } catch (error) {
       console.log(error);
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   checkCartIdExists: async (data) => {
@@ -1072,7 +1071,7 @@ userDbController.Cart = {
         }, raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   fetchCartArray: async (cartIds) => {
@@ -1088,7 +1087,7 @@ userDbController.Cart = {
         }
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   fetchUserCartArray: async (cartIds, token) => {
@@ -1105,7 +1104,7 @@ userDbController.Cart = {
         attributes: ["variantImage", "units"]
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   createCart: async (data) => {
@@ -1127,7 +1126,7 @@ userDbController.Cart = {
         status: data.status,
       }, { raw: true });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   putCart: async (data) => {
@@ -1143,7 +1142,7 @@ userDbController.Cart = {
         }
       }, { raw: true });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   archiveCart: async (data) => {
@@ -1158,7 +1157,7 @@ userDbController.Cart = {
         }
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   destroyCart: async (data) => {
@@ -1170,7 +1169,7 @@ userDbController.Cart = {
         }, raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
 };
@@ -1188,7 +1187,7 @@ userDbController.Order = {
         order: [["id", "DESC"]]
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   fetchOrderbyId: async (data) => {
@@ -1201,7 +1200,7 @@ userDbController.Order = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   fetchbyOrderId: async (data) => {
@@ -1213,7 +1212,7 @@ userDbController.Order = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   fetchOrderbyIntent: async (data) => {
@@ -1226,7 +1225,7 @@ userDbController.Order = {
         raw: true,
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   getOrderDetails: async (data) => {
@@ -1242,7 +1241,7 @@ userDbController.Order = {
         raw: true, attributes: ["cartId", "isReviewed", "deliveryType", "orderStatus", "createdAt", "orderId"]
       });
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   createOrder: async (data) => {
@@ -1257,7 +1256,7 @@ userDbController.Order = {
       });
     } catch (error) {
       console.log(error);
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   updatePaynowOrder: async (data) => {
@@ -1282,7 +1281,7 @@ userDbController.Order = {
       }
       );
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
   updateCODOrder: async (data) => {
@@ -1301,7 +1300,7 @@ userDbController.Order = {
       }
       );
     } catch (error) {
-      throw Error.SomethingWentWrong();
+      throw Error.InternalError();
     }
   },
 };

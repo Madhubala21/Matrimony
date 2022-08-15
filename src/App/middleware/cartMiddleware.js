@@ -74,14 +74,14 @@ cartMiddleware.Cart = {
                 if (productFound.availableStock == 0 || productFound.availableStock == null || productFound.availableStock == undefined) {
                     throw Error.SomethingWentWrong("Out of Stock");
                 } else {
-                    productFound.variantColor = JSON.parse(productFound.variantColor);
+                    // productFound.variantColor = JSON.parse(productFound.variantColor);
                     productFound.availableStock = JSON.parse(productFound.availableStock);
-                    var colorLength = productFound.variantColor.length;
-                    for (let index = 0; index < colorLength; index++) {
-                        if (productFound.variantColor[index] === body.variantColor) {
-                            var pricePosition = index;
-                        }
-                    }
+                    // var colorLength = productFound.variantColor.length;
+                    // for (let index = 0; index < colorLength; index++) {
+                    // if (productFound.variantColor[index] === body.variantColor) {
+                    var pricePosition = 0;
+                        // }
+                    // }
 
                     //Message for Limited stocks
                     if (productFound.availableStock[pricePosition] < body.units) {
