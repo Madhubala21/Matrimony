@@ -457,6 +457,21 @@ userDbController.Shop = {
       throw Error.InternalError();
     }
   },
+  getAllCategories: async () => {
+
+    try {
+      return await userDbController.Models.category.findAll({
+        order: [["id", "ASC"]],
+        attributes: {
+          exclude: ["status", "createdAt", "updatedAt", "taxId", "taxPercentage"]
+        },
+        raw: true,
+      });
+    } catch (error) {
+      throw Error.InternalError();
+
+    }
+  },
 
   getWishlistedProducts: async (data) => {
     try {
