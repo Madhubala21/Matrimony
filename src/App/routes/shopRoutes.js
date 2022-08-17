@@ -27,4 +27,7 @@ shopRouter.get("/hotDeals", UserAuthenticate,ShopController.shop.hotDeals);
 //faq
 shopRouter.get("/faq", ShopController.shop.listFaq);
 
+//shop navbrand
+shopRouter.post("/navbar", ShopController.shop.getNavbarList);
+
 export { shopRouter };

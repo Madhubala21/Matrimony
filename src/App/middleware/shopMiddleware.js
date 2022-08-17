@@ -32,6 +32,27 @@ shopMiddleware.shop = {
       return "No Categories Found";
     }
   },
+  getNavbarList: async ({ body }) => {
+
+    if (body.query == "capsules") {
+
+    }
+    if (body.query == "tea") {
+
+    }
+
+    const fetched = await userDbController.Shop.fetchNavList(body, token);
+    if (fetched != null && fetched != undefined && Object.keys(fetched).length != 0) {
+      for (let index = 0; index < fetched.length; index++) {
+        if (fetched[index].favourites == null) {
+          fetched[index].favourites = 0
+        }
+      }
+      return fetched;
+    } else {
+      return "No Variants Found"
+    }
+  },
 
 
   fetchForyou: async ({ token }) => {

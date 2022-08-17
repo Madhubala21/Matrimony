@@ -779,6 +779,36 @@ userDbController.Shop = {
       throw Error.InternalError();
     }
   },
+  fetchNavList: async (data, token) => {
+    try {
+      return await userDbController.Models.productVariants.findAll({
+        where: {
+          productId: data.productId,
+          status: "active"
+        },
+        order: [["actualPrice", "ASC"]],
+        raw: true,
+        attributes: ["id",
+          "productId",
+          "productName",
+          "variantName",
+          "variantImage",
+          "variantColor",
+          "isColor",
+          "actualPrice",
+          "discountPrice",
+          [
+            Sequelize.literal(
+              "(SELECT IF(wishlist.productId IS NULL,FALSE,TRUE) FROM wishlist as wishlist WHERE wishlist.productId=productVariants.productId AND wishlist.customerId= " + token + "  LIMIT 1)"
+            ),
+            "favourites",
+          ],
+        ],
+      });
+    } catch (error) {
+      throw Error.InternalError();
+    }
+  },
   getCartStock: async (data) => {
     try {
       return await userDbController.Models.productVariants.findAll({
