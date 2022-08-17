@@ -50,13 +50,13 @@ shopMiddleware.shop = {
           fetched[index].discountPrice = 0;
         } else {
           fetched[index].discountPrice = JSON.parse(fetched[index].discountPrice);
-          fetched[index].discountPrice = Number(fetched[index].discountPrice[0]);
+          fetched[index].discountPrice = Number(fetched[index].discountPrice);
         }
         if (fetched[index].actualPrice == null) {
           fetched[index].actualPrice = 0;
         } else {
           fetched[index].actualPrice = JSON.parse(fetched[index].actualPrice);
-          fetched[index].actualPrice = Number(fetched[index].actualPrice[0]);
+          fetched[index].actualPrice = Number(fetched[index].actualPrice);
         }
         if (fetched[index].ratings == null) {
           fetched[index].ratings = 0;
@@ -88,12 +88,12 @@ shopMiddleware.shop = {
         if (fetched[index].discountPrice == null) {
           fetched[index].discountPrice = 0;
         } else {
-          fetched[index].discountPrice = Number(fetched[index].discountPrice[0]);
+          fetched[index].discountPrice = Number(fetched[index].discountPrice);
         }
         if (fetched[index].actualPrice == null) {
           fetched[index].actualPrice = 0;
         } else {
-          fetched[index].actualPrice = Number(fetched[index].actualPrice[0]);
+          fetched[index].actualPrice = Number(fetched[index].actualPrice);
         }
         if (fetched[index].ratings == null) {
           fetched[index].ratings = 0;
@@ -127,13 +127,13 @@ shopMiddleware.shop = {
           fetched[index].discountPrice = 0
         } else {
           fetched[index].discountPrice = JSON.parse(fetched[index].productVariants.discountPrice);
-          fetched[index].discountPrice = Number(fetched[index].discountPrice[0]);
+          fetched[index].discountPrice = Number(fetched[index].discountPrice);
         }
         if (fetched[index].productVariants.actualPrice == null) {
           fetched[index].actualPrice = 0
         } else {
           fetched[index].actualPrice = JSON.parse(fetched[index].productVariants.actualPrice);
-          fetched[index].actualPrice = Number(fetched[index].actualPrice[0]);
+          fetched[index].actualPrice = Number(fetched[index].actualPrice);
         }
         if (fetched[index].productVariants.reviews.rating == null || fetched[index].productVariants.reviews.rating == undefined) {
           fetched[index].productVariants.reviews.rating = 0;

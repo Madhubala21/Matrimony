@@ -56,7 +56,7 @@ productMiddleware.Product = {
                         //Rewrite objects
                         myArray[i].variantName = myArray[i].productVariants.variantName;
                         myArray[i].productVariants.discountPrice = myArray[i].productVariants.discountPrice.sort((a, b) => (a > b) ? 1 : -1);
-                        myArray[i].discountPrice = myArray[i].productVariants.discountPrice[0];
+                        myArray[i].discountPrice = myArray[i].productVariants.discountPrice;
                         delete myArray[i].productVariants.variantName;
                         delete myArray[i].productVariants.variantImage;
                         delete myArray[i].productVariants;
@@ -179,6 +179,11 @@ productMiddleware.Product = {
         }
         const fetchProductArray = await userDbController.Shop.fetchProductArray(productIds)
         if (fetchProductArray != null && fetchProductArray != undefined && Object.keys(fetchProductArray).length != 0) {
+            for (let index = 0; index < fetchProductArray.length; index++) {
+                fetchProductArray[index].variantImage = JSON.parse(fetchProductArray[index].variantImage);
+                // fetchProductArray[index].id = fetchProductArray[index].productId;
+                fetchProductArray[index].variantImage = fetchProductArray[index].variantImage[0];
+            }
             return fetchProductArray;
         } else {
             throw Error.SomethingWentWrong("No Recommended Products Found");

@@ -844,16 +844,16 @@ userDbController.Shop = {
   },
   fetchProductArray: async (productIds) => {
     try {
-      return await userDbController.Models.product.findAll({
+      return await userDbController.Models.productVariants.findAll({
         where: {
-          id: {
+          productId: {
             [Op.in]: productIds,
           },
 
           status: "active"
         },
         raw: true,
-        attributes: ["id", "productName", "productImage", "categoryName"],
+        attributes: ["productId", "productName", "variantImage", "discountPrice"],
       })
     } catch (error) {
       console.log(error);
