@@ -711,7 +711,7 @@ userDbController.Shop = {
 
   getNavCategory: async (data) => {
     try {
-      return await userDbController.Models.product.findOne({
+      return await userDbController.Models.product.findAll({
         where: {
           categoryName: data.query,
         },
@@ -793,11 +793,13 @@ userDbController.Shop = {
       throw Error.InternalError();
     }
   },
-  fetchNavList: async (data) => {
+  fetchNavList: async (productIds) => {
     try {
       return await userDbController.Models.productVariants.findAll({
         where: {
-          productId: data.id,
+          productId: {
+            [Op.in]: productIds,
+          },
           status: "active"
         },
         raw: true,

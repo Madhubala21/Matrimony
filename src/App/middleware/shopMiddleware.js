@@ -35,8 +35,12 @@ shopMiddleware.shop = {
   getNavbarList: async ({ body }) => {
     if (body.query == "capsules" || body.query == "tea") {
       const fetchCategory = await userDbController.Shop.getNavCategory(body);
+      var productArray = [];
+      for (let index = 0; index < fetchCategory.length; index++) {
+        productArray.push(fetchCategory[index].id);
+      }
       if (fetchCategory != null && fetchCategory != undefined && Object.keys(fetchCategory).length != 0) {
-        const fetched = await userDbController.Shop.fetchNavList(fetchCategory);
+        const fetched = await userDbController.Shop.fetchNavList(productArray);
         var categoryId = fetchCategory.categoryId;
         fetched.categoryId = categoryId;
         var data = {
