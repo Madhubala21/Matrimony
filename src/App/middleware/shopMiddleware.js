@@ -41,7 +41,7 @@ shopMiddleware.shop = {
       }
       if (fetchCategory != null && fetchCategory != undefined && Object.keys(fetchCategory).length != 0) {
         const fetched = await userDbController.Shop.fetchNavList(productArray);
-        var categoryId = fetchCategory.categoryId;
+        var categoryId = fetchCategory[0].categoryId;
         fetched.categoryId = categoryId;
         var data = {
           categoryId: categoryId,
