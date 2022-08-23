@@ -172,7 +172,7 @@ productMiddleware.Product = {
         }
     },
     fetchRecommended: async ({ body }) => {
-        const getRecommended = await userDbController.Shop.getAllRecommended()
+        const getRecommended = await userDbController.Shop.getAllRecommended(body)
         var productIds = [];
         for (let index = 0; index < getRecommended.length; index++) {
             productIds.push(getRecommended[index].productId);

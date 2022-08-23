@@ -869,7 +869,11 @@ userDbController.Shop = {
   },
   getAllRecommended: async (data) => {
     try {
-      return await userDbController.Models.recommendedProducts.findAll()
+      return await userDbController.Models.recommendedProducts.findAll({
+        where: {
+          productType: data.productType,
+        }
+      })
     } catch (error) {
       throw Error.InternalError();
     }
