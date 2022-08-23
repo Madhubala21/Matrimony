@@ -139,6 +139,11 @@ recommendedProducts.init(
       type: DataTypes.BIGINT.UNSIGNED,
       allowNull: false,
     },
+    productType: {
+      type: DataTypes.ENUM("recommended", "hotdeals"),
+      allowNull: false,
+      defaultValue: "active",
+    },
   },
   { sequelize: connection, freezeTableName: true }
 );

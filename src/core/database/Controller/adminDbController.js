@@ -690,7 +690,8 @@ adminDbController.Product = {
   addRecommended: async (data) => {
     try {
       return await adminDbController.Models.recommendedProducts.create({
-        productId: data.productId
+        productId: data.productId,
+        productType: data.productType
       })
     } catch (error) {
       throw Error.InternalError();
