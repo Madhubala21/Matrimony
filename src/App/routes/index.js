@@ -1,38 +1,17 @@
-import { Router } from 'express'
-import { customerRouter } from './customerRoutes.js'
-import { authRouter } from './authRoutes.js'
-import { shopRouter } from './shopRoutes.js';
-import { searchRouter } from './searchRotes.js';
-import { productRouter } from './productRoutes.js';
-import { reviewRouter } from './reviewRoutes.js';
-import { cartRouter } from './cartRoutes.js';
-import { orderRouter } from './orderRoutes.js';
-const userRouter = Router()
+import { Router } from "express";
+import { authRouter } from "./authRoutes.js";
+import { profileRouter } from "./profileRoutes.js";
+import { reviewRouter } from "./reviewRoutes.js";
 
-//layout
-userRouter.use('/shop', shopRouter);
+const userRouter = Router();
 
 //authentication
-userRouter.use('/auth', authRouter);
+userRouter.use("/auth", authRouter);
 
-//customer
-userRouter.use('/customer', customerRouter);
+//manageProfile
+userRouter.use("/profile", profileRouter);
 
-//product
-userRouter.use('/product', productRouter);
+//manageReview
+userRouter.use("/review", reviewRouter);
 
-//search
-userRouter.use('/search', searchRouter);
-
-//review
-userRouter.use('/review', reviewRouter);
-
-//cart
-userRouter.use('/cart', cartRouter);
-
-//orders
-userRouter.use('/orders', orderRouter);
-
-
-
-export { userRouter }
+export { userRouter };

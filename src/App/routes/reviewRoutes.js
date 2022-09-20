@@ -2,22 +2,25 @@ import { Router } from "express";
 import { UserAuthenticate } from "../controller/authController.js";
 import { ReviewController } from "../controller/reviewController.js";
 
-
-
-
-
 const reviewRouter = Router();
 
+//check if order 0
+reviewRouter.get(
+  "/MyReview",
+  UserAuthenticate,
+  ReviewController.Review.fetchMyReviews
+);
 
-//product review
-reviewRouter.post("/", UserAuthenticate, ReviewController.Review.getProductReview);
+reviewRouter.post(
+  "/addReview",
+  UserAuthenticate,
+  ReviewController.Review.addReview
+);
 
-//check if order delivered
-reviewRouter.get("/MyReview", UserAuthenticate, ReviewController.Review.fetchMyReviews);
-reviewRouter.post("/addReview", UserAuthenticate, ReviewController.Review.addProductReview);
-reviewRouter.post("/removeReview", UserAuthenticate, ReviewController.Review.removeProductReview);
-
-
-
+reviewRouter.post(
+  "/removeReview",
+  UserAuthenticate,
+  ReviewController.Review.removeReview
+);
 
 export { reviewRouter };

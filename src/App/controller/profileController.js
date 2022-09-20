@@ -1,17 +1,13 @@
-import { ApplicationResponse } from "../../core/inc/response/ApplicationResponse.js";
 import { ApplicationResult } from "../../core/result.js";
-import { reviewMiddleware } from "../middleware/reviewMiddleware.js";
+import { ApplicationResponse } from "../../core/inc/response/ApplicationResponse.js";
+import { profileMiddleware } from "../middleware/profileMiddleware.js";
 
-export class ReviewController {}
+export class ProfileController {}
 
-ReviewController.Review = {
-  fetchMyReviews: async (req, res) => {
-    /**
-     * @name get my Reviews
-     * @param {*} token
-     */
-
-    reviewMiddleware.Review.fetchReviews(req)
+ProfileController.profile = {
+  viewProfile: async (req, res) => {
+    profileMiddleware.profile
+      .fetchProfile(req)
       .then((data) => {
         const response = ApplicationResult.forCreated();
         var statuscode = 0;
@@ -29,13 +25,9 @@ ReviewController.Review = {
       });
   },
 
-  /**
-   * @name add a review
-   * @param {*} body
-   */
-
-  addReview: async (req, res) => {
-    reviewMiddleware.Review.createReview(req)
+  addProfile: async (req, res) => {
+    profileMiddleware.profile
+      .createProfile(req)
       .then((data) => {
         const response = ApplicationResult.forCreated();
         var statuscode = 0;
@@ -53,13 +45,9 @@ ReviewController.Review = {
       });
   },
 
-  /**
-   * @name update a review
-   * @param {*} body
-   */
-
-  removeReview: async (req, res) => {
-    reviewMiddleware.Review.updateReview(req)
+  updateProfile: async (req, res) => {
+    profileMiddleware.profile
+      .updateProfile(req)
       .then((data) => {
         const response = ApplicationResult.forCreated();
         var statuscode = 0;
