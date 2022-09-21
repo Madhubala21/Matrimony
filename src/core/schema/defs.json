@@ -237,7 +237,7 @@
         }
     },
 
-    "referencedetails":{
+    "referenceDetails":{
       "referenceId":{
         "type": "string",
         "title": "Id"
@@ -281,7 +281,7 @@
     },
 
     "myfamily":{
-      "id":{
+      "familyId":{
         "type":"integer",
         "title":"id"
       },
@@ -331,7 +331,7 @@
     },
 
     "horoscope":{
-        "id":{
+        "horoscopeId":{
           "type":"integer",
           "title":"Id"
         },
@@ -365,8 +365,8 @@
         }
     },
    
-    "photoupload":{
-        "id":{
+    "photoUpload":{
+        "photoId":{
           "type":"string",
           "title":"id"
         },
@@ -382,7 +382,7 @@
           "type":"string",
           "title":"photo3"
         },
-        "idproof":{
+        "idProof":{
           "type":"string",
           "title":"idproof"
         },
@@ -392,8 +392,8 @@
         }
     },
 
-    "educationandProfession":{
-      "id":{
+    "educationAndProfession":{
+      "educationId":{
         "type":"integer",
         "title":"id"
       },
@@ -418,12 +418,12 @@
         "type":"string",
         "title":"profession"
       },
-      "grossannualIncome":{
+      "grossAnnualIncome":{
         "type":"string",
         "title":"annualincome",
         "enum":[ "$","£","€","₹"]
       },
-      "annualIncomeinINR":{
+      "annualIncomeInINR":{
         "type":"integer",
         "title":"income"
       },
