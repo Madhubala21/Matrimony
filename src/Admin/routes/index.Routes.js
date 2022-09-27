@@ -1,24 +1,39 @@
-import { Router } from 'express'
-import { shopRouter } from './shop.Routes.js'
-import { authRouter } from './auth.Routes.js'
-import { productRouter } from './product.Routes.js'
-import { orderRouter } from './orderRoutes.js'
+import { Router } from "express";
+import { authRouter } from "./auth.Routes.js";
+import { documentRouter } from "./document.js";
+import { manageProfileRouter } from "./manageProfile.js";
+import { partnerDetailsRouter } from "./partner.js";
+import { storiesRouter } from "./success.js";
+import { activationRouter } from "./userAccount.js";
+import { userMembershipRouter } from "./userMembership.js";
+import { userPhotographRouter } from "./userPhotograph.js";
+import { userValidityRouter } from "./userValidity.js";
+import { profileRouter } from "./viewProfile.js";
+import { reviewsRouter } from "./viewReviews.js";
 
-
-const adminRouter = Router()
+const adminRouter = Router();
 
 //admin auth
-adminRouter.use('/auth', authRouter)
+adminRouter.use("/auth", authRouter);
 
-//shop
-adminRouter.use('/shop', shopRouter)
+adminRouter.use("/viewUserProfile", profileRouter);
 
-//product
-adminRouter.use('/product', productRouter)
+adminRouter.use("/userActivation", activationRouter);
 
-//orders
-adminRouter.use('/orders', orderRouter)
+adminRouter.use("/manageProfile", manageProfileRouter);
 
+adminRouter.use("/userPhotographManage", userPhotographRouter);
 
+adminRouter.use("/documentManagement", documentRouter);
 
-export { adminRouter }
+adminRouter.use("/userMembershipManagement", userMembershipRouter);
+
+adminRouter.use("/userValidityRenewal", userValidityRouter);
+
+adminRouter.use("/viewReviews", reviewsRouter);
+
+adminRouter.use("/addSuccessStories", storiesRouter);
+
+adminRouter.use("/searchPartnerDetails", partnerDetailsRouter);
+
+export { adminRouter };

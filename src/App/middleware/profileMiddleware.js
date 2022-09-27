@@ -7,7 +7,7 @@ export class profileMiddleware {}
 //profile
 profileMiddleware.profile = {
   fetchProfile: async () => {
-    const fetched = await userDbController.Shop.getFaq();
+    const fetched = await userDbController.Profile.fetchProfile();
     if (
       fetched != null &&
       fetched != undefined &&
@@ -20,7 +20,7 @@ profileMiddleware.profile = {
   },
 
   createProfile: async () => {
-    const fetched = await userDbController.Shop.getAllBanners();
+    const fetched = await userDbController.Profile.addProfile();
     if (
       fetched != null &&
       fetched != undefined &&
@@ -33,7 +33,7 @@ profileMiddleware.profile = {
   },
 
   updateProfile: async () => {
-    const fetched = await userDbController.Shop.getAllCategories();
+    const fetched = await userDbController.Profile.updateProfile();
     if (
       fetched != null &&
       fetched != undefined &&
