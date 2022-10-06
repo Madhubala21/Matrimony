@@ -13,7 +13,6 @@ import { reviewsRouter } from "./viewReviews.js";
 
 const adminRouter = Router();
 
-//admin auth
 adminRouter.use("/auth", authRouter);
 
 adminRouter.use("/viewUserProfile", profileRouter);
