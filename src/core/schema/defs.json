@@ -218,7 +218,7 @@
         "type":"string",
         "title":"maritalstatus",
         "enum":["never married","married","divorced","separated","widow/widower"]    
-        },
+      },
         "whatsapp":{
           "type":"number",
           "title":"whatsapp"
@@ -522,9 +522,11 @@
         "title":"hobby"
       }
     }
-
-   
-
-   
+ 
   }
+
+
+
+
+
 }
