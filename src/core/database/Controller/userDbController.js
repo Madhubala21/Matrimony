@@ -3,6 +3,7 @@ import { connection } from "../connection.js";
 import * as Models from "../models/index.js";
 import require from "requirejs";
 import * as Error from "../../errors/ErrorConstant.js";
+import { defaultAppStore } from "firebase-admin/lib/app/lifecycle.js";
 const { Op, Sequelize } = require("sequelize");
 export class userDbController {}
 userDbController.scope = "defaultScope";
@@ -360,7 +361,7 @@ userDbController.Address = {
   },
   updateAddressbyId: async (data) => {
     try {
-      return await userDbController.Models.shippingAddress.update(
+      return await userDbController.Models.member.update(
         {
           state: data.state,
           district: data.district,
@@ -487,18 +488,27 @@ userDbController.Profile = {
 
   addProfile: async () => {
     try {
-      return await userDbController.Models.category.findAll({
-        order: [["id", "ASC"]],
-        attributes: {
-          exclude: [
-            "status",
-            "createdAt",
-            "updatedAt",
-            "taxId",
-            "taxPercentage",
-          ],
-        },
-        raw: true,
+      return await userDbController.Models.member.create({
+        companyName: data.companyName,
+        gender: data.gender,
+        placeOfBirth: data.placeOfBirth,
+        profileCreatedBy: data.profileCreatedBy,
+        mobile: data.mobile,
+        mobile2: data.mobile2,
+        address: data.address,
+        country: data.country,
+        state: data.state,
+        pincode: data.pincode,
+        password: data.password,
+        dob: data.dob,
+        timeOfBirth: data.timeOfBirth,
+        religion: data.religion,
+        motherTongue: data.motherTongue,
+        maritalStatus: data.maritalStatus,
+        whatsapp: data.whatsapp,
+        email: data.email,
+        city: data.city,
+        referedBy: data.referedBy,
       });
     } catch (error) {
       throw Error.InternalError();

@@ -18,7 +18,8 @@
       },
       "phone": {
         "type": "string",
-        "title": "Contact"
+        "title": "Contact",
+        "format":" phoneNumber"
       },
       "password": {
         "type": "string",
@@ -172,11 +173,13 @@
       },
       "mobile":{
         "type":"number",
-        "title":"mobile"
+        "title":"mobile",
+        "format":" phoneNumber"
       },
       "mobile2":{
         "type":"number",
-        "title":"mobile2"
+        "title":"mobile2",
+        "format":" phoneNumber"
       },
       "address":{
         "type":"string",
@@ -252,7 +255,8 @@
       },
     "mobile":{
       "type":"number",
-      "title":"mobile"
+      "title":"mobile",
+        "format":" phoneNumber"
     }
     },
 

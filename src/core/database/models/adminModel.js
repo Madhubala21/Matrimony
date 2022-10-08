@@ -206,30 +206,4 @@ config.init(
   { sequelize: connection, freezeTableName: true }
 );
 
-class homeLayout extends Model {}
-
-// homeLayout.init(
-//   {
-//     id: {
-//       type: DataTypes.BIGINT.UNSIGNED,
-//       primaryKey: true,
-//       autoIncrement: true,
-//       allowNull: false,
-//     },
-//     layout: {
-//       type: DataTypes.STRING(255),
-//       allowNull: false,
-//     },
-//     value: {
-//       type: DataTypes.STRING(255),
-//       allowNull: false,
-//     },
-//     icons: {
-//       type: DataTypes.STRING(255),
-//       allowNull: false,
-//     },
-//   },
-//   { sequelize: connection, freezeTableName: true, timestamps: false }
-// );
-
-export { admin, banner, config, adminAuthentication, homeLayout };
+export { admin, banner, config, adminAuthentication };
