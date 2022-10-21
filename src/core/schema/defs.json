@@ -38,17 +38,13 @@
     },
 
     "adminAuth": {
-      "authId": {
-        "type": "string",
+      "Id": {
+        "type": "integer",
         "title": "Id"
       },
-      "uid": {
-        "type": "string",
-        "title": "Id"
-      },
-      "token": {
-        "type": "string",
-        "title": "Admin Token"
+      "adminId": {
+        "type": "integer",
+        "title": "adminId"
       },
       "ipv4": {
         "type": "string",
@@ -58,10 +54,6 @@
         "type": "string",
         "title": "userAgent"
       },
-      "latLong": {
-        "type": "string",
-        "title": "Location"
-      },
       "status": {
         "type": "string",
         "title": "Account Status",
@@ -69,28 +61,24 @@
       }
     },
 
-    "userAuth": {
-      "authId": {
-        "type": "string",
+     "successStories": {
+      "Id": {
+        "type": "integer",
         "title": "Id"
       },
-      "token": {
+      "title": {
         "type": "string",
-        "title": "Token"
+        "title": "title"
       },
-      "ipv4": {
+      "image": {
         "type": "string",
-        "title": "IP"
-      },
-      "userAgent": {
-        "type": "string",
-        "title": "UserAgent"
+        "title": "image"
       }
     },
 
     "appConfig": {
       "configId": {
-        "type": "string",
+        "type": "integer",
         "title": "Id"
       },
       "baseUrl": {
@@ -104,10 +92,6 @@
       "placeholder": {
         "type": "string",
         "title": "Placeholder Image"
-      },
-      "shippingFee": {
-        "type": "string",
-        "title": "Messaging Key"
       },
       "messagingKey": {
         "type": "string",
@@ -147,99 +131,226 @@
         "enum": ["active", "inactive", "terminated"]
       }
     },
- 
-    "member":{
-        "memberId": {
-        "type": "string",
+
+    "user":{
+        "Id": {
+        "type": "integer",
         "title": "Id"
       },
-       "companyName": {
+       "userName": {
         "type": "string",
         "title": "companyname"
+      },
+       "email":{
+          "type":"string",
+          "title":"email"
+      },
+        "password":{
+        "type":"string",
+        "title":"password"
+      },
+       "phone":{
+        "type":"number",
+        "title":"mobile",
+        "format":" phoneNumber"
+      },
+      "dob":{
+        "type":"string",
+        "title":"dob"
       },
       "gender":{
         "type":"string",
         "title":"gender",
          "enum": ["MALE", "FEMALE"]
       },
-      "placeOfBirth":{
+       "images":{
         "type":"string",
-        "title":"place"
+        "title":"image"
       },
-      "profileCreatedBy":{
+      "profileType":{
         "type":"string",
-        "title":"profilecreated",
-        "enum":["friend","self","parent","guardian","sibling"]
+        "title":"gender",
+         "enum": ["PUBLIC", "PRIVATE"]
       },
-      "mobile":{
-        "type":"number",
-        "title":"mobile",
-        "format":" phoneNumber"
-      },
-      "mobile2":{
-        "type":"number",
-        "title":"mobile2",
-        "format":" phoneNumber"
-      },
-      "address":{
+      "membershipType":{
         "type":"string",
-        "title":"address"
-      },
-      "country":{
-        "type":"string",
-        "title":"country"
-      },
-      "state":{
-        "type":"string",
-        "title":"state"
-      },
-      "pincode":{
-        "type":"number",
-        "title":"pincode"
-      },
-      "password":{
-        "type":"string",
-        "title":"password"
-      },
-      "dob":{
-        "type":"string",
-        "title":"dob"
-      },
-      "timeOfBirth":{
-        "type":"string",
-        "title":"birth"
-      },
-      "religion":{
-        "type":"string",
-        "title":"religion"
-      },
-      "motherTongue":{
-        "type":"string",
-        "title":"mothertongue"
-      },
-      "maritalStatus":{
-        "type":"string",
-        "title":"maritalstatus",
-        "enum":["never married","married","divorced","separated","widow/widower"]    
-      },
-        "whatsapp":{
-          "type":"number",
-          "title":"whatsapp"
-        },
-        "email":{
-          "type":"string",
-          "title":"email"
-        },
-        "city":{
-          "type":"string",
-          "title":"city"
-        },
-        "referedBy":{
-          "type":"string",
-          "title":"refered"
-        }
+        "title":"gender",
+         "enum": ["PREMIUM", "NORMAL"]
+      }
     },
 
+    "userAuth": {
+      "authId": {
+        "type": "integer",
+        "title": "Id"
+      },
+      "token": {
+        "type": "string",
+        "title": "Token"
+      },
+      "ipv4": {
+        "type": "string",
+        "title": "IP"
+      },
+      "userAgent": {
+        "type": "string",
+        "title": "UserAgent"
+      }
+    },
+
+     "userDocs": {
+      "Id": {
+        "type": "integer",
+        "title": "Id"
+      },
+      "userId": {
+        "type": "integer",
+        "title": "userId"
+      },
+      "aadhar": {
+        "type": "string",
+        "title": "aadhar"
+      },
+      "educationDetails": {
+        "type": "string",
+        "title": "education"
+      }
+    },
+    
+     "userMeta": {
+      "Id": {
+        "type": "integer",
+        "title": "Id"
+      },
+      "userId": {
+        "type": "integer",
+        "title": "userId"
+      },
+      "profileVisits": {
+        "type": "string",
+        "title": "profileVisit"
+      },
+      "subscriptionId": {
+        "type": "integer",
+        "title": "subscriptionId"
+      },
+      "profileType": {
+        "type": "string",
+        "title": "profileType"
+      },
+      "profileLikes": {
+        "type": "string",
+        "title": "profileLikes"
+      }
+    },
+    
+     "userPersonality":{
+      "Id":{
+        "type":"integer",
+        "title":"id"
+      },
+      "userId":{
+        "type":"integer",
+        "title":"id"
+      },
+      "height":{
+        "type":"integer",
+        "title":"height"
+      },
+      "weight":{
+        "type":"integer",
+        "title":"weight"
+      },
+      "complexion":{
+        "type":"string",
+        "title":"complexion",
+        "enum":[ "very fair","fair","wheatish","wheatish brownn","dark"]
+      },
+      "bloodGroup":{
+        "type":"string",
+         "title":"bloodGroup",
+         "enum":[ "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"]
+      },
+      "bodyType":{
+        "type":"string",
+        "title":"bodyType",
+        "enum":[ "slim","fat","normal"]
+      },
+      "physicalStatus":{
+         "type":"string",
+         "title":"physicalStatus",
+         "enum":[ "normal","physically challenged"]
+      },
+      "eyeWear":{
+        "type":"string",
+        "title":"eyewear",
+        "enum":[ "yes", "no"]
+      },
+      "hobbies":{
+        "type":"string",
+        "title":"hobby"
+      },
+      "aboutMySelf":{
+        "type":"string",
+        "title":"hobby"
+      }
+    },
+
+     "myfamily":{
+      "Id":{
+        "type":"integer",
+        "title":"id"
+      },
+        "userId":{
+        "type":"integer",
+        "title":"userId"
+      },
+      "fatherName":{
+        "type":"string",
+        "title":"fathername"
+      },
+      "motherName":{
+        "type":"string",
+        "title":"mothername"
+      },
+      "fatherAlive":{
+        "type":"string",
+        "title":"fatheralive",
+        "enum":["yes","no"]
+      },
+      "motherAlive":{
+        "type":"string",
+        "title":"motheralive",
+        "enum":["yes","no"]
+      },
+      "fatherOccupation":{
+        "type":"string",
+        "title":"fathersoccupation"
+      },
+       "motherOccupation":{
+        "type":"string",
+        "title":"mothersoccupation"
+      },
+      "familyType":{
+         "type":"string",
+        "title":"motheralive",
+        "enum":["Nuclear family","Join family"]
+      },
+      "siblingDetails":{
+        "type":"string",
+        "title":"sibling"
+      },
+      "financialStatus":{
+        "type":"string",
+        "title":"familystatus",
+        "enum":["lower middle class","middle class","upper middle class","rich","very rich","affluent"]
+      },
+      "propertyValues":{
+        "type":"string",
+        "title":"details"
+      }
+    },
+    
     "referenceDetails":{
       "referenceId":{
         "type": "string",
@@ -258,6 +369,21 @@
       "title":"mobile",
         "format":" phoneNumber"
     }
+    },
+
+     "userLogs":{
+      "Id":{
+        "type":"integer",
+        "title":"id"
+      },
+      "userId":{
+        "type":"string",
+        "title":"userId"
+      },
+       "logDescription":{
+        "type":"string",
+        "title":"logDescription"
+      }
     },
 
     "payment":{
@@ -283,73 +409,35 @@
         "enum": ["pending", "success", "failed", "refunded"]
      }    
     },
-
-    "myfamily":{
-      "familyId":{
-        "type":"integer",
-        "title":"id"
-      },
-      "fatherName":{
-        "type":"string",
-        "title":"fathername"
-      },
-      "motherName":{
-        "type":"string",
-        "title":"mothername"
-      },
-      "fatherAlive":{
-        "type":"string",
-        "title":"fatheralive",
-        "enum":["yes","no"]
-      },
-      "motherAlive":{
-        "type":"string",
-        "title":"motheralive",
-        "enum":["yes","no"]
-      },
-      "fathersOccupation":{
-        "type":"string",
-        "title":"fathersoccupation"
-      },
-       "mothersOccupation":{
-        "type":"string",
-        "title":"mothersoccupation"
-      },
-      "sisters":{
-        "type":"integer",
-        "title":"sisters"
-      },
-      "brothers":{
-        "type":"integer",
-        "title":"brothers"
-      },
-      "familyStatus":{
-        "type":"string",
-        "title":"familystatus",
-        "enum":["lower middle class","middle class","upper middle class","rich","very rich","affluent"]
-      },
-      "propertyDetails":{
-        "type":"string",
-        "title":"details"
-      }
-    },
-
+   
     "horoscope":{
-        "horoscopeId":{
+        "Id":{
           "type":"integer",
           "title":"Id"
         },
-        "selectStar":{
+         "userId":{
+          "type":"integer",
+          "title":"Id"
+        },
+         "timeOfBirth":{
+          "type":"string",
+          "title":"dob"
+        },
+         "placeOfBirth":{
+          "type":"string",
+          "title":"place"
+        },
+        "zodiacStar":{
           "type":"varchar",
           "title":"star",
           "enum":["Ashwini","Barani","Karthikai","Roshini","Mirugasiridam","Thiruvadhirai","Punarpoosam","Poosam","Ayilyam","Magam","Pooram","Uthiram","Astham","Chithirai","Swathi","Visagam","Anusham","Kettai","Mulam","Puradam","Uthiradam","Thiruvonam","Avittam","Sadayam","Purattadhi","Uttrttadhi","Revathi"]      
         },
-        "selectRasi":{
+        "zodiacSign":{
           "type":"string",
           "title":"rasi",
           "enum":[ "Mesham","Rishabam","Midhunam","Kadagam","Simmam","Kanni","Thulam","Viruchigam","Dhanus","Magaram","Kumbam","Meenam"]
         },
-        "suryaGothram":{
+        "gothram":{
           "type":"string",
           "title":"gothram"
         },
@@ -396,56 +484,69 @@
         }
     },
 
-    "educationAndProfession":{
-      "educationId":{
+    "userDetails":{
+      "Id":{
         "type":"integer",
         "title":"id"
+      },
+      "userId":{
+        "type":"integer",
+        "title":"userId"
+      },
+       "maritalStatus":{
+        "type":"string",
+        "title":"maritalstatus",
+        "enum":["never married","married","divorced","separated","widow/widower"]    
+      },
+       "profileCreatedBy":{
+        "type":"string",
+        "title":"profilecreated",
+        "enum":["friend","self","parent","guardian","sibling"]
+      },
+      "whatsapp":{
+          "type":"number",
+          "title":"whatsapp"
+      },
+      "referedBy":{
+          "type":"string",
+          "title":"refered"
       },
       "educationalQualification":{
         "type":"string",
         "title":"qualification"
       },
-      "educationDetails":{
+      "religion":{
         "type":"string",
-        "title":"companyname"
+        "title":"religion"
       },
-      "historyOfYourEducation":{
+      "motherTongue":{
         "type":"string",
-        "title":"education"
+        "title":"mothertongue"
+      },
+      "caste":{
+        "type":"string",
+        "title":"caste"
       },
       "profession":{
         "type":"string",
         "title":"profession",
         "enum":[ "employee", "business","student","not working","not mentioned"]
       },
-      "professionDetail":{
+       "professionDesignation":{
         "type":"string",
-        "title":"profession"
+        "title":"professionDesignation"
       },
-      "grossAnnualIncome":{
+       "professionDesc":{
         "type":"string",
-        "title":"annualincome",
-        "enum":[ "$","£","€","₹"]
+        "title":"professionDesc"
       },
-      "annualIncomeInINR":{
+      "professionLocation":{
+        "type":"string",
+        "title":"location"
+      },
+      "annualIncome":{
         "type":"integer",
         "title":"income"
-      },
-      "actualCTC":{
-        "type":"integer",
-        "title":"ctc"
-      },
-      "stayingState":{
-        "type":"string",
-        "title":"state"
-      },
-      "stayingCountry":{
-        "type":"string",
-        "title":"country"
-      },
-      "stayingCity":{
-          "type":"string",
-          "title":"city"
       }
     },
   
@@ -484,53 +585,42 @@
       }
     },
     
-    "personalDetails":{
-      "personalId":{
+   "partnerPreference":{
+      "Id":{
         "type":"integer",
         "title":"id"
       },
-      "height":{
-        "type":"integer",
-        "title":"height"
+      "userId":{
+         "type":"integer",
+         "title":"partnerid"
       },
-      "weight":{
-        "type":"integer",
-        "title":"weight"
+       "age":{
+         "type":"integer",
+         "title":"age"
       },
-      "complexion":{
-        "type":"string",
-        "title":"complexion",
-        "enum":[ "very fair","fair","wheatish","wheatish brownn","dark"]
+       "height":{
+         "type":"integer",
+         "title":"height"
       },
-      "bodyType":{
-        "type":"string",
-        "title":"bodyType",
-        "enum":[ "slim","fat","normal"]
-      },
-      "physicalStatus":{
+       "dhosam":{
          "type":"string",
-         "title":"physicalStatus",
-         "enum":[ "normal","physically challenged"]
+         "title":"dhosam"
       },
-      "eyeWear":{
-        "type":"string",
-        "title":"eyewear",
-        "enum":[ "yes", "no"]
+       "rahuKetu":{
+         "type":"integer",
+         "title":"rahuKetu"
       },
-      "hobbies":{
-        "type":"string",
-        "title":"hobby"
+       "":{
+         "type":"integer",
+         "title":"height"
       },
-      "aboutMySelf":{
+      "status":{
         "type":"string",
-        "title":"hobby"
+        "title":"status",
+        "enum":["active","inactive","terminated"]
       }
     }
  
   }
-
-
-
-
 
 }

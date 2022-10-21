@@ -4,7 +4,6 @@ import { ReviewController } from "../controller/reviewController.js";
 
 const reviewRouter = Router();
 
-//check if order 0
 reviewRouter.get(
   "/MyReview",
   UserAuthenticate,

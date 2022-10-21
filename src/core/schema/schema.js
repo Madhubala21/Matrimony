@@ -24,6 +24,23 @@ const Admin = {
   },
 };
 
+const adminAuth = {
+  properties: {
+    adminId: {
+      $ref: "defs#/definitions/adminAuth/authId",
+    },
+    ipv4: {
+      $ref: "defs#/definitions/adminAuth/ipv4",
+    },
+    userAgent: {
+      $ref: "defs#/definitions/adminAuth/user",
+    },
+    status: {
+      $ref: "defs#/definitions/adminAuth/status",
+    },
+  },
+};
+
 const appConfig = {
   properties: {
     configId: {
@@ -37,9 +54,6 @@ const appConfig = {
     },
     placeholder: {
       $ref: "defs#/definitions/appConfig/placeholder",
-    },
-    shippingFee: {
-      $ref: "defs#/definitions/appConfig/shippingFee",
     },
     messagingKey: {
       $ref: "defs#/definitions/appConfig/messagingKey",
@@ -71,28 +85,83 @@ const appConfig = {
   },
 };
 
-const adminAuth = {
+const User = {
   properties: {
-    authId: {
-      $ref: "defs#/definitions/adminAuth/authId",
+    UserId: {
+      $ref: "defs#/definitions/User/UserId",
     },
-    uid: {
-      $ref: "defs#/definitions/adminAuth/uid",
+    userName: {
+      $ref: "defs#/defintions/User/companyName",
     },
-    token: {
-      $ref: "defs#/definitions/adminAuth/token",
+    email: {
+      $ref: "defs#/defintions/User/email",
     },
-    ipv4: {
-      $ref: "defs#/definitions/adminAuth/ipv4",
+    password: {
+      $ref: "defs#/defintions/User/password",
     },
-    user: {
-      $ref: "defs#/definitions/adminAuth/user",
+    phone: {
+      $ref: "defs#/defintions/User/mobile",
     },
-    latLong: {
-      $ref: "defs#/definitions/adminAuth/latLong",
+    dob: {
+      $ref: "defs#/defintions/User/dob",
     },
-    status: {
-      $ref: "defs#/definitions/adminAuth/status",
+    gender: {
+      $ref: "defs#/defintions/User/gender",
+    },
+    images: {
+      $ref: "defs#/defintions/User/image",
+    },
+    profileType: {
+      $ref: "defs#/defintions/User/profileTpye",
+    },
+    membershipType: {
+      $ref: "defs#/defintions/User/membershipType",
+    },
+
+    placeOfBirth: {
+      $ref: "defs#/defintions/User/placeOfBirth",
+    },
+    profileCreatedBy: {
+      $ref: "defs#/defintions/member/profileCreatedBy",
+    },
+
+    mobile2: {
+      $ref: "defs#/defintions/member/mobile2",
+    },
+    address: {
+      $ref: "defs#/defintions/member/address",
+    },
+    country: {
+      $ref: "defs#/defintions/member/country",
+    },
+    state: {
+      $ref: "defs#/defintions/member/state",
+    },
+    pincode: {
+      $ref: "defs#/defintions/member/pincode",
+    },
+
+    timeOfBirth: {
+      $ref: "defs#/defintions/member/timeOfBirth",
+    },
+    religion: {
+      $ref: "defs#/defintions/member/religion",
+    },
+    motherTongue: {
+      $ref: "defs#/defintions/member/motherTongue",
+    },
+    maritalStatus: {
+      $ref: "defs#/defintions/member/maritalStatus",
+    },
+    whatsapp: {
+      $ref: "defs#/defintions/member/whatsapp",
+    },
+
+    city: {
+      $ref: "defs#/defintions/member/city",
+    },
+    referedBy: {
+      $ref: "defs#/defintions/member/referedBy",
     },
   },
 };
@@ -114,70 +183,80 @@ const userAuth = {
   },
 };
 
-const member = {
+const userDocs = {
   properties: {
-    memberId: {
-      $ref: "defs#/definitions/member/memberId",
+    Id: {
+      $ref: "defs#/definitions/userDocs/Id",
     },
-    companyName: {
-      $ref: "defs#/defintions/member/companyName",
+    userId: {
+      $ref: "defs#/definitions/userDocs/userId",
     },
-    gender: {
-      $ref: "defs#/defintions/member/gender",
+    aadhar: {
+      $ref: "defs#/definitions/userDocs/aadhar",
     },
-    placeOfBirth: {
-      $ref: "defs#/defintions/member/placeOfBirth",
+    educationDetails: {
+      $ref: "defs#/definitions/userDocs/educationDetails",
     },
-    profileCreatedBy: {
-      $ref: "defs#/defintions/member/profileCreatedBy",
+  },
+};
+
+const userMeta = {
+  properties: {
+    Id: {
+      $ref: "defs#/definitions/userMeta/Id",
     },
-    mobile: {
-      $ref: "defs#/defintions/member/mobile",
+    userId: {
+      $ref: "defs#/definitions/userMeta/userId",
     },
-    mobile2: {
-      $ref: "defs#/defintions/member/mobile2",
+    profileVisits: {
+      $ref: "defs#/definitions/userMeta/profileVisits",
     },
-    address: {
-      $ref: "defs#/defintions/member/address",
+    subscriptionId: {
+      $ref: "defs#/definitions/userMeta/subscriptionId",
     },
-    country: {
-      $ref: "defs#/defintions/member/country",
+    profileType: {
+      $ref: "defs#/definitions/userMeta/profileType",
     },
-    state: {
-      $ref: "defs#/defintions/member/state",
+    profileLikes: {
+      $ref: "defs#/definitions/userMeta/profileLikes",
     },
-    pincode: {
-      $ref: "defs#/defintions/member/pincode",
+  },
+};
+
+const userPersonality = {
+  properties: {
+    Id: {
+      $ref: "defs#/defintions/userPersonality/Id",
     },
-    password: {
-      $ref: "defs#/defintions/member/password",
+    userId: {
+      $ref: "defs#/defintions/userPersonality/userId",
     },
-    dob: {
-      $ref: "defs#/defintions/member/dob",
+    height: {
+      $ref: "defs#/defintions/userPersonality/height",
     },
-    timeOfBirth: {
-      $ref: "defs#/defintions/member/timeOfBirth",
+    weight: {
+      $ref: "defs#/defintions/userPersonality/weight",
     },
-    religion: {
-      $ref: "defs#/defintions/member/religion",
+    complexion: {
+      $ref: "defs#/defintions/userPersonality/complexion",
     },
-    motherTongue: {
-      $ref: "defs#/defintions/member/motherTongue",
+    bloodGroup: {
+      $ref: "defs#/defintions/userPersonality/bloodGroup",
     },
-    maritalStatus: {
-      $ref: "defs#/defintions/member/maritalStatus",
+    bodyType: {
+      $ref: "defs#/defintions/userPersonality/bodyType",
     },
-    whatsapp: {
-      $ref: "defs#/defintions/member/whatsapp",
+    physicalStatus: {
+      $ref: "defs#/defintions/userPersonality/physicalStatus",
     },
-    email: {
-      $ref: "defs#/defintions/member/email",
+    eyeWear: {
+      $ref: "defs#/defintions/userPersonality/eyeWear",
     },
-    city: {
-      $ref: "defs#/defintions/member/city",
+    hobbies: {
+      $ref: "defs#/defintions/userPersonality/hobbies",
     },
-    referedBy: {
-      $ref: "defs#/defintions/member/referedBy",
+    aboutMySelf: {
+      $ref: "defs#/defintions/userPersonality/aboutMySelf",
     },
   },
 };
@@ -259,17 +338,26 @@ const myfamily = {
 
 const horoscope = {
   properties: {
-    horoscopeId: {
-      $ref: "defs#/defintions/horoscope/horoscopeId",
+    Id: {
+      $ref: "defs#/defintions/horoscope/Id",
     },
-    selectStar: {
-      $ref: "defs#/defintions/horoscope/selectStar",
+    userId: {
+      $ref: "defs#/defintions/horoscope/userId",
     },
-    selectRasi: {
-      $ref: "defs#/defintions/horoscope/selectRasi",
+    timeOfBirth: {
+      $ref: "defs#/defintions/horoscope/timeOfBirth",
     },
-    suryaGothram: {
-      $ref: "defs#/defintions/horoscope/suryaGothram",
+    placeOfBirth: {
+      $ref: "defs#/defintions/horoscope/placeOfBirth",
+    },
+    zodiacStar: {
+      $ref: "defs#/defintions/horoscope/zodiacStar",
+    },
+    zodiacSign: {
+      $ref: "defs#/defintions/horoscope/zodiacSign",
+    },
+    gothram: {
+      $ref: "defs#/defintions/horoscope/gothram",
     },
     padham: {
       $ref: "defs#/defintions/horoscope/padham",
@@ -374,38 +462,6 @@ const subscription = {
     },
     durationTo: {
       $ref: "defs#/defintions/subscription/durationTo",
-    },
-  },
-};
-
-const personalDetails = {
-  properties: {
-    personalId: {
-      $ref: "defs#/defintions/personalDetails/personalId",
-    },
-    height: {
-      $ref: "defs#/defintions/personalDetails/height",
-    },
-    weight: {
-      $ref: "defs#/defintions/personalDetails/weight",
-    },
-    complexion: {
-      $ref: "defs#/defintions/personalDetails/complexion",
-    },
-    bodyType: {
-      $ref: "defs#/defintions/personalDetails/bodyType",
-    },
-    physicalStatus: {
-      $ref: "defs#/defintions/personalDetails/physicalStatus",
-    },
-    eyeWear: {
-      $ref: "defs#/defintions/personalDetails/eyeWear",
-    },
-    hobbies: {
-      $ref: "defs#/defintions/personalDetails/hobbies",
-    },
-    aboutMySelf: {
-      $ref: "defs#/defintions/personalDetails/aboutMySelf",
     },
   },
 };
