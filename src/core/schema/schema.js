@@ -27,7 +27,10 @@ const Admin = {
 const adminAuth = {
   properties: {
     adminId: {
-      $ref: "defs#/definitions/adminAuth/authId",
+      Id: {
+        $ref: "defs#/definitions/adminAuth/Id",
+      },
+      $ref: "defs#/definitions/adminAuth/adminId",
     },
     ipv4: {
       $ref: "defs#/definitions/adminAuth/ipv4",
@@ -37,6 +40,20 @@ const adminAuth = {
     },
     status: {
       $ref: "defs#/definitions/adminAuth/status",
+    },
+  },
+};
+
+const successStories = {
+  properties: {
+    Id: {
+      $ref: "defs#/definitions/successStories/Id",
+    },
+    title: {
+      $ref: "defs#/definitions/successStories/title",
+    },
+    image: {
+      $ref: "defs#/definitions/successStories/image",
     },
   },
 };
@@ -87,8 +104,8 @@ const appConfig = {
 
 const User = {
   properties: {
-    UserId: {
-      $ref: "defs#/definitions/User/UserId",
+    Id: {
+      $ref: "defs#/definitions/User/Id",
     },
     userName: {
       $ref: "defs#/defintions/User/companyName",
@@ -116,52 +133,6 @@ const User = {
     },
     membershipType: {
       $ref: "defs#/defintions/User/membershipType",
-    },
-
-    placeOfBirth: {
-      $ref: "defs#/defintions/User/placeOfBirth",
-    },
-    profileCreatedBy: {
-      $ref: "defs#/defintions/member/profileCreatedBy",
-    },
-
-    mobile2: {
-      $ref: "defs#/defintions/member/mobile2",
-    },
-    address: {
-      $ref: "defs#/defintions/member/address",
-    },
-    country: {
-      $ref: "defs#/defintions/member/country",
-    },
-    state: {
-      $ref: "defs#/defintions/member/state",
-    },
-    pincode: {
-      $ref: "defs#/defintions/member/pincode",
-    },
-
-    timeOfBirth: {
-      $ref: "defs#/defintions/member/timeOfBirth",
-    },
-    religion: {
-      $ref: "defs#/defintions/member/religion",
-    },
-    motherTongue: {
-      $ref: "defs#/defintions/member/motherTongue",
-    },
-    maritalStatus: {
-      $ref: "defs#/defintions/member/maritalStatus",
-    },
-    whatsapp: {
-      $ref: "defs#/defintions/member/whatsapp",
-    },
-
-    city: {
-      $ref: "defs#/defintions/member/city",
-    },
-    referedBy: {
-      $ref: "defs#/defintions/member/referedBy",
     },
   },
 };
@@ -196,6 +167,9 @@ const userDocs = {
     },
     educationDetails: {
       $ref: "defs#/definitions/userDocs/educationDetails",
+    },
+    horoscope: {
+      $ref: "defs#/definitions/userDocs/horoscope",
     },
   },
 };
@@ -261,47 +235,13 @@ const userPersonality = {
   },
 };
 
-const referenceDetails = {
-  properties: {
-    referenceId: {
-      $ref: "defs#/defintions/referenceDetails/referenceId",
-    },
-    name: {
-      $ref: "defs#/defintions/referenceDetails/name",
-    },
-    city: {
-      $ref: "defs#/defintions/referenceDetails/city",
-    },
-    mobile: {
-      $ref: "defs#/defintions/referenceDetails/mobile",
-    },
-  },
-};
-
-const payment = {
-  properties: {
-    paymentId: {
-      $ref: "defs#/defintions/payment/paymentId",
-    },
-    razorOrderId: {
-      $ref: "defs#/defintions/payment/razorOrderId",
-    },
-  },
-  razorPaymentId: {
-    $ref: "defs#/defintions/payment/razorPaymentId",
-  },
-  razorSignature: {
-    $ref: "defs#/defintions/payment/razorSignature",
-  },
-  paymentStatus: {
-    $ref: "defs#/defintions/payment/paymentStatus",
-  },
-};
-
 const myfamily = {
   properties: {
-    familyId: {
-      $ref: "defs#/defintions/myfamily/familyId",
+    Id: {
+      $ref: "defs#/defintions/myfamily/Id",
+    },
+    userId: {
+      $ref: "defs#/defintions/myfamily/userId",
     },
     fatherName: {
       $ref: "defs#/defintions/myfamily/fatherName",
@@ -315,23 +255,57 @@ const myfamily = {
     motherAlive: {
       $ref: "defs#/defintions/myfamily/motherAlive",
     },
-    fathersOccupation: {
-      $ref: "defs#/defintions/myfamily/fathersOccupation",
+    fatherOccupation: {
+      $ref: "defs#/defintions/myfamily/fatherOccupation",
     },
-    mothersOccupation: {
-      $ref: "defs#/defintions/myfamily/mothersOccupation",
+    motherOccupation: {
+      $ref: "defs#/defintions/myfamily/motherOccupation",
     },
-    sisters: {
-      $ref: "defs#/defintions/myfamily/sisters",
+    familyType: {
+      $ref: "defs#/defintions/myfamily/familyType",
     },
-    brothers: {
-      $ref: "defs#/defintions/myfamily/mothers",
+    siblingDetails: {
+      $ref: "defs#/defintions/myfamily/siblingDetails",
     },
-    familyStatus: {
-      $ref: "defs#/defintions/myfamily/familyStatus",
+    financialStatus: {
+      $ref: "defs#/defintions/myfamily/financialStatus",
     },
-    propertyDetails: {
-      $ref: "defs#/defintions/myfamily/propertyDetails",
+    propertyValues: {
+      $ref: "defs#/defintions/myfamily/propertyValues",
+    },
+  },
+};
+
+const userLogs = {
+  properties: {
+    Id: {
+      $ref: "defs#/defintions/userLogs/Id",
+    },
+    userId: {
+      $ref: "defs#/defintions/userLogs/userId",
+    },
+    logDescription: {
+      $ref: "defs#/defintions/userLogs/logDescription",
+    },
+  },
+};
+
+const payment = {
+  properties: {
+    paymentId: {
+      $ref: "defs#/defintions/payment/paymentId",
+    },
+    razorOrderId: {
+      $ref: "defs#/defintions/payment/razorOrderId",
+    },
+    razorPaymentId: {
+      $ref: "defs#/defintions/payment/razorPaymentId",
+    },
+    razorSignature: {
+      $ref: "defs#/defintions/payment/razorSignature",
+    },
+    paymentStatus: {
+      $ref: "defs#/defintions/payment/paymentStatus",
     },
   },
 };
@@ -371,77 +345,66 @@ const horoscope = {
   },
 };
 
-const photoUpload = {
+const userDetails = {
   properties: {
-    photoId: {
-      $ref: "defs#/defintions/photoUpload/photoId",
+    Id: {
+      $ref: "defs#/defintions/userDetails/Id",
     },
-    photo1: {
-      $ref: "defs#/defintions/photoUpload/photo1",
+    userId: {
+      $ref: "defs#/defintions/userDetails/userId",
     },
-    photo2: {
-      $ref: "defs#/defintions/photoUpload/photo2",
+    maritalStatus: {
+      $ref: "defs#/defintions/userDetails/maritalStatus",
     },
-    photo3: {
-      $ref: "defs#/defintions/photoUpload/photo3",
+    profileCreatedBy: {
+      $ref: "defs#/defintions/userDetails/profileCreatedBy",
     },
-    idProof: {
-      $ref: "defs#/defintions/photoUpload/idProof",
+    whatsapp: {
+      $ref: "defs#/defintions/userDetails/whatsapp",
     },
-    horoscope: {
-      $ref: "defs#/defintions/photoUpload/horoscope",
-    },
-  },
-};
-
-const educationAndProfession = {
-  properties: {
-    educationId: {
-      $ref: "defs#/defintions/educationAndProfession/educationId",
+    referedBy: {
+      $ref: "defs#/defintions/userDetails/referedBy",
     },
     educationalQualification: {
-      $ref: "defs#/defintions/educationAndProfession/educationalQualification",
+      $ref: "defs#/defintions/userDetails/educationalQualification",
     },
-    educationDetails: {
-      $ref: "defs#/defintions/educationAndProfession/educationDetails",
+    religion: {
+      $ref: "defs#/defintions/userDetails/religion",
     },
-    historyOfYourEducation: {
-      $ref: "defs#/defintions/educationAndProfession/historyOfYourEducation",
+    motherTongue: {
+      $ref: "defs#/defintions/userDetails/motherTongue",
+    },
+    caste: {
+      $ref: "defs#/defintions/userDetails/caste",
     },
     profession: {
-      $ref: "defs#/defintions/educationAndProfession/profession",
+      $ref: "defs#/defintions/userDetails/profession",
     },
-    professionDetail: {
-      $ref: "defs#/defintions/educationAndProfession/professionDetail",
+    professionDesignation: {
+      $ref: "defs#/defintions/userDetails/professionDesignation",
     },
-    grossAnnualIncome: {
-      $ref: "defs#/defintions/educationAndProfession/grossAnnualIncome",
+    professionDesc: {
+      $ref: "defs#/defintions/userDetails/professionDesc",
     },
-    annualIncomeInINR: {
-      $ref: "defs#/defintions/educationAndProfession/annualIncomeInINR",
+    professionLocation: {
+      $ref: "defs#/defintions/userDetails/professionLocation",
     },
-    actualCTC: {
-      $ref: "defs#/defintions/educationAndProfession/actualCTC",
-    },
-    stayingState: {
-      $ref: "defs#/defintions/educationAndProfession/stayingState",
-    },
-    stayingCountry: {
-      $ref: "defs#/defintions/educationAndProfession/stayingCountry",
-    },
-    stayingCity: {
-      $ref: "defs#/defintions/educationAndProfession/stayingCity",
+    annualIncome: {
+      $ref: "defs#/defintions/userDetails/annualIncome",
     },
   },
 };
 
 const whislist = {
   properties: {
-    whislistId: {
-      $ref: "defs#/defintions/whislist/whislistId",
+    Id: {
+      $ref: "defs#/defintions/whislist/Id",
     },
-    partnerId: {
-      $ref: "defs#/defintions/whislist/partnerId",
+    userId: {
+      $ref: "defs#/defintions/whislist/userId",
+    },
+    profileId: {
+      $ref: "defs#/defintions/whislist/profileId",
     },
     status: {
       $ref: "defs#/defintions/whislist/status",
@@ -462,6 +425,89 @@ const subscription = {
     },
     durationTo: {
       $ref: "defs#/defintions/subscription/durationTo",
+    },
+  },
+};
+
+const partnerPreference = {
+  properties: {
+    Id: {
+      $ref: "defs#/defintions/partnerPreference/Id",
+    },
+    userId: {
+      $ref: "defs#/defintions/partnerPreference/userId",
+    },
+    age: {
+      $ref: "defs#/defintions/partnerPreference/age",
+    },
+    height: {
+      $ref: "defs#/defintions/partnerPreference/height",
+    },
+    dhosam: {
+      $ref: "defs#/defintions/partnerPreference/dhosam",
+    },
+    rahuKetu: {
+      $ref: "defs#/defintions/partnerPreference/rahuKetu",
+    },
+    annualIncome: {
+      $ref: "defs#/defintions/partnerPreference/annualIncome",
+    },
+    foreigninterest: {
+      $ref: "defs#/defintions/partnerPreference/foreigninterest",
+    },
+    maritalStatus: {
+      $ref: "defs#/defintions/partnerPreference/maritalStatus",
+    },
+    status: {
+      $ref: "defs#/defintions/partnerPreference/status",
+    },
+  },
+};
+
+const userFollowing = {
+  properties: {
+    Id: {
+      $ref: "defs#/defintions/userFollowing/Id",
+    },
+    userId: {
+      $ref: "defs#/defintions/userFollowing/userId",
+    },
+    following: {
+      $ref: "defs#/defintions/userFollowing/following",
+    },
+  },
+};
+
+const pushMessaging = {
+  properties: {
+    Id: {
+      $ref: "defs#/defintions/pushMessaging/Id",
+    },
+    title: {
+      $ref: "defs#/defintions/pushMessaging/title",
+    },
+    image: {
+      $ref: "defs#/defintions/pushMessaging/image",
+    },
+    description: {
+      $ref: "defs#/defintions/pushMessaging/description",
+    },
+  },
+};
+
+const banners = {
+  properties: {
+    Id: {
+      $ref: "defs#/defintions/banners/Id",
+    },
+    link: {
+      $ref: "defs#/defintions/banners/link",
+    },
+    image: {
+      $ref: "defs#/defintions/banners/image",
+    },
+    description: {
+      $ref: "defs#/defintions/banners/description",
     },
   },
 };
@@ -488,6 +534,7 @@ export const sendEmail = {
   },
   required: ["email", "password"],
 };
+
 export const verifyLogin = {
   type: "object",
   $id: "verifyLogin",
@@ -508,6 +555,24 @@ export const AdminCreate = {
     email: Admin.properties.email,
     password: Admin.properties.password,
     phone: Admin.properties.phone,
+  },
+  required: ["email", "password", "phone"],
+};
+
+export const UserCreate = {
+  type: "object",
+  $id: "UserCreate",
+  additionalProperties: false,
+  properties: {
+    userName: User.properties.userName,
+    email: User.properties.email,
+    password: User.properties.password,
+    phone: User.properties.phone,
+    dob: User.properties.dob,
+    gender: User.properties.gender,
+    images: User.properties.images,
+    profileType: User.properties.profileType,
+    membershipType: User.properties.membershipType,
   },
   required: ["email", "password", "phone"],
 };

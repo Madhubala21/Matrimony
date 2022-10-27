@@ -61,7 +61,7 @@
       }
     },
 
-     "successStories": {
+    "successStories": {
       "Id": {
         "type": "integer",
         "title": "Id"
@@ -139,7 +139,7 @@
       },
        "userName": {
         "type": "string",
-        "title": "companyname"
+        "title": "name"
       },
        "email":{
           "type":"string",
@@ -198,7 +198,7 @@
       }
     },
 
-     "userDocs": {
+    "userDocs": {
       "Id": {
         "type": "integer",
         "title": "Id"
@@ -214,10 +214,14 @@
       "educationDetails": {
         "type": "string",
         "title": "education"
+      },
+       "horoscope": {
+        "type": "string",
+        "title": "horoscope"
       }
     },
     
-     "userMeta": {
+    "userMeta": {
       "Id": {
         "type": "integer",
         "title": "Id"
@@ -244,7 +248,7 @@
       }
     },
     
-     "userPersonality":{
+    "userPersonality":{
       "Id":{
         "type":"integer",
         "title":"id"
@@ -296,7 +300,7 @@
       }
     },
 
-     "myfamily":{
+    "myfamily":{
       "Id":{
         "type":"integer",
         "title":"id"
@@ -351,27 +355,7 @@
       }
     },
     
-    "referenceDetails":{
-      "referenceId":{
-        "type": "string",
-        "title": "Id"
-      },
-      "name":{
-        "type":"string",
-        "title":"name"
-      },
-      "city":{
-        "type":"string",
-        "title":"city"
-      },
-    "mobile":{
-      "type":"number",
-      "title":"mobile",
-        "format":" phoneNumber"
-    }
-    },
-
-     "userLogs":{
+    "userLogs":{
       "Id":{
         "type":"integer",
         "title":"id"
@@ -456,33 +440,6 @@
           "title":"madhulam"
         }
     },
-   
-    "photoUpload":{
-        "photoId":{
-          "type":"string",
-          "title":"id"
-        },
-        "photo1":{
-          "type":"string",
-          "title":"photo1"
-        },
-        "photo2":{
-          "type":"string",
-          "title":"photo2"
-        },
-        "photo3":{
-          "type":"string",
-          "title":"photo3"
-        },
-        "idProof":{
-          "type":"string",
-          "title":"idproof"
-        },
-        "horoscope":{
-          "type":"string",
-          "title":"horoscope"
-        }
-    },
 
     "userDetails":{
       "Id":{
@@ -551,13 +508,17 @@
     },
   
     "whislist":{
-      "whislistId":{
+      "Id":{
         "type":"integer",
         "title":"id"
       },
-      "partnerId":{
+      "userId":{
+        "type":"integer",
+        "title":"userid"
+      },
+      "profileId":{
          "type":"integer",
-         "title":"partnerid"
+         "title":"profileid"
       },
       "status":{
         "type":"string",
@@ -610,17 +571,81 @@
          "type":"integer",
          "title":"rahuKetu"
       },
-       "":{
-         "type":"integer",
-         "title":"height"
+       "annualIncome":{
+         "type":"string",
+         "title":"income"
+      },
+       "foreignInterest":{
+         "type":"string",
+         "title":"interest",
+         "enum":["yes","no"]
+      },
+       "maritalStatus":{
+         "type":"string",
+         "title":"interest",
+         "enum":["never married","married","divorced","separated","widow/widower"]
       },
       "status":{
         "type":"string",
         "title":"status",
         "enum":["active","inactive","terminated"]
       }
-    }
+    },
  
+    "userFollowing":{
+      "Id":{
+        "type":"integer",
+        "title":"id"
+      },
+      "userId":{
+        "type":"integer",
+        "title":"userId"
+      },
+      "following":{
+         "type":"integer",
+         "title":"following"
+      }
+    },
+
+    "pushMessaging":{
+      "Id":{
+        "type":"integer",
+        "title":"id"
+      },
+      "title":{
+        "type":"integer",
+        "title":"title"
+      },
+      "image":{
+         "type":"integer",
+         "title":"image"
+      },
+      "description":{
+        "type":"string",
+        "title":"description"
+      }
+    },
+
+    "banners":{
+      "Id":{
+        "type":"integer",
+        "title":"id"
+      },
+      "link":{
+        "type":"integer",
+        "title":"link"
+      },
+      "image":{
+         "type":"integer",
+         "title":"image"
+      },
+      "description":{
+        "type":"string",
+        "title":"description"
+      }
+    }
+
+   
   }
 
 }
