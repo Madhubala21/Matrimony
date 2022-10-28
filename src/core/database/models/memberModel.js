@@ -2,9 +2,9 @@ import sequelize from "sequelize";
 const { Model, DataTypes } = sequelize;
 import { connection } from "../connection.js";
 
-class member extends Model {}
+class user extends Model {}
 
-member.init(
+user.init(
   {
     id: {
       type: DataTypes.BIGINT.UNSIGNED,
@@ -12,48 +12,19 @@ member.init(
       autoIncrement: true,
       allowNull: true,
     },
-    companyName: {
+    userName: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    gender: {
-      type: DataTypes.ENUM("male", "female"),
+    email: {
+      type: DataTypes.STRING,
       allowNull: true,
-      defaultValue: "male",
-    },
-    placeOfBirth: {
-      type: DataTypes.STRING(20),
-      allowNull: true,
-    },
-    profileCreatedBy: {
-      type: DataTypes.ENUM("friend", "self", "parent", "guardian", "sibling"),
-      allowNull: true,
-    },
-    mobile: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    mobile2: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    address: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    country: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    state: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    pincode: {
-      type: DataTypes.INTEGER(255),
-      allowNull: false,
     },
     password: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    phone: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
@@ -61,51 +32,32 @@ member.init(
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    timeOfBirth: {
+    gender: {
+      type: DataTypes.ENUM("MALE", "FEMALE"),
+      allowNull: true,
+      defaultValue: "male",
+    },
+    images: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    religion: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
+    profileType: {
+      type: DataTypes.ENUM("PUBLIC", "PRIVATE"),
+      allowNull: true,
+      defaultValue: "PRIVATE",
     },
-    motherTongue: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    maritalStatus: {
-      type: DataTypes.ENUM(
-        "never married",
-        "married",
-        "divorced",
-        "separated",
-        "widow/widower"
-      ),
-      allowNull: false,
-    },
-    whatsapp: {
-      type: DataTypes.INTEGER(255),
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    city: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    referedBy: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
+    membershipType: {
+      type: DataTypes.ENUM("PREMIUM", "NORMAL"),
+      allowNull: true,
+      defaultValue: "NORMAL",
     },
   },
   { sequelize: connection, freezeTableName: true }
 );
 
-class referenceDetails extends Model {}
+class userAuthentication extends Model {}
 
-referenceDetails.init(
+userAuthentication.init(
   {
     id: {
       type: DataTypes.BIGINT.UNSIGNED,
@@ -113,15 +65,45 @@ referenceDetails.init(
       autoIncrement: true,
       allowNull: false,
     },
-    name: {
+    token: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    ipv4: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    userAgent: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+  },
+  { sequelize: connection, freezeTableName: true }
+);
+
+class userDocs extends Model {}
+
+userDocs.init(
+  {
+    id: {
+      type: DataTypes.BIGINT.UNSIGNED,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.INTEGER(255),
+      allowNull: false,
+    },
+    aadhar: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    city: {
+    educationDetails: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    mobile: {
+    horoscope: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
@@ -129,31 +111,126 @@ referenceDetails.init(
   { sequelize: connection, freezeTableName: true }
 );
 
-// class customerAuthentication extends Model {}
+class userMeta extends Model {}
 
-// customerAuthentication.init(
-//   {
-//     id: {
-//       type: DataTypes.BIGINT.UNSIGNED,
-//       primaryKey: true,
-//       autoIncrement: true,
-//       allowNull: false,
-//     },
-//     token: {
-//       type: DataTypes.TEXT,
-//       allowNull: false,
-//     },
-//     ipv4: {
-//       type: DataTypes.TEXT,
-//       allowNull: false,
-//     },
-//     userAgent: {
-//       type: DataTypes.TEXT,
-//       allowNull: false,
-//     },
-//   },
-//   { sequelize: connection, freezeTableName: true }
-// );
+userMeta.init(
+  {
+    id: {
+      type: DataTypes.BIGINT.UNSIGNED,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.INTEGER(255),
+      allowNull: false,
+    },
+    profileVisits: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    subscriptionId: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    profileType: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    profileLikes: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+  },
+  { sequelize: connection, freezeTableName: true }
+);
+
+class myfamily extends Model {}
+
+myfamily.init(
+  {
+    id: {
+      type: DataTypes.BIGINT.UNSIGNED,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.INTEGER(255),
+      allowNull: false,
+    },
+    fatherName: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    motherName: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    fatherAlive: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    motherAlive: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    fatherOccupation: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    motherOccupation: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    familyType: {
+      type: DataTypes.ENUM("Nuclear family", "Join family"),
+      allowNull: false,
+    },
+    siblingDetails: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    financialStatus: {
+      type: DataTypes.ENUM(
+        "lower middle class",
+        "middle class",
+        "upper middle class",
+        "rich",
+        "very rich",
+        "affluent"
+      ),
+      allowNull: false,
+    },
+    propertyValues: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+  },
+  { sequelize: connection, freezeTableName: true }
+);
+
+class userLogs extends Model {}
+
+userLogs.init(
+  {
+    id: {
+      type: DataTypes.BIGINT.UNSIGNED,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.INTEGER(255),
+      allowNull: false,
+    },
+    logDescription: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+  },
+  { sequelize: connection, freezeTableName: true }
+);
 
 class payment extends Model {}
 
@@ -185,67 +262,6 @@ payment.init(
   { sequelize: connection, freezeTableName: true }
 );
 
-class myfamily extends Model {}
-
-myfamily.init(
-  {
-    id: {
-      type: DataTypes.BIGINT.UNSIGNED,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
-    },
-    fatherName: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    motherName: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    fatherAlive: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    motherAlive: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    fathersOccupation: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    mothersOccupation: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    sisters: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    brothers: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    familyStatus: {
-      type: DataTypes.ENUM(
-        "lower middle class",
-        "middle class",
-        "upper middle class",
-        "rich",
-        "very rich",
-        "affluent"
-      ),
-      allowNull: false,
-    },
-    propertyDetails: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-  },
-  { sequelize: connection, freezeTableName: true }
-);
-
 class horoscope extends Model {}
 
 horoscope.init(
@@ -256,7 +272,36 @@ horoscope.init(
       autoIncrement: true,
       allowNull: false,
     },
-    selectStar: {
+    userId: {
+      type: DataTypes.INTEGER(255),
+      allowNull: false,
+    },
+    timeOfBirth: {
+      type: DataTypes.INTEGER(255),
+      allowNull: false,
+    },
+    placeOfBirth: {
+      type: DataTypes.INTEGER(255),
+      allowNull: false,
+    },
+    zodiacSign: {
+      type: DataTypes.ENUM(
+        "Mesham",
+        "Rishabam",
+        "Midhunam",
+        "Kadagam",
+        "Simmam",
+        "Kanni",
+        "Thulam",
+        "Viruchigam",
+        "Dhanus",
+        "Magaram",
+        "Kumbam",
+        "Meenam"
+      ),
+      allowNull: false,
+    },
+    zodiacStar: {
       type: DataTypes.ENUM(
         "Ashwini",
         "Barani",
@@ -288,24 +333,7 @@ horoscope.init(
       ),
       allowNull: false,
     },
-    selectRasi: {
-      type: DataTypes.ENUM(
-        "Mesham",
-        "Rishabam",
-        "Midhunam",
-        "Kadagam",
-        "Simmam",
-        "Kanni",
-        "Thulam",
-        "Viruchigam",
-        "Dhanus",
-        "Magaram",
-        "Kumbam",
-        "Meenam"
-      ),
-      allowNull: false,
-    },
-    suryaGothram: {
+    gothram: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
@@ -338,9 +366,9 @@ horoscope.init(
   { sequelize: connection, freezeTableName: true }
 );
 
-class photoUpload extends Model {}
+class userPersonality extends Model {}
 
-photoUpload.init(
+userPersonality.init(
   {
     id: {
       type: DataTypes.BIGINT.UNSIGNED,
@@ -348,154 +376,8 @@ photoUpload.init(
       autoIncrement: true,
       allowNull: false,
     },
-    fatherName: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    photo1: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    photo2: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    photo3: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    idProof: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    horoscope: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-  },
-  { sequelize: connection, freezeTableName: true }
-);
-
-class educationAndProfession extends Model {}
-
-educationAndProfession.init(
-  {
-    id: {
-      type: DataTypes.BIGINT.UNSIGNED,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
-    },
-    educationalQualification: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    educationDetails: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    historyOfYourEducation: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    profession: {
-      type: DataTypes.ENUM(
-        "employee",
-        "business",
-        "student",
-        "not working",
-        "not mentioned"
-      ),
-      allowNull: false,
-    },
-    professionDetail: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    grossAnnualIncome: {
-      type: DataTypes.ENUM("$", "£", "€", "₹"),
-      allowNull: false,
-    },
-    annualIncomeInINR: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    actualCTC: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    stayingState: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    stayingCountry: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    stayingCity: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-  },
-  { sequelize: connection, freezeTableName: true }
-);
-
-class whislist extends Model {}
-
-whislist.init(
-  {
-    id: {
-      type: DataTypes.BIGINT.UNSIGNED,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
-    },
-    partnerId: {
-      type: DataTypes.INTEGER(255),
-      allowNull: false,
-    },
-    status: {
-      type: DataTypes.ENUM("active", "inactive", "terminated"),
-      allowNull: false,
-    },
-  },
-  { sequelize: connection, freezeTableName: true }
-);
-
-class subscription extends Model {}
-
-subscription.init(
-  {
-    id: {
-      type: DataTypes.BIGINT.UNSIGNED,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
-    },
-    name: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    durationFrom: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    durationTo: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-  },
-  { sequelize: connection, freezeTableName: true }
-);
-
-class personalDetails extends Model {}
-
-personalDetails.init(
-  {
-    id: {
-      type: DataTypes.BIGINT.UNSIGNED,
-      primaryKey: true,
-      autoIncrement: true,
+    userId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     height: {
@@ -514,6 +396,10 @@ personalDetails.init(
         "wheatish brownn",
         "dark"
       ),
+      allowNull: false,
+    },
+    bloodGroup: {
+      type: DataTypes.ENUM("A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"),
       allowNull: false,
     },
     bodyType: {
@@ -540,15 +426,204 @@ personalDetails.init(
   { sequelize: connection, freezeTableName: true }
 );
 
+class userDetails extends Model {}
+
+userDetails.init(
+  {
+    id: {
+      type: DataTypes.BIGINT.UNSIGNED,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.INTEGER(255),
+      allowNull: false,
+    },
+    maritalStatus: {
+      type: DataTypes.ENUM(
+        "never married",
+        "married",
+        "divorced",
+        "separated",
+        "widow/widower"
+      ),
+      allowNull: false,
+    },
+    profileCreatedBy: {
+      type: DataTypes.ENUM("friend", "self", "parent", "guardian", "sibling"),
+      allowNull: true,
+    },
+    whatsapp: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    referedBy: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    educationalQualification: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    religion: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    motherTongue: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    caste: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    profession: {
+      type: DataTypes.ENUM(
+        "employee",
+        "business",
+        "student",
+        "not working",
+        "not mentioned"
+      ),
+      allowNull: false,
+    },
+    professionDesignation: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    professionDesc: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    professionLocation: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    annualIncome: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+  },
+  { sequelize: connection, freezeTableName: true }
+);
+
+class whislist extends Model {}
+
+whislist.init(
+  {
+    id: {
+      type: DataTypes.BIGINT.UNSIGNED,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.INTEGER(255),
+      allowNull: false,
+    },
+    profileId: {
+      type: DataTypes.INTEGER(255),
+      allowNull: false,
+    },
+    status: {
+      type: DataTypes.ENUM("active", "inactive", "terminated"),
+      allowNull: false,
+    },
+  },
+  { sequelize: connection, freezeTableName: true }
+);
+
+class partnerPreference extends Model {}
+
+partnerPreference.init(
+  {
+    id: {
+      type: DataTypes.BIGINT.UNSIGNED,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    age: {
+      type: DataTypes.INTEGER(255),
+      allowNull: false,
+    },
+    height: {
+      type: DataTypes.INTEGER(255),
+      allowNull: false,
+    },
+    dhosam: {
+      type: DataTypes.STRING(225),
+      allowNull: false,
+    },
+    rahuKetu: {
+      type: DataTypes.STRING(225),
+      allowNull: false,
+    },
+    annualIncome: {
+      type: DataTypes.STRING(225),
+      allowNull: false,
+    },
+    foreignInterest: {
+      type: DataTypes.ENUM("yes", "no"),
+      allowNull: false,
+    },
+    maritalStatus: {
+      type: DataTypes.ENUM(
+        "never married",
+        "married",
+        "divorced",
+        "separated",
+        "widow/widower"
+      ),
+      allowNull: false,
+    },
+    status: {
+      type: DataTypes.ENUM("ACTIVE", "INACTIVE", "TERMINATED"),
+      allowNull: false,
+    },
+  },
+  { sequelize: connection, freezeTableName: true }
+);
+
+class userFollowing extends Model {}
+
+userFollowing.init(
+  {
+    id: {
+      type: DataTypes.BIGINT.UNSIGNED,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    following: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+  },
+  { sequelize: connection, freezeTableName: true }
+);
+
 export {
-  member,
-  referenceDetails,
-  payment,
+  user,
+  userAuthentication,
+  userDocs,
+  userMeta,
   myfamily,
+  userLogs,
+  payment,
   horoscope,
-  photoUpload,
-  educationAndProfession,
+  userPersonality,
+  userDetails,
   whislist,
-  subscription,
-  personalDetails,
+  partnerPreference,
+  userFollowing,
 };

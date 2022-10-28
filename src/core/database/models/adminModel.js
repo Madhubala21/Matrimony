@@ -12,10 +12,6 @@ admin.init(
       autoIncrement: true,
       allowNull: false,
     },
-    code: {
-      type: DataTypes.INTEGER(10),
-      allowNull: true,
-    },
     username: {
       type: DataTypes.STRING(255),
       allowNull: true,
@@ -38,7 +34,7 @@ admin.init(
       allowNull: false,
       defaultValue: "inactive",
     },
-    type: {
+    adminType: {
       type: DataTypes.ENUM("ROOT", "USER"),
       allowNull: false,
       unique: true,
@@ -58,10 +54,6 @@ adminAuthentication.init(
       autoIncrement: true,
       allowNull: false,
     },
-    uid: {
-      type: DataTypes.INTEGER(10),
-      allowNull: false,
-    },
     token: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -71,10 +63,6 @@ adminAuthentication.init(
       allowNull: false,
     },
     userAgent: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    latLong: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
@@ -97,29 +85,19 @@ banner.init(
       autoIncrement: true,
       allowNull: false,
     },
-    bannerImage: {
+    link: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    // bannerText: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: false,
-    // },
-    bannerType: {
+    image: {
       type: DataTypes.ENUM("offer", "normal", "festival"),
       allowNull: false,
       defaultValue: "normal",
     },
-    // bannerFor: {
-    //   type: DataTypes.ENUM("category", "product"),
-    //   allowNull: false,
-    //   defaultValue: "category",
-    // },
-    // productOrCategoryId: {
-    //   type: DataTypes.BIGINT.UNSIGNED,
-    //   allowNull: true,
-    //   defaultValue: 0
-    // },
+    description: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
     status: {
       type: DataTypes.ENUM("active", "inactive"),
       allowNull: false,
@@ -153,22 +131,18 @@ config.init(
       defaultValue:
         "https://ik.imagekit.io/lokki/Avatar/placeholder_XFzrDmSml.png?updatedAt=1638958916450",
     },
-    shippingFee: {
-      type: DataTypes.BIGINT.UNSIGNED,
-      allowNull: false,
-    },
-    messagingId: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
+    // messagingId: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: false,
+    // },
     messagingKey: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    paymentEnvironment: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
+    // paymentEnvironment: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: false,
+    // },
     paymentGatewayId: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -206,4 +180,87 @@ config.init(
   { sequelize: connection, freezeTableName: true }
 );
 
-export { admin, banner, config, adminAuthentication };
+class successStories extends Model {}
+
+successStories.init(
+  {
+    id: {
+      type: DataTypes.BIGINT.UNSIGNED,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    title: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    image: {
+      type: DataTypes.ENUM("offer", "normal", "festival"),
+      allowNull: false,
+      defaultValue: "normal",
+    },
+  },
+  { sequelize: connection, freezeTableName: true }
+);
+
+class subscription extends Model {}
+
+subscription.init(
+  {
+    id: {
+      type: DataTypes.BIGINT.UNSIGNED,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    name: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    durationFrom: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    durationTo: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  { sequelize: connection, freezeTableName: true }
+);
+
+class pushMessaging extends Model {}
+
+pushMessaging.init(
+  {
+    id: {
+      type: DataTypes.BIGINT.UNSIGNED,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    title: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  { sequelize: connection, freezeTableName: true }
+);
+
+export {
+  admin,
+  banner,
+  config,
+  adminAuthentication,
+  successStories,
+  subscription,
+  pushMessaging,
+};

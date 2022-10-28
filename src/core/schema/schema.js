@@ -30,7 +30,9 @@ const adminAuth = {
       Id: {
         $ref: "defs#/definitions/adminAuth/Id",
       },
-      $ref: "defs#/definitions/adminAuth/adminId",
+    },
+    token: {
+      $ref: "defs#/definitions/adminAuth/token",
     },
     ipv4: {
       $ref: "defs#/definitions/adminAuth/ipv4",
@@ -509,6 +511,9 @@ const banners = {
     description: {
       $ref: "defs#/defintions/banners/description",
     },
+    status: {
+      $ref: "defs#/defintions/banners/status",
+    },
   },
 };
 
@@ -574,7 +579,17 @@ export const UserCreate = {
     profileType: User.properties.profileType,
     membershipType: User.properties.membershipType,
   },
-  required: ["email", "password", "phone"],
+  required: [
+    "userName",
+    "email",
+    "password",
+    "phone",
+    "dob",
+    "gender",
+    "images",
+    "profileType",
+    "membershipType",
+  ],
 };
 
 export const appConfigCreate = {
@@ -619,4 +634,264 @@ export const ReviewsCreate = {
     // status: Reviews.properties.status,
   },
   required: ["reviewId", "customerId", "productId", "rating", "review"],
+};
+
+export const userDocsCreate = {
+  type: "object",
+  $id: "userDocsCreate",
+  additionalProperties: false,
+  properties: {
+    userId: userDocs.properties.userId,
+    aadhar: userDocs.properties.aadhar,
+    educationDetails: userDocs.properties.educationDetails,
+    horoscope: userDocs.properties.horoscope,
+  },
+  required: ["userId", "aadhar", "educationDetails", "horoscope"],
+};
+
+export const userMetaCreate = {
+  type: "object",
+  $id: "userMetaCreate",
+  additionalProperties: false,
+  properties: {
+    userId: userMeta.properties.userId,
+    profileVisits: userMeta.properties.profileVisits,
+    subscriptionId: userMeta.properties.subscriptionId,
+    profileType: userMeta.properties.profileType,
+    profileLikes: userMeta.properties.profileLikes,
+  },
+  required: [
+    "userId",
+    "profileVisits",
+    "subscriptionId",
+    "profileType",
+    "profileLikes",
+  ],
+};
+
+export const userPersonalityCreate = {
+  type: "object",
+  $id: "userPersonalityCreate",
+  additionalProperties: false,
+  properties: {
+    userId: userPersonality.properties.userId,
+    height: userPersonality.properties.height,
+    weight: userPersonality.properties.weight,
+    complexion: userPersonality.properties.complexion,
+    bloodGroup: userPersonality.properties.bloodGroup,
+    bodyType: userPersonality.properties.bodyType,
+    physicalStatus: userPersonality.properties.physicalStatus,
+    eyeWear: userPersonality.properties.eyeWear,
+    hobbies: userPersonality.properties.hobbies,
+    aboutMySelf: userPersonality.properties.aboutMySelf,
+  },
+  required: [
+    "userId",
+    "height",
+    "weight",
+    "complexion",
+    "bloodGroup",
+    "bodyType",
+    "physicalStatus",
+    "eyeWear",
+    "hobbies",
+    "aboutMySelf",
+  ],
+};
+
+export const myfamilyCreate = {
+  type: "object",
+  $id: "myfamilyCreate",
+  additionalProperties: false,
+  properties: {
+    userId: myfamily.properties.userId,
+    fatherName: myfamily.properties.fatherName,
+    motherName: myfamily.properties.motherName,
+    fatherAlive: myfamily.properties.fatherAlive,
+    motherAlive: myfamily.properties.motherAlive,
+    fatherOccupation: myfamily.properties.fatherOccupation,
+    motherOccupation: myfamily.properties.motherOccupation,
+    familyType: myfamily.properties.familyType,
+    siblingDetails: myfamily.properties.siblingDetails,
+    financialStatus: myfamily.properties.financialStatus,
+    propertyValues: myfamily.properties.propertyValues,
+  },
+  required: [
+    "userId",
+    "fatherName",
+    "motherName",
+    "fatherAlive",
+    "motherAlive",
+    "fatherOccupation",
+    "motherOccupation",
+    "familyType",
+    "siblingDetails",
+    "financialStatus",
+    "propertyValues",
+  ],
+};
+
+export const userLogsCreate = {
+  type: "object",
+  $id: "userLogsCreate",
+  additionalProperties: false,
+  properties: {
+    userId: userLogs.properties.userId,
+    logDescription: userLogs.properties.logDescription,
+  },
+  required: ["userId", "logDescription"],
+};
+
+export const horoscopeCreate = {
+  type: "object",
+  $id: "horoscopeCreate",
+  additionalProperties: false,
+  properties: {
+    userId: horoscope.properties.userId,
+    timeOfBirth: horoscope.properties.timeOfBirth,
+    placeOfBirth: horoscope.properties.placeOfBirth,
+    zodiacStar: horoscope.properties.zodiacStar,
+    zodiacSign: horoscope.properties.zodiacSign,
+    gothram: horoscope.properties.gothram,
+    padham: horoscope.properties.padham,
+    selectLagnam: horoscope.properties.selectLagnam,
+    madhulam: horoscope.properties.madhulam,
+  },
+  required: [
+    "userId",
+    "timeOfBirth",
+    "placeOfBirth",
+    "zodiacStar",
+    "zodiacSign",
+    "gothram",
+    "padham",
+    "selectLagnam",
+    "madhulam",
+  ],
+};
+
+export const userDetailsCreate = {
+  type: "object",
+  $id: "userDetailsCreate",
+  additionalProperties: false,
+  properties: {
+    userId: userDetails.properties.userId,
+    maritalStatus: userDetails.properties.maritalStatus,
+    profileCreatedBy: userDetails.properties.profileCreatedBy,
+    whatsapp: userDetails.properties.whatsapp,
+    referedBy: userDetails.properties.referedBy,
+    educationalQualification: userDetails.properties.educationalQualification,
+    religion: userDetails.properties.religion,
+    motherTongue: userDetails.properties.motherTongue,
+    caste: userDetails.properties.caste,
+    profession: userDetails.properties.profession,
+    professionDesignation: userDetails.properties.professionDesignation,
+    professionDesc: userDetails.properties.professionDesc,
+    professionLocation: userDetails.properties.professionLocation,
+    annualIncome: userDetails.properties.annualIncome,
+  },
+  required: [
+    "userId",
+    "maritalStatus",
+    "profileCreatedBy",
+    "whatsapp",
+    "referedby",
+    "educationalQualification",
+    "religion",
+    "motherTongue",
+    "caste",
+    "profession",
+    "professionDesignation",
+    "professionDesc",
+    "professionLocation",
+    "annualIncome",
+  ],
+};
+
+export const whislistCreate = {
+  type: "object",
+  $id: "whislistCreate",
+  additionalProperties: false,
+  properties: {
+    userId: whislist.properties.userId,
+    profileId: whislist.properties.profileId,
+    status: whislist.properties.status,
+  },
+  required: ["userId", "profileId", "status"],
+};
+
+export const subscriptionCreate = {
+  type: "object",
+  $id: "subscriptionCreate",
+  additionalProperties: false,
+  properties: {
+    name: subscription.properties.name,
+    durationFrom: subscription.properties.durationFrom,
+    durationTo: subscription.properties.durationTo,
+  },
+  required: ["name", "durationFrom", "durationTo"],
+};
+
+export const partnerPreferenceCreate = {
+  type: "object",
+  $id: "partnerPreferenceCreate",
+  additionalProperties: false,
+  properties: {
+    userId: partnerPreference.properties.userId,
+    age: partnerPreference.properties.age,
+    height: partnerPreference.properties.height,
+    dhosam: partnerPreference.properties.dhosam,
+    rahuKetu: partnerPreference.properties.rahuKetu,
+    annualIncome: partnerPreference.properties.annualIncome,
+    foreigninterest: partnerPreference.properties.foreigninterest,
+    maritalStatus: partnerPreference.properties.maritalStatus,
+    status: partnerPreference.properties.status,
+  },
+  required: [
+    "userId",
+    "age",
+    "height",
+    "dhosam",
+    "rahuKetu",
+    "annualIncome",
+    "foreigninterest",
+    "maritalStatus",
+    "status",
+  ],
+};
+
+export const userFollowingCreate = {
+  type: "object",
+  $id: "userFollowingCreate",
+  additionalProperties: false,
+  properties: {
+    userId: userFollowing.properties.userId,
+    following: userFollowing.properties.following,
+  },
+  required: ["userId", "following"],
+};
+
+export const pushMessagingCreate = {
+  type: "object",
+  $id: "pushMessagingCreate",
+  additionalProperties: false,
+  properties: {
+    title: pushMessaging.properties.title,
+    image: pushMessaging.properties.image,
+    description: pushMessaging.properties.description,
+  },
+  required: ["title", "image", "description"],
+};
+
+export const bannersCreate = {
+  type: "object",
+  $id: "bannersCreate",
+  additionalProperties: false,
+  properties: {
+    link: banners.properties.link,
+    image: banners.properties.image,
+    description: banners.properties.description,
+    status: banners.properties.status,
+  },
+  required: ["link", "image", "description", "status"],
 };

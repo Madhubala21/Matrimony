@@ -474,12 +474,14 @@ userDbController.Wishlist = {
 userDbController.Profile = {
   fetchProfile: async () => {
     try {
-      return await userDbController.Models.faq.findAll({
+      return await userDbController.Models.member.findOne({
         where: {
-          status: "active",
+          id: token.id,
         },
         raw: true,
-        attributes: ["title", "answer"],
+        attributes: {
+          exclude: ["password", "createdAt", "updatedAt"],
+        },
       });
     } catch (error) {
       throw Error.InternalError();
@@ -489,26 +491,15 @@ userDbController.Profile = {
   addProfile: async () => {
     try {
       return await userDbController.Models.member.create({
-        companyName: data.companyName,
-        gender: data.gender,
-        placeOfBirth: data.placeOfBirth,
-        profileCreatedBy: data.profileCreatedBy,
-        mobile: data.mobile,
-        mobile2: data.mobile2,
-        address: data.address,
-        country: data.country,
-        state: data.state,
-        pincode: data.pincode,
-        password: data.password,
-        dob: data.dob,
-        timeOfBirth: data.timeOfBirth,
-        religion: data.religion,
-        motherTongue: data.motherTongue,
-        maritalStatus: data.maritalStatus,
-        whatsapp: data.whatsapp,
+        userName: data.userName,
         email: data.email,
-        city: data.city,
-        referedBy: data.referedBy,
+        password: data.password,
+        phone: data.phone,
+        dob: data.dob,
+        gender: data.gender,
+        images: data.images,
+        profileType: data.profileType,
+        membershipType: data.membershipType,
       });
     } catch (error) {
       throw Error.InternalError();
@@ -517,21 +508,16 @@ userDbController.Profile = {
 
   updateProfile: async (data) => {
     try {
-      return await userDbController.Models.product.findAll({
-        where: {
-          status: "active",
+      return await userDbController.Models.member.update(
+        {
+          images: data.images,
         },
-        attributes: [
-          "id",
-          "categoryId",
-          "categoryName",
-          "productImage",
-          "productName",
-          "productDescription",
-          "availableLocations",
-        ],
-        raw: true,
-      });
+        {
+          where: {
+            status: "active",
+          },
+        }
+      );
     } catch (error) {
       throw Error.InternalError();
     }

@@ -1,6 +1,7 @@
 {
   "$id": "defs",
   "definitions": {
+    
     "Admin": {
       "adminId": {
         "type": "integer",
@@ -42,9 +43,9 @@
         "type": "integer",
         "title": "Id"
       },
-      "adminId": {
-        "type": "integer",
-        "title": "adminId"
+      "token": {
+        "type": "string",
+        "title": "token"
       },
       "ipv4": {
         "type": "string",
@@ -131,6 +132,70 @@
         "enum": ["active", "inactive", "terminated"]
       }
     },
+
+    "pushMessaging":{
+      "Id":{
+        "type":"integer",
+        "title":"id"
+      },
+      "title":{
+        "type":"integer",
+        "title":"title"
+      },
+      "image":{
+         "type":"integer",
+         "title":"image"
+      },
+      "description":{
+        "type":"string",
+        "title":"description"
+      }
+    },
+
+    "banners":{
+      "Id":{
+        "type":"integer",
+        "title":"id"
+      },
+      "link":{
+        "type":"integer",
+        "title":"link"
+      },
+      "image":{
+         "type":"integer",
+         "title":"image"
+      },
+      "description":{
+        "type":"string",
+        "title":"description"
+      },
+       "status":{
+        "type":"string",
+        "title":"status",
+        "enum":["active","inactive","terminated"]
+      }
+    },
+
+    "subscription":{
+      "Id":{
+        "type":"integer",
+        "title":"id"
+      },
+      "name":{
+        "type":"string",
+        "title":"name"
+      },
+      "durationFrom":{
+        "type":"string",
+        "title":"durationFrom"
+      },
+      "durationTo":{
+        "type":"string",
+        "title":"durationTo"
+      }
+    },
+
+
 
     "user":{
         "Id": {
@@ -305,7 +370,7 @@
         "type":"integer",
         "title":"id"
       },
-        "userId":{
+      "userId":{
         "type":"integer",
         "title":"userId"
       },
@@ -371,7 +436,7 @@
     },
 
     "payment":{
-      "paymentId":{
+      "Id":{
         "type":"integer",
         "title":"id"
       },
@@ -411,17 +476,17 @@
           "type":"string",
           "title":"place"
         },
-        "zodiacStar":{
-          "type":"varchar",
-          "title":"star",
-          "enum":["Ashwini","Barani","Karthikai","Roshini","Mirugasiridam","Thiruvadhirai","Punarpoosam","Poosam","Ayilyam","Magam","Pooram","Uthiram","Astham","Chithirai","Swathi","Visagam","Anusham","Kettai","Mulam","Puradam","Uthiradam","Thiruvonam","Avittam","Sadayam","Purattadhi","Uttrttadhi","Revathi"]      
-        },
         "zodiacSign":{
           "type":"string",
           "title":"rasi",
           "enum":[ "Mesham","Rishabam","Midhunam","Kadagam","Simmam","Kanni","Thulam","Viruchigam","Dhanus","Magaram","Kumbam","Meenam"]
         },
-        "gothram":{
+        "zodiacStar":{
+          "type":"varchar",
+          "title":"star",
+          "enum":["Ashwini","Barani","Karthikai","Roshini","Mirugasiridam","Thiruvadhirai","Punarpoosam","Poosam","Ayilyam","Magam","Pooram","Uthiram","Astham","Chithirai","Swathi","Visagam","Anusham","Kettai","Mulam","Puradam","Uthiradam","Thiruvonam","Avittam","Sadayam","Purattadhi","Uttrttadhi","Revathi"]      
+        },
+       "gothram":{
           "type":"string",
           "title":"gothram"
         },
@@ -461,7 +526,7 @@
         "enum":["friend","self","parent","guardian","sibling"]
       },
       "whatsapp":{
-          "type":"number",
+          "type":"string",
           "title":"whatsapp"
       },
       "referedBy":{
@@ -502,7 +567,7 @@
         "title":"location"
       },
       "annualIncome":{
-        "type":"integer",
+        "type":"string",
         "title":"income"
       }
     },
@@ -524,25 +589,6 @@
         "type":"string",
         "title":"status",
         "enum":["active","inactive","terminated"]
-      }
-    },
-
-    "subscription":{
-      "subscriptionId":{
-        "type":"integer",
-        "title":"id"
-      },
-      "name":{
-        "type":"string",
-        "title":"name"
-      },
-      "durationFrom":{
-        "type":"string",
-        "title":"durationFrom"
-      },
-      "durationTo":{
-        "type":"string",
-        "title":"durationTo"
       }
     },
     
@@ -568,7 +614,7 @@
          "title":"dhosam"
       },
        "rahuKetu":{
-         "type":"integer",
+         "type":"string",
          "title":"rahuKetu"
       },
        "annualIncome":{
@@ -588,7 +634,7 @@
       "status":{
         "type":"string",
         "title":"status",
-        "enum":["active","inactive","terminated"]
+        "enum":["ACTIVE","INACTIVE","TERMINATED"]
       }
     },
  
@@ -605,46 +651,9 @@
          "type":"integer",
          "title":"following"
       }
-    },
-
-    "pushMessaging":{
-      "Id":{
-        "type":"integer",
-        "title":"id"
-      },
-      "title":{
-        "type":"integer",
-        "title":"title"
-      },
-      "image":{
-         "type":"integer",
-         "title":"image"
-      },
-      "description":{
-        "type":"string",
-        "title":"description"
-      }
-    },
-
-    "banners":{
-      "Id":{
-        "type":"integer",
-        "title":"id"
-      },
-      "link":{
-        "type":"integer",
-        "title":"link"
-      },
-      "image":{
-         "type":"integer",
-         "title":"image"
-      },
-      "description":{
-        "type":"string",
-        "title":"description"
-      }
     }
 
+ 
    
   }
 
