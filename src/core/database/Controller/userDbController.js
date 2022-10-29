@@ -506,7 +506,7 @@ userDbController.Profile = {
     }
   },
 
-  updateProfile: async (data) => {
+  updateProfile: async (data, token) => {
     try {
       return await userDbController.Models.member.update(
         {
@@ -514,6 +514,7 @@ userDbController.Profile = {
         },
         {
           where: {
+            id: token.id,
             status: "active",
           },
         }

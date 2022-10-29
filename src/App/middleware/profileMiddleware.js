@@ -32,8 +32,8 @@ profileMiddleware.profile = {
     }
   },
 
-  updateProfile: async () => {
-    const fetched = await userDbController.Profile.updateProfile();
+  updateProfile: async (data, token) => {
+    const fetched = await userDbController.Profile.updateProfile(data, token);
     if (
       fetched != null &&
       fetched != undefined &&
