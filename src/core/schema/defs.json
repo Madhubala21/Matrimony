@@ -19,8 +19,7 @@
       },
       "phone": {
         "type": "string",
-        "title": "Contact",
-        "format":" phoneNumber"
+        "title": "Contact"
       },
       "password": {
         "type": "string",
@@ -59,21 +58,6 @@
         "type": "string",
         "title": "Account Status",
         "enum": ["active", "inactive", "terminated"]
-      }
-    },
-
-    "successStories": {
-      "Id": {
-        "type": "integer",
-        "title": "Id"
-      },
-      "title": {
-        "type": "string",
-        "title": "title"
-      },
-      "image": {
-        "type": "string",
-        "title": "image"
       }
     },
 
@@ -133,41 +117,53 @@
       }
     },
 
+      "successStories":{
+      "Id":{
+        "type":"integer",
+        "title":"id"
+      },
+      "titlee":{
+        "type":"string",
+        "title":"title"
+      },
+      "image":{
+         "type":"string",
+         "title":"image"
+      }     
+    },
+
     "pushMessaging":{
       "Id":{
         "type":"integer",
         "title":"id"
       },
-      "title":{
-        "type":"integer",
-        "title":"title"
+      "titlee":{
+        "type":"string"
       },
       "image":{
-         "type":"integer",
+         "type":"string",
          "title":"image"
       },
-      "description":{
-        "type":"string",
-        "title":"description"
+      "desc":{
+        "type":"string"
       }
     },
 
-    "banners":{
+    "banner":{
       "Id":{
         "type":"integer",
         "title":"id"
       },
       "link":{
-        "type":"integer",
+        "type":"string",
         "title":"link"
       },
       "image":{
-         "type":"integer",
+         "type":"string",
          "title":"image"
       },
-      "description":{
-        "type":"string",
-        "title":"description"
+      "desc":{
+        "type":"string"
       },
        "status":{
         "type":"string",

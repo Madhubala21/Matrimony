@@ -15,7 +15,7 @@ authMiddleware.Admin = {
     device.latLong = JSON.stringify(body.latLong);
     const passwordSecret = configs.passwordSecret;
     const userFound = await adminDbController.Auth.checkAdminExistsLogin(body);
-
+    console.log(userFound);
     if (
       userFound === null ||
       userFound === undefined ||
@@ -27,9 +27,12 @@ authMiddleware.Admin = {
       throw Error.AuthenticationFailed("Terminated");
     } else if (userFound.status === "inactive") {
       throw Error.AuthenticationFailed("Account InActive");
-    } else if (userFound.type === "USER") {
+    } else if (userFound.adminType === "USER") {
       throw Error.AuthenticationFailed("Account InActive");
-    } else if (userFound.status === "active" && userFound.type === "ROOT") {
+    } else if (
+      userFound.status === "active" &&
+      userFound.adminType === "ROOT"
+    ) {
       try {
         //decrypt password
         const plain = await CryptoJS.AES.decrypt(
@@ -126,6 +129,7 @@ authMiddleware.Admin = {
   },
   adminRegister: async ({ body }) => {
     const passwordSecret = configs.passwordSecret;
+    console.log("hi", passwordSecret);
     const accoundFound = await adminDbController.Auth.checkAdminExistsRegister(
       body
     );

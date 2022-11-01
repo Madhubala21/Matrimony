@@ -30,12 +30,12 @@ export const production = {
   },
 };
 
-
 export const defaultdata = {
   configuration: {
-    baseUrl: "https://api.bioforhealth.in",
-    hostEmail: "mail.bioforhealth.in",
-    placeholder: "https://ik.imagekit.io/lokki/Avatar/placeholder_XFzrDmSml.png?updatedAt=1638958916450",
+    baseUrl: "https://api.VVkMatrimony.in",
+    hostEmail: "mail.VVkMatrimony.in",
+    placeholder:
+      "https://ik.imagekit.io/lokki/Avatar/placeholder_XFzrDmSml.png?updatedAt=1638958916450",
     shippingFee: 40,
     messagingId: "null",
     messagingKey: "null",
@@ -55,6 +55,6 @@ export const defaultdata = {
     phone: "+919876789098",
     password: "U2FsdGVkX19JbO8UmNaMnVdii4pBMdkF2YGSsZsEcf0=",
     status: "active",
-    type: "ROOT"
+    type: "ROOT",
   },
-}
+};

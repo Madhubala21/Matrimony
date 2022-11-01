@@ -33,17 +33,19 @@ adminDbController.Auth = {
     }
   },
   checkAdminExistsLogin: async (data) => {
+    console.log(data);
     try {
       return await adminDbController.Models.admin.findOne({
         where: {
-          [Op.or]: {
-            email: data.userName || null,
-            phone: data.userName || null,
-          },
+          // [Op.or]: {
+          email: data.email || null,
+          // password: data.password,
+          // },
         },
         raw: true,
       });
     } catch (error) {
+      console.log(error);
       throw Error.SomethingWentWrong();
     }
   },
@@ -228,9 +230,11 @@ adminDbController.Auth = {
 
 adminDbController.Admin = {
   createAdmin: async (data) => {
+    console.log(data);
     try {
       return await adminDbController.Models.admin.create(
         {
+          username: data.username,
           email: data.email,
           phone: data.phone,
           password: data.password,

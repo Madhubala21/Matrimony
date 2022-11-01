@@ -86,7 +86,7 @@ banner.init(
       allowNull: false,
     },
     link: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     image: {
@@ -118,21 +118,21 @@ config.init(
       allowNull: false,
     },
     baseUrl: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     hostEmail: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     placeholder: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
       defaultValue:
         "https://ik.imagekit.io/lokki/Avatar/placeholder_XFzrDmSml.png?updatedAt=1638958916450",
     },
     // messagingId: {
-    //   type: DataTypes.TEXT,
+    //   type: DataTypes.STRING,
     //   allowNull: false,
     // },
     messagingKey: {
@@ -191,13 +191,12 @@ successStories.init(
       allowNull: false,
     },
     title: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     image: {
-      type: DataTypes.ENUM("offer", "normal", "festival"),
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: "normal",
     },
   },
   { sequelize: connection, freezeTableName: true }
@@ -214,7 +213,7 @@ subscription.init(
       allowNull: false,
     },
     name: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     durationFrom: {
@@ -240,7 +239,7 @@ pushMessaging.init(
       allowNull: false,
     },
     title: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     image: {

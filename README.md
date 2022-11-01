@@ -4,7 +4,7 @@
 </div>
 
 <div>
-<h1>BioForHealth - By NUTZ</h1>
+<h1>VVK Matrimony - By NUTZ</h1>
 </div>
 
 <!-- <li> -->
@@ -12,21 +12,16 @@
 <!-- </li> -->
 </ul>
 
-
 <h1>Dev Stack</h1>
 
-*  Security    : JWT
-*  Encryption  : Bcrypt,Crypto
-*  ORM         : Sequelize
-*  Database    : MySQL
-*  Validation  : AJV
-*  ImageUpload : Multer
-*  Mailer      : SendMail
-*  ViewEngine  : ExpressJs
-*  Errors      : err-code
-*  VersionControl : Git
-*  Payment Gateway : Stripe 
-
-
-
- 
+- Security : JWT
+- Encryption : Bcrypt,Crypto
+- ORM : Sequelize
+- Database : MySQL
+- Validation : AJV
+- ImageUpload : Multer
+- Mailer : SendMail
+- ViewEngine : ExpressJs
+- Errors : err-code
+- VersionControl : Git
+- Payment Gateway : Stripe

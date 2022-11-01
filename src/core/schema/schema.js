@@ -46,20 +46,6 @@ const adminAuth = {
   },
 };
 
-const successStories = {
-  properties: {
-    Id: {
-      $ref: "defs#/definitions/successStories/Id",
-    },
-    title: {
-      $ref: "defs#/definitions/successStories/title",
-    },
-    image: {
-      $ref: "defs#/definitions/successStories/image",
-    },
-  },
-};
-
 const appConfig = {
   properties: {
     configId: {
@@ -397,6 +383,20 @@ const userDetails = {
   },
 };
 
+const successStories = {
+  properties: {
+    Id: {
+      $ref: "defs#/defintions/successStories/Id",
+    },
+    titlee: {
+      $ref: "defs#/defintions/successStories/titlee",
+    },
+    image: {
+      $ref: "defs#/defintions/successStories/image",
+    },
+  },
+};
+
 const whislist = {
   properties: {
     Id: {
@@ -486,33 +486,33 @@ const pushMessaging = {
       $ref: "defs#/defintions/pushMessaging/Id",
     },
     title: {
-      $ref: "defs#/defintions/pushMessaging/title",
+      $ref: "defs#/defintions/pushMessaging/titlee",
     },
     image: {
       $ref: "defs#/defintions/pushMessaging/image",
     },
     description: {
-      $ref: "defs#/defintions/pushMessaging/description",
+      $ref: "defs#/defintions/pushMessaging/desc",
     },
   },
 };
 
-const banners = {
+const banner = {
   properties: {
     Id: {
-      $ref: "defs#/defintions/banners/Id",
+      $ref: "defs#/defintions/banner/Id",
     },
     link: {
-      $ref: "defs#/defintions/banners/link",
+      $ref: "defs#/defintions/banner/link",
     },
     image: {
-      $ref: "defs#/defintions/banners/image",
+      $ref: "defs#/defintions/banner/image",
     },
     description: {
-      $ref: "defs#/defintions/banners/description",
+      $ref: "defs#/defintions/banner/desc",
     },
     status: {
-      $ref: "defs#/defintions/banners/status",
+      $ref: "defs#/defintions/banner/status",
     },
   },
 };
@@ -522,8 +522,8 @@ export const userLogin = {
   $id: "userLogin",
   additionalProperties: false,
   properties: {
-    email: Customer.properties.email,
-    password: Customer.properties.password,
+    email: User.properties.email,
+    password: User.properties.password,
   },
   required: ["email", "password"],
 };
@@ -533,9 +533,8 @@ export const sendEmail = {
   $id: "sendEmail",
   additionalProperties: false,
   properties: {
-    email: Customer.properties.email,
-    code: Customer.properties.code,
-    password: Customer.properties.password,
+    email: User.properties.email,
+    password: User.properties.password,
   },
   required: ["email", "password"],
 };
@@ -545,9 +544,8 @@ export const verifyLogin = {
   $id: "verifyLogin",
   additionalProperties: false,
   properties: {
-    email: Customer.properties.email,
-    code: Customer.properties.code,
-    password: Customer.properties.password,
+    email: User.properties.email,
+    password: User.properties.password,
   },
   required: ["email", "password"],
 };
@@ -557,11 +555,23 @@ export const AdminCreate = {
   $id: "AdminCreate",
   additionalProperties: false,
   properties: {
+    username: Admin.properties.username,
     email: Admin.properties.email,
     password: Admin.properties.password,
     phone: Admin.properties.phone,
   },
   required: ["email", "password", "phone"],
+};
+
+export const successStoriesCreate = {
+  type: "object",
+  $id: "successStoriesCreate",
+  additionalProperties: false,
+  properties: {
+    titlee: successStories.properties.titlee,
+    image: successStories.properties.image,
+  },
+  required: ["titlee", "image"],
 };
 
 export const UserCreate = {
@@ -620,21 +630,21 @@ export const appConfigCreate = {
   ],
 };
 
-export const ReviewsCreate = {
-  type: "object",
-  $id: "ReviewsCreate",
-  additionalProperties: false,
-  properties: {
-    reviewId: Reviews.properties.reviewId,
-    customerId: Reviews.properties.customerId,
-    productId: Reviews.properties.productId,
-    rating: Reviews.properties.rating,
-    review: Reviews.properties.review,
-    // arrayOfImages: Reviews.properties.arrayOfImages,
-    // status: Reviews.properties.status,
-  },
-  required: ["reviewId", "customerId", "productId", "rating", "review"],
-};
+// export const ReviewsCreate = {
+//   type: "object",
+//   $id: "ReviewsCreate",
+//   additionalProperties: false,
+//   properties: {
+//     reviewId: Reviews.properties.reviewId,
+//     customerId: Reviews.properties.customerId,
+//     productId: Reviews.properties.productId,
+//     rating: Reviews.properties.rating,
+//     review: Reviews.properties.review,
+//     // arrayOfImages: Reviews.properties.arrayOfImages,
+//     // status: Reviews.properties.status,
+//   },
+//   required: ["reviewId", "customerId", "productId", "rating", "review"],
+// };
 
 export const userDocsCreate = {
   type: "object",
@@ -883,15 +893,15 @@ export const pushMessagingCreate = {
   required: ["title", "image", "description"],
 };
 
-export const bannersCreate = {
+export const bannerCreate = {
   type: "object",
   $id: "bannersCreate",
   additionalProperties: false,
   properties: {
-    link: banners.properties.link,
-    image: banners.properties.image,
-    description: banners.properties.description,
-    status: banners.properties.status,
+    link: banner.properties.link,
+    image: banner.properties.image,
+    description: banner.properties.description,
+    status: banner.properties.status,
   },
   required: ["link", "image", "description", "status"],
 };
