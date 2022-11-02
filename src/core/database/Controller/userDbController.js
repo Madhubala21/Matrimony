@@ -475,7 +475,7 @@ userDbController.Wishlist = {
 userDbController.Profile = {
   fetchProfile: async (token) => {
     try {
-      return await userDbController.Models.user.findOne({
+      const profile = await userDbController.Models.user.findOne({
         where: {
           id: token,
         },
@@ -484,6 +484,10 @@ userDbController.Profile = {
           exclude: ["password", "createdAt", "updatedAt"],
         },
       });
+      console.log(profile);
+      let image = await JSON.parse(profile.images);
+      profile.images = image;
+      return profile;
     } catch (error) {
       console.log(error);
       throw Error.InternalError();
@@ -495,7 +499,6 @@ userDbController.Profile = {
       return await userDbController.Models.user.findOne({
         where: {
           email: data.email,
-          password: data.password,
         },
       });
     } catch (error) {

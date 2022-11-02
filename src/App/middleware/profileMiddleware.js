@@ -23,8 +23,6 @@ profileMiddleware.profile = {
 
   createProfile: async ({ body, image }) => {
     // let body = data.body;
-    console.log(body);
-    console.log("image", image);
     const passwordSecret = configs.passwordSecret;
     const checkUser = await userDbController.Profile.checkUser(body);
     if (
@@ -40,7 +38,6 @@ profileMiddleware.profile = {
       ).toString();
 
       const validated = await PayloadCompiler.compile(body, "UserCreate");
-      console.log(validated.data);
       const fetched = await userDbController.Profile.addProfile(
         validated.data,
         image
@@ -66,8 +63,15 @@ profileMiddleware.profile = {
       checkUser != undefined &&
       Object.keys(checkUser).length != 0
     ) {
-      const fetched = await userDbController.Profile.updateProfile(body, token);
-      return fetched;
+      if (checkUser.userName == body.username) {
+        return "Already updated";
+      } else {
+        const fetched = await userDbController.Profile.updateProfile(
+          body,
+          token
+        );
+        return fetched;
+      }
     } else {
       return "User not found";
     }
