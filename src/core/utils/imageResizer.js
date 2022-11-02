@@ -35,9 +35,10 @@ const upload = multer({
   },
 });
 function checkFileType(file, callback) {
-
   const filetypes = /jpg|jpeg|png/;
-  const extname = filetypes.test(path.extname(file.originalname)?.toLowerCase());
+  const extname = filetypes.test(
+    path.extname(file.originalname)?.toLowerCase()
+  );
   const mimetype = filetypes.test(file.mimetype);
 
   if (mimetype || extname) {
@@ -48,31 +49,46 @@ function checkFileType(file, callback) {
 }
 
 export const Resizer = async (req, res, next) => {
-  upload.single("image")(req, res, async function (error) {
-    if (error) {
-      return res.status(400).json({
-        Error: error,
-      });
-    } else {
-      req.image = req?.file?.path || null;
-      if (req.image) {
-        const ext = path.extname(req?.file?.originalname)?.toLowerCase();
-        let imagename = process.env.APP_NAME + Date.now() + ext;
-        let compressedImage = path.join(__dirname, "/src/core/images/", imagename);
-        await sharp(req.image).resize(500).png({
-          quality: 80,
-          chromaSubsampling: "4:4:4",
-        }).toFile(compressedImage);
-        const fileCreated = fs.existsSync(path.join(__dirname, "/src/core/images/", imagename));
-        if (fileCreated) {
-          req.image = "/images/" + imagename;
-        } else {
-          return "Failed to upload the image";
-        }
+  upload.array("image")(
+    req,
+    res,
+    async function (
+      error //upload.array('image'), (req, res, next)=>
+    ) {
+      if (error) {
+        return res.status(400).json({
+          Error: error,
+        });
+      } else {
+        var image_path = [];
+        req.files.map(async (v) => {
+          req.image = v?.path ?? null;
+          if (req.image) {
+            const ext = path.extname(v.originalname)?.toLowerCase();
+
+            //compressed file name
+            let imagename = "ECOM" + Date.now() + ext;
+            image_path.push(process.env.baseUrl + "images/" + imagename);
+            //where to store the compressed file
+            let compressedImage = path.join(
+              __dirname,
+              "/src/core/images/",
+              imagename
+            );
+            await sharp(req.image)
+              .resize(500)
+              .png({
+                quality: 50,
+                chromaSubsampling: "4:4:4",
+              })
+              .toFile(compressedImage);
+          }
+        });
+        req.image = image_path;
       }
+      next();
     }
-    next();
-  });
+  );
 };
 export const bannerResizer = async (req, res, next) => {
   upload.single("image")(req, res, async function (error) {
@@ -85,12 +101,21 @@ export const bannerResizer = async (req, res, next) => {
       if (req.image) {
         const ext = path.extname(req?.file?.originalname)?.toLowerCase();
         let imagename = process.env.APP_NAME + Date.now() + ext;
-        let compressedImage = path.join(__dirname, "/src/core/images/", imagename);
-        await sharp(req.image).resize(1500).png({
-          quality: 80,
-          chromaSubsampling: "4:4:4",
-        }).toFile(compressedImage);
-        const fileCreated = fs.existsSync(path.join(__dirname, "/src/core/images/", imagename));
+        let compressedImage = path.join(
+          __dirname,
+          "/src/core/images/",
+          imagename
+        );
+        await sharp(req.image)
+          .resize(1500)
+          .png({
+            quality: 80,
+            chromaSubsampling: "4:4:4",
+          })
+          .toFile(compressedImage);
+        const fileCreated = fs.existsSync(
+          path.join(__dirname, "/src/core/images/", imagename)
+        );
         if (fileCreated) {
           req.image = "/images/" + imagename;
         } else {
@@ -111,17 +136,26 @@ export const ImageUploader = async (req, res) => {
       if (req.image) {
         const ext = path.extname(req?.file?.originalname)?.toLowerCase();
         let imagename = process.env.APP_NAME + Date.now() + ext;
-        let compressedImage = path.join(__dirname, "/src/core/images/", imagename);
-        await sharp(req.image).resize(500).png({
-          quality: 80,
-          chromaSubsampling: "4:4:4",
-        }).toFile(compressedImage);
-        const fileCreated = fs.existsSync(path.join(__dirname, "/src/core/images/", imagename));
+        let compressedImage = path.join(
+          __dirname,
+          "/src/core/images/",
+          imagename
+        );
+        await sharp(req.image)
+          .resize(500)
+          .png({
+            quality: 80,
+            chromaSubsampling: "4:4:4",
+          })
+          .toFile(compressedImage);
+        const fileCreated = fs.existsSync(
+          path.join(__dirname, "/src/core/images/", imagename)
+        );
         if (fileCreated) {
           var imagePath = "/images/" + imagename;
-         if (imagePath!=null&&imagePath!=undefined) {
-           res.json({ status: 200, data: imagePath });
-         } 
+          if (imagePath != null && imagePath != undefined) {
+            res.json({ status: 200, data: imagePath });
+          }
         } else {
           throw Error.SomethingWentWrong("Failed to upload the image");
         }

@@ -6,8 +6,7 @@ export class ProfileController {}
 
 ProfileController.Profile = {
   viewProfile: async (req, res) => {
-    profileMiddleware.Profile
-      .fetchProfile(req)
+    profileMiddleware.Profile.fetchProfile(req)
       .then((data) => {
         const response = ApplicationResult.forCreated();
         var statuscode = 0;

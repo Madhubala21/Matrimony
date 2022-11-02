@@ -12,10 +12,10 @@ authMiddleware.Admin = {
     // if (device.latLong==null||device.latLong==undefined||device.latLong.length==0) {
     //     throw Error.AuthenticationFailed();
     // }
+
     device.latLong = JSON.stringify(body.latLong);
     const passwordSecret = configs.passwordSecret;
     const userFound = await adminDbController.Auth.checkAdminExistsLogin(body);
-    console.log(userFound);
     if (
       userFound === null ||
       userFound === undefined ||
@@ -40,12 +40,13 @@ authMiddleware.Admin = {
           passwordSecret
         );
         const decrypted = plain.toString(CryptoJS.enc.Utf8);
+
         //password matched
         if (decrypted === body.password) {
           //get last session
+
           const findSession =
             await adminDbController.Auth.session.findSessionId(userFound);
-
           if (
             findSession == null ||
             findSession == undefined ||
@@ -58,7 +59,6 @@ authMiddleware.Admin = {
               status: "active",
               type: "ROOT",
             });
-
             if (token != null && token != undefined) {
               var encryptedToken = CryptoJS.AES.encrypt(
                 token,
@@ -129,7 +129,7 @@ authMiddleware.Admin = {
   },
   adminRegister: async ({ body }) => {
     const passwordSecret = configs.passwordSecret;
-    console.log("hi", passwordSecret);
+    console.log(passwordSecret);
     const accoundFound = await adminDbController.Auth.checkAdminExistsRegister(
       body
     );
@@ -223,6 +223,7 @@ authMiddleware.Admin = {
     }
   },
   verifyAdmin: async ({ headers }) => {
+    // console.log("headers", headers);
     var isMalicious = true;
     if (headers.hasOwnProperty("adminauthtoken")) {
       //check authentication
@@ -230,6 +231,7 @@ authMiddleware.Admin = {
       const findSession = await adminDbController.Auth.session.findSession(
         headers.adminauthtoken
       );
+
       if (
         findSession != null &&
         findSession != undefined &&
@@ -242,6 +244,7 @@ authMiddleware.Admin = {
 
         //decode token
         const decoded = await authentications.verifyAdminJWT(findSession.token);
+
         if (
           decoded != null &&
           decoded != undefined &&

@@ -96,31 +96,34 @@ const User = {
       $ref: "defs#/definitions/User/Id",
     },
     userName: {
-      $ref: "defs#/defintions/User/companyName",
+      $ref: "defs#/definitions/User/userName",
     },
     email: {
-      $ref: "defs#/defintions/User/email",
+      $ref: "defs#/definitions/User/email",
     },
     password: {
-      $ref: "defs#/defintions/User/password",
+      $ref: "defs#/definitions/User/password",
     },
     phone: {
-      $ref: "defs#/defintions/User/mobile",
+      $ref: "defs#/definitions/User/phone",
     },
     dob: {
-      $ref: "defs#/defintions/User/dob",
+      $ref: "defs#/definitions/User/dob",
     },
     gender: {
-      $ref: "defs#/defintions/User/gender",
+      $ref: "defs#/definitions/User/gender",
     },
     images: {
-      $ref: "defs#/defintions/User/image",
+      $ref: "defs#/definitions/User/images",
     },
     profileType: {
-      $ref: "defs#/defintions/User/profileTpye",
+      $ref: "defs#/definitions/User/profileType",
     },
     membershipType: {
-      $ref: "defs#/defintions/User/membershipType",
+      $ref: "defs#/definitions/User/membershipType",
+    },
+    status: {
+      $ref: "defs#/definitions/User/status",
     },
   },
 };
@@ -596,7 +599,6 @@ export const UserCreate = {
     "phone",
     "dob",
     "gender",
-    "images",
     "profileType",
     "membershipType",
   ],

@@ -10,7 +10,7 @@ import { Logger } from "./src/core/lib/logger.js";
 import dotenv from "dotenv";
 dotenv.config();
 //require routers
-// import { userRouter } from "./src/App/routes/index.js";
+import { userRouter } from "./src/App/routes/index.js";
 import { getStarted } from "./src/App/controller/authController.js";
 import { adminRouter } from "./src/Admin/routes/index.Routes.js";
 
@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(helmet());
 
 app.use("/admin", adminRouter);
-//app.use("/user", userRouter);
+app.use("/user", userRouter);
 
 //mailer
 app.get("/getStarted", getStarted);

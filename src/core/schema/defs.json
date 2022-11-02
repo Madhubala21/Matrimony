@@ -191,16 +191,14 @@
       }
     },
 
-
-
-    "user":{
+    "User":{
         "Id": {
         "type": "integer",
         "title": "Id"
       },
        "userName": {
         "type": "string",
-        "title": "name"
+        "title": "userName"
       },
        "email":{
           "type":"string",
@@ -211,9 +209,8 @@
         "title":"password"
       },
        "phone":{
-        "type":"number",
-        "title":"mobile",
-        "format":" phoneNumber"
+        "type":"string",
+        "title":"mobile"
       },
       "dob":{
         "type":"string",
@@ -237,6 +234,11 @@
         "type":"string",
         "title":"gender",
          "enum": ["PREMIUM", "NORMAL"]
+      },
+       "status": {
+        "type": "string",
+        "title": "Account Status",
+        "enum": ["active", "inactive", "terminated"]
       }
     },
 

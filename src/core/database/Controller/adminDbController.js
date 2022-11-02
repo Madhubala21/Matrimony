@@ -33,7 +33,6 @@ adminDbController.Auth = {
     }
   },
   checkAdminExistsLogin: async (data) => {
-    console.log(data);
     try {
       return await adminDbController.Models.admin.findOne({
         where: {
@@ -45,7 +44,6 @@ adminDbController.Auth = {
         raw: true,
       });
     } catch (error) {
-      console.log(error);
       throw Error.SomethingWentWrong();
     }
   },
@@ -69,13 +67,14 @@ adminDbController.Auth = {
       return await adminDbController.Models.admin.findOne({
         where: {
           id: data.userId,
-          type: "ROOT",
+          adminType: "ROOT",
           status: "active",
         },
         attributes: ["id", "username"],
         raw: true,
       });
     } catch (error) {
+      // console.log(error);
       throw Error.SomethingWentWrong();
     }
   },
@@ -173,7 +172,7 @@ adminDbController.Auth = {
       try {
         return await adminDbController.Models.adminAuthentication.findOne({
           where: {
-            uid: data.id,
+            id: data.id,
           },
           order: [["id", "DESC"]],
         });
@@ -230,7 +229,6 @@ adminDbController.Auth = {
 
 adminDbController.Admin = {
   createAdmin: async (data) => {
-    console.log(data);
     try {
       return await adminDbController.Models.admin.create(
         {
@@ -244,18 +242,23 @@ adminDbController.Admin = {
         { raw: true }
       );
     } catch (error) {
+      console.log(error);
       throw Error.SomethingWentWrong();
     }
   },
 };
 
 adminDbController.Profile = {
-  fetchProfile: async () => {
+  fetchProfile: async (data) => {
     try {
-      return await adminDbController.Models.banner.findAll({
-        order: [["bannerType", "ASC"]],
+      return await adminDbController.Models.admin.findOne({
+        where: {
+          id: data.id,
+        },
         raw: true,
-        attributes: ["id", "bannerImage", "bannerType", "status"],
+        attributes: {
+          exclude: ["id", "password", "createdAt", "updatedAt", "status"],
+        },
       });
     } catch (error) {
       throw Error.SomethingWentWrong();
@@ -320,16 +323,43 @@ adminDbController.Photo = {
 };
 
 adminDbController.Manage = {
-  fetchManage: async (data) => {
+  fetchUser: async (data) => {
     try {
-      return await adminDbController.Models.category.findOne({
+      return await adminDbController.Models.user.findOne({
         where: {
-          categoryName: data.categoryName,
+          id: data.id,
           status: "active",
         },
         raw: true,
+        attributes: {
+          exclude: ["id", "createdAt", "updatedAt", "password"],
+        },
       });
     } catch (error) {
+      console.log(error);
+      throw Error.SomethingWentWrong();
+    }
+  },
+
+  deleteUser: async (data) => {
+    try {
+      const updated = await adminDbController.Models.user.update(
+        {
+          status: "inactive",
+        },
+        {
+          where: {
+            id: data.id,
+          },
+        }
+      );
+      if (updated[0] != 0) {
+        return "Deleted successfully";
+      } else {
+        return "User not deleted";
+      }
+    } catch (error) {
+      console.log(error);
       throw Error.SomethingWentWrong();
     }
   },

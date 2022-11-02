@@ -1,15 +1,21 @@
-// import { Router } from "express";
-// import { adminAuthenticate } from "../controller/auth.Controller.js";
+import { Router } from "express";
+import { adminAuthenticate } from "../controller/auth.Controller.js";
 // import { AdminController } from "../controller/admin.Controller.js";
 // import { bannerResizer } from " ../../core/utils/imageResizer.js";
-// import { ManageProfileController } from "../controller/manageProfile..Controller.js";
-// const manageProfileRouter = Router();
+import { ManageProfileController } from "../controller/manageProfile..Controller.js";
 
-// //dashboard
-// manageProfileRouter.get(
-//   "/dashboard",
-//   adminAuthenticate,
-//   ManageProfileController.Manage.getProfile
-// );
+const manageUserRouter = Router();
 
-// export { manageProfileRouter };
+manageUserRouter.post(
+  "/viewUser",
+  adminAuthenticate,
+  ManageProfileController.Manage.getUserProfile
+);
+
+manageUserRouter.post(
+  "/deleteUser",
+  adminAuthenticate,
+  ManageProfileController.Manage.deleteUserProfile
+);
+
+export { manageUserRouter };

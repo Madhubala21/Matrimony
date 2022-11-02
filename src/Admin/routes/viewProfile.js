@@ -1,15 +1,15 @@
-// import { Router } from "express";
-// import { adminAuthenticate } from "../controller/auth.Controller.js";
-// import { ProfileController } from "../controller/viewProfile.Controller.js";
+import { Router } from "express";
+import { adminAuthenticate } from "../controller/auth.Controller.js";
+import { ProfileController } from "../controller/viewProfile.Controller.js";
 
-// const profileRouter = Router();
+const profileRouter = Router();
 
-// //orders
-// profileRouter.get(
-//   "/viewProfile",
-//   adminAuthenticate,
-//   ProfileController.Profile.viewProfile
-// );
+//Profile
+profileRouter.get(
+  "/viewProfile",
+  adminAuthenticate,
+  ProfileController.Profile.viewProfile
+);
 
 // profileRouter.get(
 //   "/createProfile",
@@ -17,4 +17,4 @@
 //   ProfileController.Profile.addProfile
 // );
 
-// export { profileRouter };
+export { profileRouter };

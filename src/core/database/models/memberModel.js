@@ -38,7 +38,7 @@ user.init(
       defaultValue: "male",
     },
     images: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     profileType: {
@@ -50,6 +50,11 @@ user.init(
       type: DataTypes.ENUM("PREMIUM", "NORMAL"),
       allowNull: true,
       defaultValue: "NORMAL",
+    },
+    status: {
+      type: DataTypes.ENUM("active", "inactive", "terminated"),
+      allowNull: true,
+      defaultValue: "inactive",
     },
   },
   { sequelize: connection, freezeTableName: true }

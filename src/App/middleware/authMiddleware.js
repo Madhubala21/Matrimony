@@ -2,7 +2,7 @@ import require from "requirejs";
 var CryptoJS = require("crypto-js");
 import * as Error from "../../core/errors/ErrorConstant.js";
 import { authentications } from "../../core/utils/jwt.js";
-// import { userDbController } from "../../core/database/Controller/userDbController.js";
+import { userDbController } from "../../core/database/Controller/userDbController.js";
 import { NodeMailerfunction } from "../../core/utils/nodemailer.js";
 import { PayloadCompiler } from "../../core/inc/access/PayloadCompiler.js";
 
@@ -210,7 +210,6 @@ authMiddleware.User = {
           configs.passwordSecret
         );
         findSession.token = plain.toString(CryptoJS.enc.Utf8);
-
         const decoded = await authentications.verifyUserJWT(findSession.token);
 
         if (
