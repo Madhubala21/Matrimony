@@ -484,21 +484,24 @@ userDbController.Profile = {
           exclude: ["password", "createdAt", "updatedAt"],
         },
       });
-      console.log(profile);
-      let image = await JSON.parse(profile.images);
-      profile.images = image;
-      return profile;
+      if (profile.imageVerified != "0") {
+        return profile;
+      } else {
+        delete profile.imageVerified;
+        delete profile.images;
+        return profile;
+      }
     } catch (error) {
       console.log(error);
       throw Error.InternalError();
     }
   },
 
-  checkUser: async (data) => {
+  checkUser: async (token) => {
     try {
       return await userDbController.Models.user.findOne({
         where: {
-          email: data.email,
+          id: token,
         },
       });
     } catch (error) {
@@ -516,13 +519,12 @@ userDbController.Profile = {
         phone: data.phone,
         dob: data.dob,
         gender: data.gender,
-        images: JSON.stringify(image),
+        images: image,
         profileType: data.profileType,
         membershipType: data.membershipType,
         status: "inactive",
       });
     } catch (error) {
-      console.log(error);
       throw Error.InternalError();
     }
   },
@@ -539,12 +541,35 @@ userDbController.Profile = {
     }
   },
 
+  userDetails: async (data) => {
+    try {
+      return await userDbController.Models.user.create({
+        maritalStatus: data.maritalStatus,
+        profileCreatedBy: data.profileCreatedBy,
+        whatsapp: data.whatsapp,
+        referedBy: data.referedBy,
+        educationalQualification: data.educationalQualification,
+        religion: data.religion,
+        motherTongue: data.motherTongue,
+        caste: data.caste,
+        profession: data.profession,
+        professionDesignation: data.professionDesignation,
+        professionDesc: data.professionDesc,
+        professionLocation: data.professionLocation,
+        annualIncome: data.annualIncome,
+      });
+    } catch (error) {
+      console.log();
+      throw Error.InternalError();
+    }
+  },
+
   updateProfile: async (data, token) => {
+    console.log(data.username);
     try {
       const updated = await userDbController.Models.user.update(
         {
           userName: data.username,
-          images: data.images,
         },
         {
           where: {

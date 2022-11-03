@@ -41,6 +41,11 @@ user.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    imageVerified: {
+      type: DataTypes.ENUM("0", "1"),
+      allowNull: true,
+      defaultValue: "0",
+    },
     profileType: {
       type: DataTypes.ENUM("PUBLIC", "PRIVATE"),
       allowNull: true,

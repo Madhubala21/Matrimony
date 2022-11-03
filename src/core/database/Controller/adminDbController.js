@@ -257,7 +257,14 @@ adminDbController.Profile = {
         },
         raw: true,
         attributes: {
-          exclude: ["id", "password", "createdAt", "updatedAt", "status"],
+          exclude: [
+            "id",
+            "password",
+            "createdAt",
+            "updatedAt",
+            "status",
+            "adminType",
+          ],
         },
       });
     } catch (error) {
@@ -341,7 +348,33 @@ adminDbController.Manage = {
     }
   },
 
+  fetchUser1: async (data) => {
+    try {
+      const user = await adminDbController.Models.user.findOne({
+        where: {
+          id: data.id,
+          status: "active",
+        },
+        raw: true,
+        attributes: {
+          exclude: ["id", "createdAt", "updatedAt", "password"],
+        },
+      });
+      if (user.imageVerified != "0") {
+        return user;
+      } else {
+        delete user.imageVerified;
+        delete user.images;
+        return user;
+      }
+    } catch (error) {
+      console.log(error);
+      throw Error.SomethingWentWrong();
+    }
+  },
+
   deleteUser: async (data) => {
+    console.log();
     try {
       const updated = await adminDbController.Models.user.update(
         {

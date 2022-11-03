@@ -116,6 +116,9 @@ const User = {
     images: {
       $ref: "defs#/definitions/User/images",
     },
+    imageVerified: {
+      $ref: "defs#/definitions/User/imageVerified",
+    },
     profileType: {
       $ref: "defs#/definitions/User/profileType",
     },
@@ -589,6 +592,7 @@ export const UserCreate = {
     dob: User.properties.dob,
     gender: User.properties.gender,
     images: User.properties.images,
+    imageVerified: User.properties.imageVerified,
     profileType: User.properties.profileType,
     membershipType: User.properties.membershipType,
   },
@@ -807,7 +811,7 @@ export const userDetailsCreate = {
     "maritalStatus",
     "profileCreatedBy",
     "whatsapp",
-    "referedby",
+    "referedBy",
     "educationalQualification",
     "religion",
     "motherTongue",

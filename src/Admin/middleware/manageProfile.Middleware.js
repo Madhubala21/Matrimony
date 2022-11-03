@@ -9,8 +9,7 @@ export class manageMiddleware {}
 manageMiddleware.Manage = {
   fetchUser: async (data) => {
     let body = data.body;
-    console.log("body", body);
-    const fetched = await adminDbController.Manage.fetchUser(body);
+    const fetched = await adminDbController.Manage.fetchUser1(body);
     if (
       fetched != null &&
       fetched != undefined &&
@@ -24,7 +23,9 @@ manageMiddleware.Manage = {
 
   deleteUser: async (data) => {
     let body = data.body;
+    console.log(body);
     const find = await adminDbController.Manage.fetchUser(body);
+    console.log("madhu", find);
     if (find != null && find != undefined && Object.keys(find).length != 0) {
       const fetched = await adminDbController.Manage.deleteUser(body);
       return fetched;

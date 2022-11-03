@@ -225,6 +225,11 @@
         "type":"string",
         "title":"image"
       },
+      "imageVerified":{
+         "type":"string",
+        "title":"gender",
+         "enum": ["0", "1"]
+      },
       "profileType":{
         "type":"string",
         "title":"gender",

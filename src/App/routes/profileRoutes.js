@@ -5,6 +5,7 @@ import { ProfileController } from "../controller/profileController.js";
 
 const profileRouter = Router();
 
+//view user profile
 profileRouter.get(
   "/viewProfile",
   UserAuthenticate,
@@ -17,6 +18,24 @@ profileRouter.post(
   ProfileController.profile.addProfile
 );
 
+//User details create
+profileRouter.post(
+  "/userDetails",
+  UserAuthenticate,
+  ProfileController.profile.userDetails
+);
+// profileRouter.post(
+//   "/updateProfile",
+//   UserAuthenticate,
+//   ProfileController.profile.updateProfile
+// );
+// profileRouter.post(
+//   "/updateProfile",
+//   UserAuthenticate,
+//   ProfileController.profile.updateProfile
+// );
+
+//update user profile
 profileRouter.post(
   "/updateProfile",
   UserAuthenticate,
