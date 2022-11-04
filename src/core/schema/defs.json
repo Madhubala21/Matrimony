@@ -514,19 +514,13 @@
         "type":"integer",
         "title":"id"
       },
-      "userId":{
-        "type":"integer",
-        "title":"userId"
-      },
-       "maritalStatus":{
+       "marriageStatus":{
         "type":"string",
-        "title":"maritalstatus",
-        "enum":["never married","married","divorced","separated","widow/widower"]    
-      },
+        "title":"maritalStatus"
+       },
        "profileCreatedBy":{
         "type":"string",
-        "title":"profilecreated",
-        "enum":["friend","self","parent","guardian","sibling"]
+        "title":"profilecreated"
       },
       "whatsapp":{
           "type":"string",

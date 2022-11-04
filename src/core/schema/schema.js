@@ -339,52 +339,43 @@ const horoscope = {
   },
 };
 
-const userDetails = {
+const userProfile = {
   properties: {
     Id: {
-      $ref: "defs#/defintions/userDetails/Id",
+      $ref: "defs#/definitions/User/Id",
     },
-    userId: {
-      $ref: "defs#/defintions/userDetails/userId",
+    userName: {
+      $ref: "defs#/definitions/User/userName",
     },
-    maritalStatus: {
-      $ref: "defs#/defintions/userDetails/maritalStatus",
+    email: {
+      $ref: "defs#/definitions/User/email",
     },
-    profileCreatedBy: {
-      $ref: "defs#/defintions/userDetails/profileCreatedBy",
+    password: {
+      $ref: "defs#/definitions/User/password",
     },
-    whatsapp: {
-      $ref: "defs#/defintions/userDetails/whatsapp",
+    phone: {
+      $ref: "defs#/definitions/User/phone",
     },
-    referedBy: {
-      $ref: "defs#/defintions/userDetails/referedBy",
+    dob: {
+      $ref: "defs#/definitions/User/dob",
     },
-    educationalQualification: {
-      $ref: "defs#/defintions/userDetails/educationalQualification",
+    gender: {
+      $ref: "defs#/definitions/User/gender",
     },
-    religion: {
-      $ref: "defs#/defintions/userDetails/religion",
+    images: {
+      $ref: "defs#/definitions/User/images",
     },
-    motherTongue: {
-      $ref: "defs#/defintions/userDetails/motherTongue",
+    imageVerified: {
+      $ref: "defs#/definitions/User/imageVerified",
     },
-    caste: {
-      $ref: "defs#/defintions/userDetails/caste",
+    profileType: {
+      $ref: "defs#/definitions/User/profileType",
     },
-    profession: {
-      $ref: "defs#/defintions/userDetails/profession",
+    membershipType: {
+      $ref: "defs#/definitions/User/membershipType",
     },
-    professionDesignation: {
-      $ref: "defs#/defintions/userDetails/professionDesignation",
-    },
-    professionDesc: {
-      $ref: "defs#/defintions/userDetails/professionDesc",
-    },
-    professionLocation: {
-      $ref: "defs#/defintions/userDetails/professionLocation",
-    },
-    annualIncome: {
-      $ref: "defs#/defintions/userDetails/annualIncome",
+    status: {
+      $ref: "defs#/definitions/User/status",
     },
   },
 };
@@ -786,43 +777,62 @@ export const horoscopeCreate = {
   ],
 };
 
-export const userDetailsCreate = {
+export const createUserProfile = {
   type: "object",
-  $id: "userDetailsCreate",
+  $id: "createUserProfile",
   additionalProperties: false,
   properties: {
-    userId: userDetails.properties.userId,
-    maritalStatus: userDetails.properties.maritalStatus,
-    profileCreatedBy: userDetails.properties.profileCreatedBy,
-    whatsapp: userDetails.properties.whatsapp,
-    referedBy: userDetails.properties.referedBy,
-    educationalQualification: userDetails.properties.educationalQualification,
-    religion: userDetails.properties.religion,
-    motherTongue: userDetails.properties.motherTongue,
-    caste: userDetails.properties.caste,
-    profession: userDetails.properties.profession,
-    professionDesignation: userDetails.properties.professionDesignation,
-    professionDesc: userDetails.properties.professionDesc,
-    professionLocation: userDetails.properties.professionLocation,
-    annualIncome: userDetails.properties.annualIncome,
+    Id: userProfile.properties.Id,
+    userName: userProfile.properties.userName,
+    email: userProfile.properties.email,
+    password: userProfile.properties.password,
+    phone: userProfile.properties.phone,
+    dob: userProfile.properties.dob,
+    gender: userProfile.properties.gender,
+    images: userProfile.properties.images,
+    imageVerified: userProfile.properties.imageVerified,
+    profileType: userProfile.properties.profileType,
+    membershipType: userProfile.properties.membershipType,
+    status: userProfile.properties.status,
   },
-  required: [
-    "userId",
-    "maritalStatus",
-    "profileCreatedBy",
-    "whatsapp",
-    "referedBy",
-    "educationalQualification",
-    "religion",
-    "motherTongue",
-    "caste",
-    "profession",
-    "professionDesignation",
-    "professionDesc",
-    "professionLocation",
-    "annualIncome",
-  ],
+  // required: ["Id"],
 };
+
+// export const userDetailsCreate = {
+//   type: "object",
+//   $id: "userDetailsCreate",
+//   additionalProperties: false,
+//   properties: {
+// maritalStatus: userDetails.properties.maritalStatus,
+// profileCreatedBy: userDetails.properties.profileCreatedBy,
+// whatsapp: userDetails.properties.whatsapp,
+// referedBy: userDetails.properties.referedBy,
+// educationalQualification: userDetails.properties.educationalQualification,
+// religion: userDetails.properties.religion,
+// motherTongue: userDetails.properties.motherTongue,
+// caste: userDetails.properties.caste,
+// profession: userDetails.properties.profession,
+// professionDesignation: userDetails.properties.professionDesignation,
+// professionDesc: userDetails.properties.professionDesc,
+// professionLocation: userDetails.properties.professionLocation,
+//     annualIncome: userDetails.properties.annualIncome,
+//   },
+//   required: [
+//     // "maritalStatus",
+//     // "profileCreatedBy",
+//     // "whatsapp",
+//     // "referedBy",
+//     // "educationalQualification",
+//     // "religion",
+//     // "motherTongue",
+//     // "caste",
+//     // "profession",
+//     // "professionDesignation",
+//     // "professionDesc",
+//     // "professionLocation",
+//     "annualIncome",
+//   ],
+// };
 
 export const whislistCreate = {
   type: "object",

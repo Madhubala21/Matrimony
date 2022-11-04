@@ -23,6 +23,7 @@ profileMiddleware.profile = {
 
   createProfile: async ({ body, image }) => {
     // let body = data.body;
+    console.log(body);
     const passwordSecret = configs.passwordSecret;
     console.log(passwordSecret);
     const checkUser = await userDbController.Profile.checkUser(body);
@@ -57,10 +58,12 @@ profileMiddleware.profile = {
 
   //add user details
 
-  userDetails: async ({ body, token }) => {
-    // let body = data.body;
-    const passwordSecret = configs.passwordSecret;
-    const checkUser = await userDbController.Profile.checkUser(token);
+  userDetails: async (data) => {
+    let body = data.body;
+    // console.log(body);
+    const checkUser = await userDbController.Profile.checkUserExists(
+      data.token
+    );
     if (
       checkUser != null &&
       checkUser != undefined &&
@@ -68,11 +71,11 @@ profileMiddleware.profile = {
     ) {
       const validated = await PayloadCompiler.compile(
         body,
-        "userDetailsCreate"
+        "createUserProfile"
       );
       const fetched = await userDbController.Profile.userDetails(
-        validated.data,
-        image
+        data.body,
+        data.token
       );
       if (
         fetched != null &&

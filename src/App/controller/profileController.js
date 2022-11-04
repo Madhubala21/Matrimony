@@ -60,6 +60,7 @@ ProfileController.profile = {
         res.json({ status: statuscode, data: data });
       })
       .catch((error) => {
+        console.log("log error", error);
         ApplicationResponse.error(error, null, (response) => {
           res.status(response.status).json(response);
         });

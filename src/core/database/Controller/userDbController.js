@@ -497,11 +497,12 @@ userDbController.Profile = {
     }
   },
 
-  checkUser: async (token) => {
+  checkUser: async (data) => {
+    console.log(data);
     try {
       return await userDbController.Models.user.findOne({
         where: {
-          id: token,
+          email: data.email,
         },
       });
     } catch (error) {
@@ -537,13 +538,15 @@ userDbController.Profile = {
         },
       });
     } catch (error) {
+      // console.log(error);
       throw Error.InternalError();
     }
   },
 
-  userDetails: async (data) => {
+  userDetails: async (data, token) => {
     try {
-      return await userDbController.Models.user.create({
+      return await userDbController.Models.userDetails.create({
+        userId: token,
         maritalStatus: data.maritalStatus,
         profileCreatedBy: data.profileCreatedBy,
         whatsapp: data.whatsapp,
@@ -559,7 +562,7 @@ userDbController.Profile = {
         annualIncome: data.annualIncome,
       });
     } catch (error) {
-      console.log();
+      // console.log(error);
       throw Error.InternalError();
     }
   },

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { authRouter } from "./auth.Routes.js";
+import { dashboardRouter } from "./dashboard.js";
 // import { documentRouter } from "./document.js";
 import { manageUserRouter } from "./manageProfile.js";
 // import { partnerDetailsRouter } from "./partner.js";
@@ -9,13 +10,14 @@ import { manageUserRouter } from "./manageProfile.js";
 // import { userPhotographRouter } from "./userPhotograph.js";
 // import { userValidityRouter } from "./userValidity.js";
 import { profileRouter } from "./viewProfile.js";
-// import { reviewsRouter } from "./viewReviews.js";
 
 const adminRouter = Router();
 
 adminRouter.use("/auth", authRouter);
 
 adminRouter.use("/Profile", profileRouter);
+
+adminRouter.use("/adminDashboard", dashboardRouter);
 
 // adminRouter.use("/userActivation", activationRouter);
 

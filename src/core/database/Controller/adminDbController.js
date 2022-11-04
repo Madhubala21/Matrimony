@@ -446,13 +446,82 @@ adminDbController.Validity = {
   },
 };
 
-adminDbController.Review = {
-  fetchReview: async (data) => {
+adminDbController.Dashboard = {
+  fetchActive: async (data) => {
     try {
-      return await adminDbController.Models.category.findOne({
+      return await adminDbController.Models.user.count({
         where: {
-          categoryName: data.categoryName,
           status: "active",
+        },
+        raw: true,
+      });
+    } catch (error) {
+      throw Error.SomethingWentWrong();
+    }
+  },
+
+  fetchInactive: async (data) => {
+    try {
+      return await adminDbController.Models.user.count({
+        where: {
+          status: "inactive",
+        },
+        raw: true,
+      });
+    } catch (error) {
+      throw Error.SomethingWentWrong();
+    }
+  },
+
+  fetchAll: async (data) => {
+    try {
+      return await adminDbController.Models.user.count({
+        raw: true,
+      });
+    } catch (error) {
+      throw Error.SomethingWentWrong();
+    }
+  },
+
+  fetchPaid: async (data) => {
+    try {
+      return await adminDbController.Models.user.count({
+        where: {
+          membershipType: "PREMIUM",
+        },
+        raw: true,
+      });
+    } catch (error) {
+      throw Error.SomethingWentWrong();
+    }
+  },
+
+  fetchSuccess: async (data) => {
+    try {
+      return await adminDbController.Models.successStories.count({});
+    } catch (error) {
+      throw Error.SomethingWentWrong();
+    }
+  },
+
+  fetchMembership: async (data) => {
+    try {
+      return await adminDbController.Models.user.count({
+        where: {
+          membershipType: "PREMIUM",
+        },
+        raw: true,
+      });
+    } catch (error) {
+      throw Error.SomethingWentWrong();
+    }
+  },
+
+  fetchTerminated: async (data) => {
+    try {
+      return await adminDbController.Models.user.count({
+        where: {
+          status: "terminated",
         },
         raw: true,
       });
