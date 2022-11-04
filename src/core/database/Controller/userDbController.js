@@ -538,12 +538,13 @@ userDbController.Profile = {
         },
       });
     } catch (error) {
-      // console.log(error);
+      console.log(error);
       throw Error.InternalError();
     }
   },
 
   userDetails: async (data, token) => {
+    console.log(data);
     try {
       return await userDbController.Models.userDetails.create({
         userId: token,
@@ -562,7 +563,7 @@ userDbController.Profile = {
         annualIncome: data.annualIncome,
       });
     } catch (error) {
-      // console.log(error);
+      console.log(error);
       throw Error.InternalError();
     }
   },

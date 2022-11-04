@@ -69,9 +69,10 @@ profileMiddleware.profile = {
       checkUser != undefined &&
       Object.keys(checkUser).length != 0
     ) {
+      console.log("madhu");
       const validated = await PayloadCompiler.compile(
         body,
-        "createUserProfile"
+        "userDetailsCreate"
       );
       const fetched = await userDbController.Profile.userDetails(
         data.body,

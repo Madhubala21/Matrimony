@@ -339,43 +339,49 @@ const horoscope = {
   },
 };
 
-const userProfile = {
+const userDetails = {
   properties: {
     Id: {
       $ref: "defs#/definitions/User/Id",
     },
-    userName: {
-      $ref: "defs#/definitions/User/userName",
+    maritalStatus: {
+      $ref: "defs#/definitions/User/maritalStatus",
     },
-    email: {
-      $ref: "defs#/definitions/User/email",
+    profileCreatedBy: {
+      $ref: "defs#/definitions/User/profileCreatedBy",
     },
-    password: {
-      $ref: "defs#/definitions/User/password",
+    whatsapp: {
+      $ref: "defs#/definitions/User/whatsapp",
     },
-    phone: {
-      $ref: "defs#/definitions/User/phone",
+    referedBy: {
+      $ref: "defs#/definitions/User/referedBy",
     },
-    dob: {
-      $ref: "defs#/definitions/User/dob",
+    educationalQualification: {
+      $ref: "defs#/definitions/User/educationalQualification",
     },
-    gender: {
-      $ref: "defs#/definitions/User/gender",
+    religion: {
+      $ref: "defs#/definitions/User/religion",
     },
-    images: {
-      $ref: "defs#/definitions/User/images",
+    motherTongue: {
+      $ref: "defs#/definitions/User/motherTongue",
     },
-    imageVerified: {
-      $ref: "defs#/definitions/User/imageVerified",
+    caste: {
+      $ref: "defs#/definitions/User/caste",
     },
-    profileType: {
-      $ref: "defs#/definitions/User/profileType",
+    profession: {
+      $ref: "defs#/definitions/User/profession",
     },
-    membershipType: {
-      $ref: "defs#/definitions/User/membershipType",
+    professionDesignation: {
+      $ref: "defs#/definitions/User/professionDesignation",
     },
-    status: {
-      $ref: "defs#/definitions/User/status",
+    professionDesc: {
+      $ref: "defs#/definitions/User/professionDesc",
+    },
+    professionLocation: {
+      $ref: "defs#/definitions/User/professionLocation",
+    },
+    annualIncome: {
+      $ref: "defs#/definitions/User/annualIncome",
     },
   },
 };
@@ -777,62 +783,74 @@ export const horoscopeCreate = {
   ],
 };
 
-export const createUserProfile = {
-  type: "object",
-  $id: "createUserProfile",
-  additionalProperties: false,
-  properties: {
-    Id: userProfile.properties.Id,
-    userName: userProfile.properties.userName,
-    email: userProfile.properties.email,
-    password: userProfile.properties.password,
-    phone: userProfile.properties.phone,
-    dob: userProfile.properties.dob,
-    gender: userProfile.properties.gender,
-    images: userProfile.properties.images,
-    imageVerified: userProfile.properties.imageVerified,
-    profileType: userProfile.properties.profileType,
-    membershipType: userProfile.properties.membershipType,
-    status: userProfile.properties.status,
-  },
-  // required: ["Id"],
-};
-
-// export const userDetailsCreate = {
+// export const createUserProfile = {
 //   type: "object",
-//   $id: "userDetailsCreate",
+//   $id: "createUserProfile",
 //   additionalProperties: false,
 //   properties: {
-// maritalStatus: userDetails.properties.maritalStatus,
-// profileCreatedBy: userDetails.properties.profileCreatedBy,
-// whatsapp: userDetails.properties.whatsapp,
-// referedBy: userDetails.properties.referedBy,
-// educationalQualification: userDetails.properties.educationalQualification,
-// religion: userDetails.properties.religion,
-// motherTongue: userDetails.properties.motherTongue,
-// caste: userDetails.properties.caste,
-// profession: userDetails.properties.profession,
-// professionDesignation: userDetails.properties.professionDesignation,
-// professionDesc: userDetails.properties.professionDesc,
-// professionLocation: userDetails.properties.professionLocation,
-//     annualIncome: userDetails.properties.annualIncome,
+//     Id: userProfile.properties.Id,
+//     userName: userProfile.properties.userName,
+//     email: userProfile.properties.email,
+//     password: userProfile.properties.password,
+//     phone: userProfile.properties.phone,
+//     dob: userProfile.properties.dob,
+//     gender: userProfile.properties.gender,
+//     images: userProfile.properties.images,
+//     imageVerified: userProfile.properties.imageVerified,
+//     profileType: userProfile.properties.profileType,
+//     membershipType: userProfile.properties.membershipType,
+//     status: userProfile.properties.status,
 //   },
 //   required: [
-//     // "maritalStatus",
-//     // "profileCreatedBy",
-//     // "whatsapp",
-//     // "referedBy",
-//     // "educationalQualification",
-//     // "religion",
-//     // "motherTongue",
-//     // "caste",
-//     // "profession",
-//     // "professionDesignation",
-//     // "professionDesc",
-//     // "professionLocation",
-//     "annualIncome",
+//     "Id",
+//     " userName",
+//     "email",
+//     "password",
+//     "phone",
+//     "dob",
+//     "gender",
+//     "images",
+//     "imageVerified",
+//     "profiletype",
+//     "membershipType",
 //   ],
 // };
+
+export const userDetailsCreate = {
+  type: "object",
+  $id: "userDetailsCreate",
+  additionalProperties: false,
+  properties: {
+    maritalStatus: userDetails.properties.maritalStatus,
+    profileCreatedBy: userDetails.properties.profileCreatedBy,
+    whatsapp: userDetails.properties.whatsapp,
+    referedBy: userDetails.properties.referedBy,
+    educationalQualification: userDetails.properties.educationalQualification,
+    religion: userDetails.properties.religion,
+    motherTongue: userDetails.properties.motherTongue,
+    caste: userDetails.properties.caste,
+    profession: userDetails.properties.profession,
+    professionDesignation: userDetails.properties.professionDesignation,
+    professionDesc: userDetails.properties.professionDesc,
+    professionLocation: userDetails.properties.professionLocation,
+    annualIncome: userDetails.properties.annualIncome,
+  },
+  required: [
+    "maritalStatus",
+    "profileCreatedBy",
+    "whatsapp",
+    "referedBy",
+    "educationalQualification",
+    "religion",
+    "motherTongue",
+    "caste",
+    "profession",
+    "professionDesignation",
+    "professionDesc",
+    "professionLocation",
+    "annualIncome",
+  ],
+};
 
 export const whislistCreate = {
   type: "object",
