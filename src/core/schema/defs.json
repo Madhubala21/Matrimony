@@ -210,7 +210,9 @@
       },
        "phone":{
         "type":"string",
-        "title":"mobile"
+        "title":"mobile",
+        "minlength":10,
+        "maxlength":10
       },
       "dob":{
         "type":"string",

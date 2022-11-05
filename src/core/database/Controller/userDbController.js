@@ -485,6 +485,7 @@ userDbController.Profile = {
         },
       });
       if (profile.imageVerified != "0") {
+        delete profile.imageVerified;
         return profile;
       } else {
         delete profile.imageVerified;
@@ -543,12 +544,39 @@ userDbController.Profile = {
     }
   },
 
+  checkUserDetailsExists: async (data) => {
+    console.log("madhu");
+    try {
+      return await userDbController.Models.userDetails.findOne({
+        where: {
+          id: data,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+      throw Error.InternalError();
+    }
+  },
+
+  checkFamilyDetailsExists: async (data) => {
+    try {
+      return await userDbController.Models.myfamily.findOne({
+        where: {
+          id: data,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+      throw Error.InternalError();
+    }
+  },
+
   userDetails: async (data, token) => {
     console.log(data);
     try {
       return await userDbController.Models.userDetails.create({
         userId: token,
-        maritalStatus: data.maritalStatus,
+        maritalStatus: data.marriageStatus,
         profileCreatedBy: data.profileCreatedBy,
         whatsapp: data.whatsapp,
         referedBy: data.referedBy,
@@ -588,6 +616,27 @@ userDbController.Profile = {
         return "Error in update";
       }
     } catch (error) {
+      throw Error.InternalError();
+    }
+  },
+
+  familyDetails: async (data, token) => {
+    try {
+      return await userDbController.Models.userDetails.create({
+        userId: token,
+        fatherName: data.fatherName,
+        motherName: data.motherName,
+        fatherAlive: data.fatherAlive,
+        motherAlive: data.motherAlive,
+        fatherOccupation: data.fatherOccupation,
+        motherOccupation: data.motherOccupation,
+        familyType: data.familyType,
+        siblingDetails: data.siblingDetails,
+        financialStatus: data.financialStatus,
+        propertyValues: data.propertyValues,
+      });
+    } catch (error) {
+      console.log(error);
       throw Error.InternalError();
     }
   },

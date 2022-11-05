@@ -430,6 +430,39 @@ adminDbController.Member = {
   },
 };
 
+adminDbController.Users = {
+  fetchAllUsers: async (data) => {
+    try {
+      const profile = await adminDbController.Models.user.findAll({
+        where: {
+          status: "active",
+        },
+        attributes: {
+          exclude: ["password", "createdAt", "updatedAt"],
+        },
+      });
+      let len = profile.length;
+      let arr = [];
+      for (let i = 0; i < len; i++) {
+        if (profile[i].imageVerified == "0") {
+          delete profile[i].images;
+          delete profile[i].imageVerified;
+          console.log("hi", profile[i]);
+          // arr.push(profile[i]);
+        } else {
+          delete profile[i].imageVerified;
+          // arr.push(profile[i]);
+          console.log("hlooooooo", profile[i]);
+        }
+      }
+      return "okjh";
+    } catch (error) {
+      console.log(error);
+      throw Error.SomethingWentWrong();
+    }
+  },
+};
+
 adminDbController.Validity = {
   getValidity: async (data) => {
     try {

@@ -342,46 +342,46 @@ const horoscope = {
 const userDetails = {
   properties: {
     Id: {
-      $ref: "defs#/definitions/User/Id",
+      $ref: "defs#/definitions/userDetails/Id",
     },
-    maritalStatus: {
-      $ref: "defs#/definitions/User/maritalStatus",
+    marriageStatus: {
+      $ref: "defs#/definitions/userDetails/marriageStatus",
     },
     profileCreatedBy: {
-      $ref: "defs#/definitions/User/profileCreatedBy",
+      $ref: "defs#/definitions/userDetails/profileCreatedBy",
     },
     whatsapp: {
-      $ref: "defs#/definitions/User/whatsapp",
+      $ref: "defs#/definitions/userDetails/whatsapp",
     },
     referedBy: {
-      $ref: "defs#/definitions/User/referedBy",
+      $ref: "defs#/definitions/userDetails/referedBy",
     },
     educationalQualification: {
-      $ref: "defs#/definitions/User/educationalQualification",
+      $ref: "defs#/definitions/userDetails/educationalQualification",
     },
     religion: {
-      $ref: "defs#/definitions/User/religion",
+      $ref: "defs#/definitions/userDetails/religion",
     },
     motherTongue: {
-      $ref: "defs#/definitions/User/motherTongue",
+      $ref: "defs#/definitions/userDetails/motherTongue",
     },
     caste: {
-      $ref: "defs#/definitions/User/caste",
+      $ref: "defs#/definitions/userDetails/caste",
     },
     profession: {
-      $ref: "defs#/definitions/User/profession",
+      $ref: "defs#/definitions/userDetails/profession",
     },
     professionDesignation: {
-      $ref: "defs#/definitions/User/professionDesignation",
+      $ref: "defs#/definitions/userDetails/professionDesignation",
     },
     professionDesc: {
-      $ref: "defs#/definitions/User/professionDesc",
+      $ref: "defs#/definitions/userDetails/professionDesc",
     },
     professionLocation: {
-      $ref: "defs#/definitions/User/professionLocation",
+      $ref: "defs#/definitions/userDetails/professionLocation",
     },
     annualIncome: {
-      $ref: "defs#/definitions/User/annualIncome",
+      $ref: "defs#/definitions/userDetails/annualIncome",
     },
   },
 };
@@ -712,12 +712,41 @@ export const userPersonalityCreate = {
   ],
 };
 
+// export const myfamilyCreate = {
+//   type: "object",
+//   $id: "myfamilyCreate",
+//   additionalProperties: false,
+//   properties: {
+//     fatherName: myfamily.properties.fatherName,
+//     motherName: myfamily.properties.motherName,
+//     fatherAlive: myfamily.properties.fatherAlive,
+//     motherAlive: myfamily.properties.motherAlive,
+//     fatherOccupation: myfamily.properties.fatherOccupation,
+//     motherOccupation: myfamily.properties.motherOccupation,
+//     familyType: myfamily.properties.familyType,
+//     siblingDetails: myfamily.properties.siblingDetails,
+//     financialStatus: myfamily.properties.financialStatus,
+//     propertyValues: myfamily.properties.propertyValues,
+//   },
+//   required: [
+//     "fatherName",
+//     "motherName",
+//     "fatherAlive",
+//     "motherAlive",
+//     "fatherOccupation",
+//     "motherOccupation",
+//     "familyType",
+//     "siblingDetails",
+//     "financialStatus",
+//     "propertyValues",
+//   ],
+// };
+
 export const myfamilyCreate = {
   type: "object",
   $id: "myfamilyCreate",
   additionalProperties: false,
   properties: {
-    userId: myfamily.properties.userId,
     fatherName: myfamily.properties.fatherName,
     motherName: myfamily.properties.motherName,
     fatherAlive: myfamily.properties.fatherAlive,
@@ -729,19 +758,16 @@ export const myfamilyCreate = {
     financialStatus: myfamily.properties.financialStatus,
     propertyValues: myfamily.properties.propertyValues,
   },
-  required: [
-    "userId",
-    "fatherName",
-    "motherName",
-    "fatherAlive",
-    "motherAlive",
-    "fatherOccupation",
-    "motherOccupation",
-    "familyType",
-    "siblingDetails",
-    "financialStatus",
-    "propertyValues",
-  ],
+  // required: [
+  //   "userName",
+  //   "email",
+  //   "password",
+  //   "phone",
+  //   "dob",
+  //   "gender",
+  //   "profileType",
+  //   "membershipType",
+  // ],
 };
 
 export const userLogsCreate = {
@@ -816,12 +842,48 @@ export const horoscopeCreate = {
 //   ],
 // };
 
+// export const userDetailsCreate = {
+//   type: "object",
+//   $id: "userDetailsCreate",
+//   additionalProperties: false,
+//   properties: {
+//     maritalStatus: userDetails.properties.maritalStatus,
+//     profileCreatedBy: userDetails.properties.profileCreatedBy,
+//     whatsapp: userDetails.properties.whatsapp,
+//     referedBy: userDetails.properties.referedBy,
+//     educationalQualification: userDetails.properties.educationalQualification,
+//     religion: userDetails.properties.religion,
+//     motherTongue: userDetails.properties.motherTongue,
+//     caste: userDetails.properties.caste,
+//     profession: userDetails.properties.profession,
+//     professionDesignation: userDetails.properties.professionDesignation,
+//     professionDesc: userDetails.properties.professionDesc,
+//     professionLocation: userDetails.properties.professionLocation,
+//     annualIncome: userDetails.properties.annualIncome,
+//   },
+//   required: [
+//     "maritalStatus",
+//     "profileCreatedBy",
+//     "whatsapp",
+//     "referedBy",
+//     "educationalQualification",
+//     "religion",
+//     "motherTongue",
+//     "caste",
+//     "profession",
+//     "professionDesignation",
+//     "professionDesc",
+//     "professionLocation",
+//     "annualIncome",
+//   ],
+// };
+
 export const userDetailsCreate = {
   type: "object",
   $id: "userDetailsCreate",
   additionalProperties: false,
   properties: {
-    maritalStatus: userDetails.properties.maritalStatus,
+    marriageStatus: userDetails.properties.marriageStatus,
     profileCreatedBy: userDetails.properties.profileCreatedBy,
     whatsapp: userDetails.properties.whatsapp,
     referedBy: userDetails.properties.referedBy,
@@ -836,7 +898,7 @@ export const userDetailsCreate = {
     annualIncome: userDetails.properties.annualIncome,
   },
   required: [
-    "maritalStatus",
+    "marriageStatus",
     "profileCreatedBy",
     "whatsapp",
     "referedBy",

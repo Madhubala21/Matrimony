@@ -1,9 +1,9 @@
 import { Router } from "express";
+import { allUsersRouter } from "./allUsers.js";
 import { authRouter } from "./auth.Routes.js";
 import { dashboardRouter } from "./dashboard.js";
 // import { documentRouter } from "./document.js";
 import { manageUserRouter } from "./manageProfile.js";
-// import { partnerDetailsRouter } from "./partner.js";
 // import { storiesRouter } from "./success.js";
 // import { activationRouter } from "./userAccount.js";
 // import { userMembershipRouter } from "./userMembership.js";
@@ -18,6 +18,8 @@ adminRouter.use("/auth", authRouter);
 adminRouter.use("/Profile", profileRouter);
 
 adminRouter.use("/adminDashboard", dashboardRouter);
+
+adminRouter.use("/allUsers", allUsersRouter);
 
 // adminRouter.use("/userActivation", activationRouter);
 
@@ -34,7 +36,5 @@ adminRouter.use("/manageuserProfile", manageUserRouter);
 // adminRouter.use("/viewReviews", reviewsRouter);
 
 // adminRouter.use("/addSuccessStories", storiesRouter);
-
-// adminRouter.use("/searchPartnerDetails", partnerDetailsRouter);
 
 export { adminRouter };

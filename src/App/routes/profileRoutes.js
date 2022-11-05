@@ -24,11 +24,11 @@ profileRouter.post(
   UserAuthenticate,
   ProfileController.profile.userDetails
 );
-// profileRouter.post(
-//   "/updateProfile",
-//   UserAuthenticate,
-//   ProfileController.profile.updateProfile
-// );
+profileRouter.post(
+  "/familyDetails",
+  UserAuthenticate,
+  ProfileController.profile.familyDetails
+);
 // profileRouter.post(
 //   "/updateProfile",
 //   UserAuthenticate,

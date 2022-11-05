@@ -17,7 +17,7 @@ profileMiddleware.profile = {
     ) {
       return fetched;
     } else {
-      throw Error.SomethingWentWrong("No FAQ's Found!");
+      throw Error.SomethingWentWrong("User Not Found!");
     }
   },
 
@@ -69,23 +69,74 @@ profileMiddleware.profile = {
       checkUser != undefined &&
       Object.keys(checkUser).length != 0
     ) {
-      console.log("madhu");
-      const validated = await PayloadCompiler.compile(
-        body,
-        "userDetailsCreate"
-      );
-      const fetched = await userDbController.Profile.userDetails(
-        data.body,
-        data.token
-      );
+      const checkUserDetails =
+        await userDbController.Profile.checkUserDetailsExists(data.token);
+      console.log(checkUserDetails);
       if (
-        fetched != null &&
-        fetched != undefined &&
-        Object.keys(fetched).length != 0
+        checkUserDetails != null &&
+        checkUserDetails != undefined &&
+        Object.keys(checkUserDetails).length != 0
       ) {
-        return "Added successfully";
+        return "User details already exists";
       } else {
-        return "Some problem ";
+        const validated = await PayloadCompiler.compile(
+          body,
+          "userDetailsCreate"
+        );
+        const fetched = await userDbController.Profile.userDetails(
+          data.body,
+          data.token
+        );
+        if (
+          fetched != null &&
+          fetched != undefined &&
+          Object.keys(fetched).length != 0
+        ) {
+          return "Added successfully";
+        } else {
+          return "Some problem ";
+        }
+      }
+    } else {
+      return "User not found";
+    }
+  },
+
+  familyDetails: async (data) => {
+    let body = data.body;
+    // console.log(body);
+    const checkUser = await userDbController.Profile.checkUserExists(
+      data.token
+    );
+    if (
+      checkUser != null &&
+      checkUser != undefined &&
+      Object.keys(checkUser).length != 0
+    ) {
+      const checkUserDetails =
+        await userDbController.Profile.checkFamilyDetailsExists(data.token);
+      console.log(checkUserDetails);
+      if (
+        checkUserDetails != null &&
+        checkUserDetails != undefined &&
+        Object.keys(checkUserDetails).length != 0
+      ) {
+        return "User details already exists";
+      } else {
+        const validated = await PayloadCompiler.compile(body, "myfamilyCreate");
+        const fetched = await userDbController.Profile.familyDetails(
+          data.body,
+          data.token
+        );
+        if (
+          fetched != null &&
+          fetched != undefined &&
+          Object.keys(fetched).length != 0
+        ) {
+          return "Added successfully";
+        } else {
+          return "Some problem ";
+        }
       }
     } else {
       return "User not found";
