@@ -6,7 +6,7 @@ import { dashboardRouter } from "./dashboard.js";
 import { manageUserRouter } from "./manageProfile.js";
 // import { storiesRouter } from "./success.js";
 // import { activationRouter } from "./userAccount.js";
-// import { userMembershipRouter } from "./userMembership.js";
+import { userMembershipRouter } from "./userMembership.js";
 // import { userPhotographRouter } from "./userPhotograph.js";
 // import { userValidityRouter } from "./userValidity.js";
 import { profileRouter } from "./viewProfile.js";
@@ -21,15 +21,15 @@ adminRouter.use("/adminDashboard", dashboardRouter);
 
 adminRouter.use("/allUsers", allUsersRouter);
 
-// adminRouter.use("/userActivation", activationRouter);
-
 adminRouter.use("/manageuserProfile", manageUserRouter);
+
+// adminRouter.use("/userActivation", activationRouter);
 
 // adminRouter.use("/userPhotographManage", userPhotographRouter);
 
 // adminRouter.use("/documentManagement", documentRouter);
 
-// adminRouter.use("/userMembershipManagement", userMembershipRouter);
+adminRouter.use("/userMembershipManagement", userMembershipRouter);
 
 // adminRouter.use("/userValidityRenewal", userValidityRouter);
 

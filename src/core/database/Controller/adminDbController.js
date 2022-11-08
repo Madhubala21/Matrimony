@@ -429,6 +429,20 @@ adminDbController.Member = {
       throw Error.SomethingWentWrong();
     }
   },
+
+  addMembership: async (data) => {
+    try {
+      return await adminDbController.Models.category.findOne({
+        where: {
+          categoryName: data.categoryName,
+          status: "active",
+        },
+        raw: true,
+      });
+    } catch (error) {
+      throw Error.SomethingWentWrong();
+    }
+  },
 };
 
 adminDbController.Users = {
