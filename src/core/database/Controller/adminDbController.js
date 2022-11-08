@@ -4,6 +4,7 @@ import * as Models from "../models/index.js";
 import require from "requirejs";
 const { Op, Sequelize, where } = require("sequelize");
 import * as Error from "../../errors/ErrorConstant.js";
+import { LoggingUtil } from "paytm-pg-node-sdk";
 
 export class adminDbController {}
 adminDbController.scope = "defaultScope";
@@ -433,7 +434,7 @@ adminDbController.Member = {
 adminDbController.Users = {
   fetchAllUsers: async (data) => {
     try {
-      const profile = await adminDbController.Models.user.findAll({
+      let profile = await adminDbController.Models.user.findAll({
         where: {
           status: "active",
         },
@@ -441,21 +442,21 @@ adminDbController.Users = {
           exclude: ["password", "createdAt", "updatedAt"],
         },
       });
-      let len = profile.length;
       let arr = [];
-      for (let i = 0; i < len; i++) {
-        if (profile[i].imageVerified == "0") {
-          delete profile[i].images;
-          delete profile[i].imageVerified;
-          console.log("hi", profile[i]);
-          // arr.push(profile[i]);
+      profile = profile.map(function (item) {
+        item = JSON.parse(JSON.stringify(item));
+        console.log(typeof item.imageVerified);
+        if (item.imageVerified === "0") {
+          delete item.images;
+          delete item.imageVerified;
+          // console.log(item);
         } else {
-          delete profile[i].imageVerified;
-          // arr.push(profile[i]);
-          console.log("hlooooooo", profile[i]);
+          delete item.imageVerified;
+          // console.log(item);
         }
-      }
-      return "okjh";
+        return item;
+      });
+      return profile;
     } catch (error) {
       console.log(error);
       throw Error.SomethingWentWrong();
